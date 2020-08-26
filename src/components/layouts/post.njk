@@ -10,7 +10,7 @@
 {% endblock %}
 
 {% block content %}
-  <main tabindex="-1" style="--ne-vertical-leading: 3rem">
+  <main tabindex="-1" style="--ne-vertical-leading: 2rem">
     {% include "header.njk" %}
     {% if date %}
       <small><time datetime="{{ date | htmlDate }}">{{ date | dateFilter }}</time></small>

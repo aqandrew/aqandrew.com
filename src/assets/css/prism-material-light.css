@@ -7,7 +7,7 @@ pre[class*='language-'] {
   word-wrap: normal;
   color: #90a4ae;
   background: #fafafa;
-  font-family: Roboto Mono, monospace;
+  font-family: var(--ne-code-font-family);
   font-size: 0.9rem;
   line-height: 1.5;
 

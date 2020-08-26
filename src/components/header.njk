@@ -11,8 +11,12 @@
         {% if page.url == item.url %}
           {% set isCurrent = ' aria-current="page"' %}
         {% endif %}
-        <a href="{{ item.url }}"{{ relExternal | safe }}{{ isCurrent | safe }}>
-          <b>{{ item.text }}</b>
+        {# TODO Handle right-aligned nav items with CSS / change layout #}
+        {% if item.url != '/' %}
+          {% set isRight = ' style="float: right"' %}
+        {% endif %}
+        <a href="{{ item.url }}"{{ relExternal | safe }}{{ isCurrent | safe }}{{ isRight | safe }}>
+          {{ item.text }}
         </a>
       {% endfor %}
     </nav>

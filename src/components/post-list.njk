@@ -1,0 +1,20 @@
+{% from "postItem.njk" import postItem %}
+
+{% macro postList(posts, numPosts) %}
+  {% if posts.length %}
+    <section>
+      <ol reversed>
+        {# {% set numPosts = numPosts if numPosts else posts.length - 1 %} #}
+        {# {% for item in posts | reverse | slice(2) %} #}
+        {% for item in posts | reverse | limit(numPosts) %}
+          {% if not loop.first %}
+            <hr/>
+          {% endif %}
+          {{ postItem(item.url, item.data.title, item.date) }}
+        {% endfor %}
+      </ol>
+    </section>
+  {% else %}
+    <h1>NO POSTS</h1>
+  {% endif %}
+{% endmacro %}

@@ -2,18 +2,6 @@
 layout: page
 title: Blog
 ---
-{% from "postItem.njk" import postItem %}
+{% from "post-list.njk" import postList %}
 
-{% set postList = collections.posts %}
-{% if collections.posts.length %}
-  <section>
-    <ol reversed>
-      {% for item in postList | reverse %}
-        {% if not loop.first %}
-          <hr/>
-        {% endif %}
-        {{ postItem(item.url, item.data.title, item.date) }}
-      {% endfor %}
-    </ol>
-  </section>
-{% endif %}
+{{ postList(collections.posts) }}

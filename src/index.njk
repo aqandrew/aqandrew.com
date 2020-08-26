@@ -1,0 +1,45 @@
+---
+layout: 'home'
+---
+
+<section>
+  <p>
+    Hi! My name's
+  </p>
+
+  <h1>
+    Andrew Aquino.
+  </h1>
+
+  <p>
+    I'm a frontend developer in Southern California. These are my projects and notes about <strong>JavaScript</strong>, <strong>CSS</strong>, <strong>design</strong>, and <strong>anything else I'm learning</strong>.
+  </p>
+</section>
+
+<hr>
+
+{# TODO Nunjucks macro that displays if config.lookingForWork === true #}
+<section>
+  <p>
+    <mark><strong>I'm actively seeking a remote frontend developer role.</strong></mark>
+  </p>
+  <p>
+    I like to create beautiful user-friendly software and grow my frontend skillset. Most of my professional experience so far has been with Angular and Node.js, with a bit of UX design thrown in. I've been teaching myself React recently, but I'm happy to learn whatever technology gets the job done.
+  </p>
+
+  <p>
+    Interested? <a href="mailto:hi@aqandrew.com">&#8594; Let's talk.</a>
+  </p>
+</section>
+
+<hr>
+
+<section>
+  <h2>Latest posts</h2>
+
+  {% from "post-list.njk" import postList %}
+
+  {{ postList(collections.posts, 3) }}
+
+  <a href="/blog/">See all</a>
+</section>

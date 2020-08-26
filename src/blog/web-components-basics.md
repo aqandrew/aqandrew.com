@@ -1,6 +1,6 @@
 ---
 title: 'Web Components: The Basics'
-date: '2020-08-25'
+date: '2020-08-26'
 tags:
   - web-components
 # TODO image: square peg in a round hole

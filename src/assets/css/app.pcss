@@ -111,13 +111,6 @@ footer .contact-list li {
   position: relative;
 }
 
-footer .contact-list li:not(:first-child) {
-  padding-left: 1.2rem;
-}
-
-footer .contact-list li:not(:first-child)::before {
-  /* &bull; */
-  content: '\2022';
-  position: absolute;
-  left: 0.2rem;
+footer .contact-list li + li {
+  margin-left: 16px;
 }

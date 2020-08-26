@@ -27,10 +27,13 @@
     <article>
       {{ content | safe }}
     </article>
-    <hr />
     {% set previousPost = collections.posts | getPreviousCollectionItem(page) %}
     {% set nextPost = collections.posts | getNextCollectionItem(page) %}
-    {{ postNavigation(previousPost, nextPost) }}
+    {% if previousPost or nextPost %}
+      <hr />
+      {{ postNavigation(previousPost, nextPost) }}
+    {% endif %}
+    {% include 'footer.njk' %}
   </main>
 {% endblock %}
 

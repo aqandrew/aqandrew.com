@@ -1,24 +1,3 @@
 <header>
-  {% if navigation.items %}
-    <nav>
-      {% for item in navigation.items %}
-        {% set relExternal = '' %}
-        {% set isCurrent = '' %}
-
-        {% if item.external %}
-          {% set relExternal = ' rel="external" target="_blank"' %}
-        {% endif %}
-        {% if page.url == item.url %}
-          {% set isCurrent = ' aria-current="page"' %}
-        {% endif %}
-        {# TODO Handle right-aligned nav items with CSS / change layout #}
-        {% if item.url != '/' %}
-          {% set isRight = ' style="float: right"' %}
-        {% endif %}
-        <a href="{{ item.url }}"{{ relExternal | safe }}{{ isCurrent | safe }}{{ isRight | safe }}>
-          {{ item.text }}
-        </a>
-      {% endfor %}
-    </nav>
-  {% endif %}
+  {% include 'nav.njk' %}
 </header>

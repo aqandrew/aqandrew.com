@@ -1,6 +1,6 @@
-import Turbolinks from 'turbolinks'
+import Turbolinks from 'turbolinks';
 
 /**
  * Init Turbolinks within the site
  */
-Turbolinks.start()
+Turbolinks.start();

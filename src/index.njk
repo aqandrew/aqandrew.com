@@ -20,15 +20,15 @@ layout: 'home'
 
 {# TODO Nunjucks macro that displays if config.lookingForWork === true #}
 <section>
+  {% set resumeUrl = '/Andrew-Aquino-Resume.pdf' %}
   <p>
     <mark><strong>I'm actively seeking a remote frontend developer role.</strong></mark>
   </p>
   <p>
-    I like to create beautiful user-friendly software and grow my frontend skillset. Most of my professional experience so far has been with Angular and Node.js, with a bit of UX design thrown in. I've been teaching myself React recently, but I'm happy to learn whatever technology gets the job done.
+    My goal is to create beautiful user-friendly software and grow my frontend skillset. I have over 3 years of experience building web apps with vanilla JavaScript and Angular, as well as some UX design experience. I've been teaching myself React recently, but I'm happy to learn whatever technology gets the job done.
   </p>
-
   <p>
-    Interested? <a href="mailto:hi@aqandrew.com">&#8594; Let's talk.</a>
+    <a href={{ resumeUrl }}>Here's my resume.</a> Interested? <a href="mailto:hi@aqandrew.com">&#8594; Let's talk.</a>
   </p>
 </section>
 

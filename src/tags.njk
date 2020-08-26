@@ -9,9 +9,10 @@ pagination:
 permalink: /blog/tag/{{ tag | slug }}/
 ---
 {% from "postItem.njk" import postItem %}
+{% set numPosts = collections[tag].length %}
 
 <h1 style="margin-bottom: 8px">#{{ tag }}</h1>
-<small>{{ collections[tag].length }} posts published</small>
+<small>{{ numPosts }} post{% if numPosts != 1 %}s{% endif %} published</small>
 
 <section style="margin-top: 80px">
   <ol reversed>

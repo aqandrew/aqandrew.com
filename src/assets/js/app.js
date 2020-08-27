@@ -25,6 +25,9 @@ const colorNames = [
   '--magic-rainbow-color-1',
   '--magic-rainbow-color-2',
 ];
+let cycleIndex = 0;
+let textElem;
+let gradientIntervalId;
 
 // Register properties
 colorNames.forEach((name, index) => {
@@ -36,10 +39,15 @@ colorNames.forEach((name, index) => {
   });
 });
 
-let cycleIndex = 0;
+const setGradientColorCustomProperties = (colors) => {
+  // Apply these new colors, update the DOM.
+  colorNames.forEach((name, index) => {
+    textElem.style.setProperty(name, colors[index]);
+  });
+};
 
 const activateMagicGradient = () => {
-  const textElem = document.querySelector('#hero-text');
+  textElem = document.querySelector('#hero-text');
 
   if (textElem) {
     // Shift every color up by one position.
@@ -54,18 +62,13 @@ const activateMagicGradient = () => {
       rainbowColors[(cycleIndex + 3) % paletteSize],
     ];
 
-    // Apply these new colors, update the DOM.
-    colorNames.forEach((name, index) => {
-      textElem.style.setProperty(name, nextColors[index]);
-    });
+    setGradientColorCustomProperties(nextColors);
 
     // increment the cycle count, so that we advance
     // the colors in the next loop.
     cycleIndex++;
   }
 };
-
-let gradientIntervalId;
 
 const handleTurbolinksLoad = () => {
   clearInterval(gradientIntervalId);
@@ -76,11 +79,11 @@ const handleTurbolinksLoad = () => {
       activateMagicGradient,
       intervalDelay
     );
+  } else {
+    // Otherwise, set magic rainbow color properties back to initial values,
+    //   to prevent flicker when revisiting homepage
+    setGradientColorCustomProperties(rainbowColors);
   }
-  // TODO Otherwise, set magic rainbow color properties back to initial values,
-  //   to prevent flicker
 };
 
 document.addEventListener('turbolinks:load', handleTurbolinksLoad);
-
-// activateMagicGradientOnHomepage();

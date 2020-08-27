@@ -1,10 +1,10 @@
 <svg width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g clip-path="url(#clip0)">
-<rect width="100" height="100" fill="white"/>
-<path d="M8.75781 93H34.8906L39.2852 76.1836H64.5977L68.9922 93H95.125L67.5273 8.44922H36.3555L8.75781 93ZM51.707 28.6055H52.1758L60.0273 58.6641H43.8555L51.707 28.6055Z" fill="url(#paint0_radial)"/>
+<circle cx="50" cy="50" r="50" fill="white"/>
+<path d="M15.4062 77H36.3125L39.8281 63.5469H60.0781L63.5938 77H84.5L62.4219 9.35938H37.4844L15.4062 77ZM49.7656 25.4844H50.1406L56.4219 49.5312H43.4844L49.7656 25.4844Z" fill="url(#paint0_radial)"/>
 </g>
 <defs>
-<radialGradient id="paint0_radial" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(36.5 8.5) rotate(54.7962) scale(99.7422 94.8042)">
+<radialGradient id="paint0_radial" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(37.6 8.72378) rotate(54.9373) scale(80.0734 75.9749)">
 <stop stop-color="#FFFF00"/>
 <stop offset="0.494792" stop-color="#843FF3"/>
 <stop offset="1" stop-color="#5F9EA0"/>

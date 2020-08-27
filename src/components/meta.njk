@@ -22,8 +22,8 @@
 <meta property="twitter:url" content="{{ currentUrl }}"/>
 <meta property="twitter:site" content="{{ siteTitle }}"/>
 
-{% if config.authorHandle %}
-  <meta name="twitter:creator" content="@{{ config.authorHandle | replace('@', '') }}"/>
+{% if config.author.twitter %}
+  <meta name="twitter:creator" content="@{{ config.author.twitter }}"/>
 {% endif %}
 
 <meta name="description" content="{{ pageDesc }}"/>

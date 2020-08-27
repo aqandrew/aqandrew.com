@@ -7,8 +7,19 @@
   --ne-code-font-family: Menlo, Monaco, 'Courier New', monospace;
 
   /* Colors */
-  --ne-links-foreground: #843ff3;
-  --ne-links-active-foreground: #662dc3;
+  --purple: #843ff3;
+  --purple--highlight: #662dc3;
+  /* TODO --teal should be aquamarine in dark mode */
+  --teal: cadetblue;
+  --yellow: yellow;
+
+  --magic-rainbow-color-0: var(--yellow);
+  --magic-rainbow-color-1: var(--purple);
+  --magic-rainbow-color-2: var(--teal);
+
+  /* Native Elements design tokens */
+  --ne-links-foreground: var(--purple);
+  --ne-links-active-foreground: var(--purple-highlight);
 }
 
 body {
@@ -119,4 +130,26 @@ footer .contact-list li {
 
 footer .contact-list li + li {
   margin-left: 16px;
+}
+
+/* Utils */
+
+#hero-text {
+  font-size: 4rem;
+  font-weight: 900;
+
+  /* Gradient background */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-image: radial-gradient(
+    circle at top left,
+    var(--magic-rainbow-color-0) 0,
+    var(--magic-rainbow-color-1),
+    var(--magic-rainbow-color-2) 70%
+  );
+
+  /* CSS Houdini Magic */
+  /* https://joshwcomeau.com/react/rainbow-button/#a-vanilla-js-demo */
+  transition: --magic-rainbow-color-0 1500ms linear,
+    --magic-rainbow-color-1 1500ms linear, --magic-rainbow-color-2 1500ms linear;
 }

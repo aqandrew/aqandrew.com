@@ -70,24 +70,29 @@ const activateMagicGradient = () => {
   }
 };
 
+const isOnHomepage = () => window.location.pathname === '/';
+
 const handleTurbolinksLoad = () => {
   clearInterval(gradientIntervalId);
 
   // Activate magic gradient on homepage
-  if (window.location.pathname === '/') {
+  if (isOnHomepage()) {
     gradientIntervalId = window.setInterval(
       activateMagicGradient,
       intervalDelay
     );
-  } else {
-    // Otherwise, set magic rainbow color properties back to initial values,
-    //   to prevent flicker when revisiting homepage
-    cycleIndex = 0;
+  }
+};
 
-    if (textElem) {
-      setGradientColorCustomProperties(rainbowColors);
-    }
+const handleTurbolinksClick = (event) => {
+  // If clicking away from homepage,
+  if (isOnHomepage() && event.data.url !== window.location.href) {
+    // Set magic rainbow color properties back to initial values,
+    // to prevent flicker when revisiting homepage
+    cycleIndex = 0;
+    setGradientColorCustomProperties(rainbowColors);
   }
 };
 
 document.addEventListener('turbolinks:load', handleTurbolinksLoad);
+document.addEventListener('turbolinks:click', handleTurbolinksClick);

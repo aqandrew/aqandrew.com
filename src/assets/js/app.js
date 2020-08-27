@@ -19,7 +19,7 @@ const rainbowColors = [
 const paletteSize = rainbowColors.length;
 
 // Number of milliseconds for each update
-const intervalDelay = 2000;
+const intervalDelay = 1500;
 const colorNames = [
   '--magic-rainbow-color-0',
   '--magic-rainbow-color-1',
@@ -82,6 +82,7 @@ const handleTurbolinksLoad = () => {
   } else {
     // Otherwise, set magic rainbow color properties back to initial values,
     //   to prevent flicker when revisiting homepage
+    cycleIndex = 0;
     setGradientColorCustomProperties(rainbowColors);
   }
 };

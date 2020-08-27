@@ -36,12 +36,11 @@ colorNames.forEach((name, index) => {
   });
 });
 
-const textElem = document.querySelector('#hero-text');
 let cycleIndex = 0;
 
-window.setInterval(() => {
-  // TODO CSS custom property cycling only occurs if initially loaded page is homepage,
-  //   and breaks when navigating away and back
+const activateMagicGradient = () => {
+  const textElem = document.querySelector('#hero-text');
+
   if (textElem) {
     // Shift every color up by one position.
     //
@@ -64,4 +63,24 @@ window.setInterval(() => {
     // the colors in the next loop.
     cycleIndex++;
   }
-}, intervalDelay);
+};
+
+let gradientIntervalId;
+
+const handleTurbolinksLoad = () => {
+  clearInterval(gradientIntervalId);
+
+  // Activate magic gradient on homepage
+  if (window.location.pathname === '/') {
+    gradientIntervalId = window.setInterval(
+      activateMagicGradient,
+      intervalDelay
+    );
+  }
+  // TODO Otherwise, set magic rainbow color properties back to initial values,
+  //   to prevent flicker
+};
+
+document.addEventListener('turbolinks:load', handleTurbolinksLoad);
+
+// activateMagicGradientOnHomepage();

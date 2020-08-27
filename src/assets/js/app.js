@@ -83,7 +83,10 @@ const handleTurbolinksLoad = () => {
     // Otherwise, set magic rainbow color properties back to initial values,
     //   to prevent flicker when revisiting homepage
     cycleIndex = 0;
-    setGradientColorCustomProperties(rainbowColors);
+
+    if (textElem) {
+      setGradientColorCustomProperties(rainbowColors);
+    }
   }
 };
 

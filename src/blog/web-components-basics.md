@@ -46,7 +46,7 @@ Recently I was presented with the following take-home challenge as part of one c
 1. Build the component using only vanilla JavaScript.
 2. Two or more of these components should be able to exist on the same page.
 
-After toying around with some not-very-good ideas, I decided to give Web Components a try.
+After toying around with some not-very-good ideas on how to approach this, I decided to give Web Components a try.
 
 ### Why Web Components?
 

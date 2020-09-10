@@ -4,6 +4,7 @@ date: '2020-09-10'
 tags:
   - fret-zone
   - react
+metaDesc: FretZone is a passion project I'm working on to teach myself React by cloning Guitar Pro. It's a challenge I've undertaken to keep myself hireable.
 # TODO image
 ---
 

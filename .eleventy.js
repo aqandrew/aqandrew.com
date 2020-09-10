@@ -35,6 +35,9 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({
     bundle: 'assets',
   });
+  eleventyConfig.addPassthroughCopy({
+    './src/assets/img': 'img',
+  });
 
   /**
    * Add filters

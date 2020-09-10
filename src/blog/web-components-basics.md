@@ -158,7 +158,7 @@ Above all, it's always cool to learn about useful functionality that's provided 
 
 [Web Components](https://developer.mozilla.org/en-US/docs/Web/Web_Components) is an API that allows you to define custom HTML elements. The reusability it promotes is kind of like CSS custom properties, but you can reuse (and override) HTML templates, JavaScript functionality, _and_ styles that are specific to your component. The API consists of three technologies:
 
-1. [Custom HTML elements](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_custom_elements), which define a web component's tag name (something like `<consummate-v>`), internal properties, and behaviors
+1. [Custom HTML elements](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_custom_elements), which define a web component's tag name (something like `<accordion-menu>`), internal properties, and behaviors
 2. [Shadow DOM](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_shadow_DOM), used with custom elements to safely separate a web component's own <abbr title="document object model">DOM</abbr> subtree from the containing document
 3. The [`<template>` and `<slot>`](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_templates_and_slots) HTML elements, which enable component HTML reuse and "plugging in" values into components, like a styled button's label
 

@@ -3,10 +3,11 @@ title: 'Web Components: The Basics'
 date: '2020-08-26'
 tags:
   - web-components
+metaDesc: I learned how to use Web Components for a take-home coding challenge! Here's a small collection of useful information I gathered.
 # TODO image: square peg in a round hole
 ---
 
-I learned how to use Web Components for a take-home coding challenge! Here's a small collection of useful information I gathered.
+{{ metaDesc }}
 
 (I'm assuming you have a solid foundation of HTML/JavaScript knowledge.)
 

@@ -8,7 +8,7 @@ metaDesc: FretZone is a passion project I'm working on to teach myself React by 
 # TODO image
 ---
 
-[FretZone](https://fret.zone/) is a passion project I'm working on to teach myself React. It's a challenge I've undertaken to keep myself hireable.
+[FretZone](https://fret.zone/) is a passion project I'm working on to teach myself React by cloning Guitar Pro. It's a challenge I've undertaken to keep myself hireable.
 
 ## Background
 

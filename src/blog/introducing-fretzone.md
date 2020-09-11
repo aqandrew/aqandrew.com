@@ -151,7 +151,7 @@ I find that making transcriptions in Guitar Pro engages **the same mental muscle
 
 ## Isn't this just reinventing the wheel?
 
-Yes. Learning a highly marketable skill like React, along with how invested I am in the app the I'm cloning, are already sufficient reasons for me to want to do this. But there are other small reasons why making a web clone of an existing app might be a good idea. For instance, one Guitar Pro license will only let you install it on up to 5 different machines.
+Yes. Learning a highly marketable skill like React, along with how invested I am in the app that I'm cloning, are already sufficient reasons for me to want to do this. But there are other small reasons why making a web clone of an existing app might be a good idea. For instance, one Guitar Pro license will only let you install it on up to 5 different machines.
 
 And there's totally a use case for a free browser-based tab editor. Imagine being able to just open a URL and quickly jot down a short melody or riff in your head, without having to install anything! (I've needed this in an office setting on more than one occasion.) [Noteflight](https://www.noteflight.com/) offers a comparable experience, but you can only input notes using staves, not tabs. The latter are far more intuitive for me.
 

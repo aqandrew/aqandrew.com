@@ -111,7 +111,7 @@ All of these questions are answered by sheet music symbols I've been aware of si
 
 <!-- TODO Optimize images -->
 
-![Screenshot of Guitar Pro 7. The opened document shows the guitar solo for "Letter Experiment" by Periphery. The left sidebar shows numerous musical articulations, and the lower menu bar shows that several other tracks like vocals and drums have also been transcribed.]({{ config.url }}/{{ config.paths.images }}/guitar-pro-letter-experiment-solo.png 'A behemoth of a UI, but for good reason')
+![Screenshot of Guitar Pro 7. The opened document shows the guitar solo for "Letter Experiment" by Periphery. The left sidebar shows numerous musical articulations, and the lower menu bar shows that several other tracks like vocals and drums have also been transcribed.](/{{ config.paths.images }}/guitar-pro-letter-experiment-solo.png 'A behemoth of a UI, but for good reason')
 
 Without any question, the most helpful (and generally least inaccurate) tabs I've come across have been Guitar Pro tabs. Those files are made specifically for Guitar Pro, a tab viewer and editor that addresses the above issues _by way of_ and _in addition to_ these features:
 
@@ -182,7 +182,7 @@ For now I don't plan to monetize FretZone since it's just a fun educational side
 
 I may have bitten off more than I can chew, and I may not ever truly finish cloning Guitar Pro. As I'm digging through Guitar Pro's UI to replicate it, I'm unearthing features that I never even knew it had, like a modal dialog that determines the exact scale/mode of a selected sequence of notes!
 
-![Screenshot of Guitar Pro 7. The opened document shows the guitar solo for "Red Sky Harbor" by Corelia. One of the final measures of the solo has been selected, and Guitar Pro has determined that these notes follow an F altered scale.]({{ config.url }}/{{ config.paths.images }}/guitar-pro-red-sky-harbor-solo-scale.png 'Absolute game changer')
+![Screenshot of Guitar Pro 7. The opened document shows the guitar solo for "Red Sky Harbor" by Corelia. One of the final measures of the solo has been selected, and Guitar Pro has determined that these notes follow an F altered scale.](/{{ config.paths.images }}/guitar-pro-red-sky-harbor-solo-scale.png 'Absolute game changer')
 
 But this nascent project, massive in scope as it is, has been loads of fun so far. And I've learned so much already! I definitely recommend the clone-your-favorite-app approach for anyone learning a new tool/framework. It's a rough work in progress and needs to be refactored in several places, but I've gotten many more interviews since starting this project, in a few of which I've been asked to explain some of its code.
 

@@ -5,6 +5,7 @@
   --ne-body-font-size: 17px;
   --ne-basic-line-height: 1.8;
   --ne-code-font-family: Menlo, Monaco, 'Courier New', monospace;
+  --ne-quote-font-size: 1.2rem;
 
   /* Colors */
   --purple: #843ff3;
@@ -12,6 +13,8 @@
   /* TODO --teal should be aquamarine in dark mode */
   --teal: cadetblue;
   --yellow: yellow;
+  /* Base color taken from --ne-selection-background */
+  --blockquote-background: hsla(233, 64%, 72%, 0.3);
 
   --magic-rainbow-color-0: var(--yellow);
   --magic-rainbow-color-1: var(--purple);
@@ -80,6 +83,12 @@ li > code {
   border-radius: var(--ne-inline-code-border-radius, 2px);
   margin: 2px 0;
   padding: 0 4px;
+
+  word-break: break-word;
+}
+
+p > code {
+  word-break: break-word;
 }
 
 a > code {
@@ -99,6 +108,13 @@ figure {
   margin-right: 0;
 }
 
+p img,
+figure.figure img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 figure.figure figcaption {
   text-align: center;
 }
@@ -106,6 +122,13 @@ figure.figure figcaption {
 .twitter-tweet {
   margin-left: auto;
   margin-right: auto;
+}
+
+/* Vanilla blockquotes generated from Markdown */
+blockquote:not([class]) {
+  padding: 1rem;
+  background: var(--blockquote-background, hsla(233, 64%, 72%, 0.3));
+  word-wrap: break-word;
 }
 
 [data-whatintent='mouse'] a:focus,

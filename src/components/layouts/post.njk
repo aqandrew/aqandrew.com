@@ -15,7 +15,7 @@
     {% if date %}
       <small><time datetime="{{ date | htmlDate }}">{{ date | dateFilter }}</time></small>
     {% endif %}
-    <h1 {% if breakTitle %}style="word-break: break-all"{% endif %}>{{ title }}</h1>
+    <h1 {% if breakTitle %}class="word-break-all"{% endif %}>{{ title }}</h1>
     {% if tags.length %}
       <ul style="all: unset; display: inline-flex; list-style: none;">
       {% for tag in tags %}

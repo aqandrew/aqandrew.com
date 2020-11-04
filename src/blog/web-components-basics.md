@@ -38,6 +38,8 @@ Yes, I'm not getting paid to write code for some company on my personal time&mda
 - I can make subjective design decisions, work how I like to, then discuss those decisions later.
 - Sometimes there's an opportunity to share what I've learned. 😉
 
+(I have no problem with pair programming interviews. I just think that live-testing candidates on Leetcode puzzles/trivia [doesn't make very much sense](https://news.ncsu.edu/2020/07/tech-job-interviews-anxiety/).)
+
 Recently I was presented with the following take-home challenge as part of one company's interview process.
 
 **The challenge:** Create a color swatch picker in a public CodePen.

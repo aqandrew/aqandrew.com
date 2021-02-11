@@ -191,7 +191,7 @@ ReactDOM.render(
     {/* Add lights here */}
     <Physics gravity={[0, 0, -30]}>
       {/* Add floor and walls here */}
-      <D8 position={[0, 0, 2]} rotation={[0, 1, 0]} />
+      <D8 position={[0, 0, 4]} rotation={[0, 1, 0]} />
     </Physics>
   </Canvas>,
   document.getElementById('root')
@@ -238,7 +238,7 @@ import { useConvexPolyhedron } from 'use-cannon';
 import { Octahedron } from 'drei';
 
 const D8 = (props) => {
-  const radius = 2;
+  const radius = 4;
   const octahedronGeometry = new THREE.OctahedronGeometry(radius);
   const [ref, api] = useConvexPolyhedron(() => {
     return {
@@ -318,7 +318,7 @@ import { useConvexPolyhedron } from 'use-cannon';
 import { Polyhedron } from 'drei';
 
 const D8 = (props) => {
-  const radius = 2;
+  const radius = 4;
   const vertices = [
     [0, 0, 1],
     [0, 0, -1],
@@ -469,7 +469,7 @@ import { Polyhedron } from 'drei';
 
 const D10 = (props) => {
   const sides = 10;
-  const radius = 2;
+  const radius = 4;
   const vertices = [
     [0, 0, 1],
     [0, 0, -1],

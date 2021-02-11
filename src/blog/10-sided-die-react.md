@@ -5,7 +5,7 @@ tags:
   - react
   - r3f
 metaDesc: 'You can create 3D graphics with React! This is how I built a custom three.js geometry to use in react-three-fiber.'
-# TODO image
+socialImage: https://aqandrew.com/cover-d10.jpg
 ---
 
 ![An animated GIF of a D10 spinning](/{{ config.paths.images }}/d10-upward.gif)

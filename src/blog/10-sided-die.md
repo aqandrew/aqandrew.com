@@ -91,7 +91,7 @@ _Except for the D10_, these convex polyhedra are **regular**, which means that a
   <thead>
     <tr>
       <th>Platonic solid</th>
-      <th>Corresponding die</th>
+      <th>Die</th>
       <th>Image</th>
     </tr>
   </thead>

@@ -5,6 +5,7 @@
   --ne-body-font-size: 17px;
   --ne-basic-line-height: 1.8;
   --ne-code-font-family: Menlo, Monaco, 'Courier New', monospace;
+  --ne-inline-code-backgground: #011627;
   --ne-quote-font-size: 1.2rem;
 
   /* Colors */
@@ -15,6 +16,8 @@
   --yellow: yellow;
   /* Base color taken from --ne-selection-background */
   --blockquote-background: hsla(233, 64%, 72%, 0.3);
+  /* Copied from Night Owl */
+  --code-mark-background: #2f2a60;
 
   --magic-rainbow-color-0: var(--yellow);
   --magic-rainbow-color-1: var(--purple);
@@ -72,9 +75,22 @@ a[aria-current='page']:hover {
   display: none;
 }
 
+/* Apply Night Owl theme to code blocks without specified syntax */
+pre:not([class]) {
+  color: #fff;
+  background: var(--ne-inline-code-backgground);
+}
+
 code {
   font-family: var(--ne-code-font-family);
   white-space: normal;
+}
+
+/* Override Native Elements' mark styles for code blocks */
+code mark {
+  color: #d6deeb; /* Copied from Night Owl */
+  background-color: var(--code-mark-background);
+  box-shadow: 0 0 0 2px var(--code-mark-background);
 }
 
 /* Copied from native-elements.css */
@@ -119,6 +135,20 @@ figure.figure figcaption {
   text-align: center;
 }
 
+aside {
+  margin-block-end: 1em;
+  padding: 1rem;
+  border: 2px dashed var(--blockquote-background);
+}
+
+aside p:last-child {
+  margin-block-end: 0;
+}
+
+table {
+  margin-block-end: 1em;
+}
+
 .twitter-tweet {
   margin-left: auto;
   margin-right: auto;
@@ -148,6 +178,13 @@ blockquote:not([class]) {
 ol,
 ul {
   padding-left: 1.5rem;
+}
+
+ol ul,
+ol ol,
+ul ul,
+ul ol {
+  margin-block-end: 1em;
 }
 
 /* Footer */

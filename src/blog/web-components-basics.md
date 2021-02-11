@@ -90,12 +90,16 @@ Above all, it's always cool to learn about useful functionality that's provided 
 - Eventually I moved the component's template HTML above the `<style>` tag, to more closely resemble the structure of a Vue single-file component (template first, style afterward).
 - In the interest of time, I didn't look up any Web Component best practices. So I just followed my React intuition.
 
-  _Aside: I'm officially very invested in the React ecosystem. Even though I've used Angular for just about my whole career, some of the details have gotten a little fuzzy since I've been tinkering with React for the past 7 months. Last week I built a small Angular app for a different take-home challenge, and was thoroughly confused by several things:_
+  <aside>
 
-  - _How to globally update `@angular/cli`_
-  - _How to upgrade from Angular 5 to Angular 10_
-  - _What the heck an `InjectorError` is_
-  - _You have to set `this.JSON = JSON` in an Angular component in order to call `JSON.parse` within its template???_
+  I'm officially very invested in the React ecosystem. Even though I've used Angular for just about my whole career, some of the details have gotten a little fuzzy since I've been tinkering with React for the past 7 months. Last week I built a small Angular app for a different take-home challenge, and was thoroughly confused by several things:
+
+  - How to globally update `@angular/cli`
+  - How to upgrade from Angular 5 to Angular 10
+  - What the heck an `InjectorError` is
+  - You have to set `this.JSON = JSON` in an Angular component in order to call `JSON.parse` within its template???
+
+  </aside>
 
 - `this` is as tricky as ever.
 

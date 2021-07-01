@@ -79,7 +79,7 @@ module.exports = function (value, outputPath) {
         const anchor = document.createElement('a');
         // Create the anchor slug
         const headingSlug = slugify(
-          heading.textContent.replace(/'/g, '').toLowerCase()
+          heading.textContent.replace(/[':]/g, '').toLowerCase()
         );
         // Set the anchor href based on the generated slug
         anchor.setAttribute('href', `#${headingSlug}`);

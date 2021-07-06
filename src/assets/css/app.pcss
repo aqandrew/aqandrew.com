@@ -1,6 +1,8 @@
 /* Global styles */
 
 :root {
+  --post-content-leading: 40px;
+
   /* Typography */
   --ne-body-font-size: 17px;
   --ne-basic-line-height: 1.8;
@@ -118,12 +120,11 @@ a > code {
 }
 
 .code-wrapper,
-article > pre {
-  margin: 40px 0;
-}
-
-.iframes-wrapper {
-  margin: 40px 0;
+.iframes-wrapper,
+article > pre,
+p img,
+figure {
+  margin: var(--post-content-leading) 0;
 }
 
 figure {
@@ -161,8 +162,7 @@ table {
 }
 
 .twitter-tweet {
-  margin-left: auto;
-  margin-right: auto;
+  margin: var(--post-content-leading) auto !important;
 }
 
 /* Vanilla blockquotes generated from Markdown */

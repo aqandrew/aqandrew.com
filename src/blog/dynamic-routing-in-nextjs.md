@@ -3,7 +3,7 @@ title: 'Dynamic Routing in Next.js'
 date: '2021-07-06'
 tags:
   - react
-metaDesc: "How I finally made sense of Next.js' `getStaticProps` and `getStaticPaths` functions in Next.js to statically generate pages for a blog"
+metaDesc: "How I finally made sense of Next.js' `getStaticProps` and `getStaticPaths` functions to statically generate pages for a blog"
 socialImage: https://aqandrew.com/cover-nextjs-routing.jpg
 ---
 

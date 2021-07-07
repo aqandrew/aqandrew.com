@@ -1,3 +1,7 @@
+{% if metaTitle == 'Tag' %}
+  {% set metaTitle = '' %}
+  {% set title = 'Posts tagged #' + tag %}
+{% endif %}
 {% set pageTitle = title + ' - ' + config.name if title else config.name %}
 {% set pageDesc = config.shortDesc %}
 {% set siteTitle = config.name %}

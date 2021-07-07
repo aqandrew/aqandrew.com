@@ -19,7 +19,7 @@
     {% if tags.length %}
       <ul style="all: unset; display: inline-flex; list-style: none;">
       {% for tag in tags %}
-        <li style="margin-right: 16px"><a href="/blog/tag/{{tag}}/">#{{tag}}</a></li>
+        <li style="margin-right: 16px; font-family: var(--ne-code-font-family)"><a href="/blog/tag/{{tag}}/">#{{tag}}</a></li>
       {% endfor %}
       </ul>
     {% endif %}

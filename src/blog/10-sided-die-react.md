@@ -382,7 +382,7 @@ If those vertices _did_ form a pentagon, then the shape would be a similar but d
 
 ![Pentagonal trapezohedron](/{{config.paths.images}}/pentagonal-trapezohedron.png)
 
-In contrast, each face of a pentagonal trapezohedron is a quadrilateral that kind looks like a kite. 🪁
+In contrast, each face of a pentagonal trapezohedron is a quadrilateral that kind of looks like a kite. 🪁
 
 Even though each face has four sides, its `faces` array will still be a list of triangular faces. Instead of 10 quadrilaterals, the array will represent 20 triangles.
 

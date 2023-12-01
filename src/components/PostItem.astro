@@ -1,0 +1,13 @@
+---
+const { url, title, date } = Astro.props;
+---
+
+<li>
+  <!-- TODO Remove hacky workaround for .word-break-all -->
+  <!-- {% if title === '0.30000000000000004' %}class="word-break-all"{% endif %} -->
+  <h3>
+    <a href={url} rel="bookmark">{title}</a>
+  </h3>
+  <!-- TODO date -->
+  <!-- <time datetime="{{ date | htmlDate }}">{{ date | dateFilter }}</time> -->
+</li>

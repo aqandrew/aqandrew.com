@@ -1,0 +1,33 @@
+---
+import { getCollection } from 'astro:content';
+import PostItem from './PostItem.astro';
+
+const { numPosts } = Astro.props;
+
+const posts = await getCollection('blog');
+---
+
+{
+  posts.length ? (
+    <section>
+      <ol reversed start={posts.length}>
+        {posts
+          .reverse()
+          .slice(numPosts)
+          .reverse()
+          .map(({ data }, i) => {
+            const { url, title, date } = data;
+
+            return (
+              <>
+                {i === 0 ? null : <hr />}
+                <PostItem {url} {title} {date} />
+              </>
+            );
+          })}
+      </ol>
+    </section>
+  ) : (
+    <h1>NO POSTS</h1>
+  )
+}

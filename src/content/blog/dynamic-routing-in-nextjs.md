@@ -17,11 +17,11 @@ I recently started buidling a blog for my partner. Based on the features we've d
 
 ### What's Next.js?
 
-[Next.js](https://nextjs.org/) is a React application framework (or [distro](https://www.swyx.io/react-distros/), if you prefer) which was released in 2016 and sits nicely in the [Jamstack](https://jamstack.org/) world. It provides abstractions for building websites with React[*](#dont-need-react-in-built-site) that can use pre-rendered with <abbr title="static site generation">SSG</abbr>, <abbr title="server-side rendering">SSR</abbr>, or a mix of the two. Like React itself, Next.js is unopinionated about styling or state management. 
+[Next.js](https://nextjs.org/) is a React application framework (or [distro](https://www.swyx.io/react-distros/), if you prefer) which was released in 2016 and sits nicely in the [Jamstack](https://jamstack.org/) world. It provides abstractions for building websites with React[\*](#dont-need-react-in-built-site) that can use pre-rendered with <abbr title="static site generation">SSG</abbr>, <abbr title="server-side rendering">SSR</abbr>, or a mix of the two. Like React itself, Next.js is unopinionated about styling or state management.
 
 <aside id="dont-need-react-in-built-site">
 
-  Interestingly, you can [disable client-side JavaScript](https://github.com/vercel/next.js/pull/11949#issuecomment-619363165) when building a Next.js site to deliver smaller, more performant websites while still being able to statically generate or server-side render pages.
+Interestingly, you can [disable client-side JavaScript](https://github.com/vercel/next.js/pull/11949#issuecomment-619363165) when building a Next.js site to deliver smaller, more performant websites while still being able to statically generate or server-side render pages.
 
 </aside>
 
@@ -60,16 +60,16 @@ Let's say we're making a blog using any old static site generator. The following
 ```json
 [
   {
-    Id: 0,
-    Slug: "my-first-post",
-    Title: "My First Post",
-    Text: "People talk loud when they wanna act smart, right?"
+    "Id": 0,
+    "Slug": "my-first-post",
+    "Title": "My First Post",
+    "Text": "People talk loud when they wanna act smart, right?"
   },
   {
-    Id: 1,
-    Slug: "another-post",
-    Title: "Another Post",
-    Text: "It's not just a boulder... It's a rock!"
+    "Id": 1,
+    "Slug": "another-post",
+    "Title": "Another Post",
+    "Text": "It's not just a boulder... It's a rock!"
   }
 ]
 ```
@@ -96,7 +96,7 @@ With dynamic routing, we want to automatically create a new page, [https://our.b
 
 In Next.js, generating blog post pages based on JSON data is done by creating a page with a special filename, and implementing two functions: `getStaticProps` and `getStaticPaths`. These functions are the secret sauce behind how Next.js statically generates a bunch of pages.
 
-I first tried to learn about them by reading Next.js' docs. I didn't really understand what I read, because I didn't have any live code samples to examine and tinker with.[*](#learn-nextjs) I thought, maybe I can just make and break stuff until I see how these functions work together.
+I first tried to learn about them by reading Next.js' docs. I didn't really understand what I read, because I didn't have any live code samples to examine and tinker with.[\*](#learn-nextjs) I thought, maybe I can just make and break stuff until I see how these functions work together.
 
 ## Let's make a basic blog
 
@@ -117,13 +117,13 @@ After following along with Chris' tutorial, I had a homepage plus a page for eac
   sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
 ></iframe>
 
-Let's see how those blog post pages are implemented.[*](#codesandbox-differences)
+Let's see how those blog post pages are implemented.[\*](#codesandbox-differences)
 
 <aside id="codesandbox-differences">
 
-  If you inspect the CodeSandbox above, you'll notice that the blog posts are hardcoded, rather than coming from an API, as I'm explaining below. The blog posts are hardcoded in the CodeSandbox just for illustrative purposes. You're more likely to use the API version in production.
+If you inspect the CodeSandbox above, you'll notice that the blog posts are hardcoded, rather than coming from an API, as I'm explaining below. The blog posts are hardcoded in the CodeSandbox just for illustrative purposes. You're more likely to use the API version in production.
 
-  It would have been nice to showcase [Next.js' API routes](https://nextjs.org/docs/api-routes/introduction) for this, but [you can't use API routes in `getStaticProps` or `getStaticPaths`](https://stackoverflow.com/questions/62089870/api-call-in-nextjs-getstaticprops-causes-error-500/62091147#62091147). I also tried setting `process.env.BLOG_API_ENDPOINT` to point to the absolute URL of the CodeSandbox, but I couldn't fix the CORS errors that that caused.
+It would have been nice to showcase [Next.js' API routes](https://nextjs.org/docs/api-routes/introduction) for this, but [you can't use API routes in `getStaticProps` or `getStaticPaths`](https://stackoverflow.com/questions/62089870/api-call-in-nextjs-getstaticprops-causes-error-500/62091147#62091147). I also tried setting `process.env.BLOG_API_ENDPOINT` to point to the absolute URL of the CodeSandbox, but I couldn't fix the CORS errors that that caused.
 
 </aside>
 
@@ -162,7 +162,9 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }) {
   const { slug } = params;
 
-  const res = await fetch(`${process.env.BLOG_API_ENDPOINT}/posts?Slug=${slug}`);
+  const res = await fetch(
+    `${process.env.BLOG_API_ENDPOINT}/posts?Slug=${slug}`
+  );
   const data = await res.json();
   const post = data[0];
 
@@ -197,7 +199,9 @@ Where does that prop come from?
 export async function getStaticProps({ params }) {
   const { slug } = params;
 
-  const res = await fetch(`${process.env.BLOG_API_ENDPOINT}/posts?Slug=${slug}`);
+  const res = await fetch(
+    `${process.env.BLOG_API_ENDPOINT}/posts?Slug=${slug}`
+  );
   const data = await res.json();
   const post = data[0];
 
@@ -369,9 +373,9 @@ I was delighted to reread Next.js' docs at this point and find that what they sa
 
 <aside id="learn-nextjs">
 
-  I found out only later that [Learn Next.js](https://nextjs.org/learn/basics/create-nextjs-app") contains thorough guides on how [`getStaticProps`](https://nextjs.org/learn/basics/data-fetching/with-data) and [`getStaticPaths`](https://nextjs.org/learn/basics/dynamic-routes/page-path-external-data) work. I'd known that this resource existed and was probably very good, but I skipped it because I was impatient to get started on this project. {% shrug %}
-    
-  Learn Next.js contains a lot of detail and diagrams, and is probably where you should start learning about these functions if stumbling into answers isn't your style.
+I found out only later that [Learn Next.js](https://nextjs.org/learn/basics/create-nextjs-app") contains thorough guides on how [`getStaticProps`](https://nextjs.org/learn/basics/data-fetching/with-data) and [`getStaticPaths`](https://nextjs.org/learn/basics/dynamic-routes/page-path-external-data) work. I'd known that this resource existed and was probably very good, but I skipped it because I was impatient to get started on this project. {% shrug %}
+
+Learn Next.js contains a lot of detail and diagrams, and is probably where you should start learning about these functions if stumbling into answers isn't your style.
 
 </aside>
 

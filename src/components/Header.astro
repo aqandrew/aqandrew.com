@@ -1,0 +1,20 @@
+---
+import { navigation } from '@config';
+---
+
+<header>
+  <nav>
+    {
+      navigation.items.map((item) => (
+        // TODO Handle right-aligned nav items with CSS / change layout
+        <a
+          href={item.url}
+          aria-current={Astro.url.pathname === item.url ? 'page' : undefined}
+          style={{ float: item.url === '/' ? undefined : 'right' }}
+        >
+          {item.text}
+        </a>
+      ))
+    }
+  </nav>
+</header>

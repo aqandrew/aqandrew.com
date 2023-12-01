@@ -1,5 +1,7 @@
 ---
 import { config } from '@config';
+
+const { email, twitter, github, codepen } = config.author;
 ---
 
 <hr />
@@ -9,16 +11,16 @@ import { config } from '@config';
 
   <ul class="social-links">
     <li>
-      <a href={`mailto:${config.author.email}`}>Email</a>
+      <a href={`mailto:${email}`}>Email</a>
     </li>
     <li>
-      <a href={`https://twitter.com/${config.author.twitter}`}>Twitter</a>
+      <a href={`https://twitter.com/${twitter}`}>Twitter</a>
     </li>
     <li>
-      <a href={`https://github.com/${config.author.github}`}>GitHub</a>
+      <a href={`https://github.com/${github}`}>GitHub</a>
     </li>
     <li>
-      <a href={`https://codepen.io/${config.author.codepen}`}>CodePen</a>
+      <a href={`https://codepen.io/${codepen}`}>CodePen</a>
     </li>
   </ul>
 </footer>

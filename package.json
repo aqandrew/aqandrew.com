@@ -32,6 +32,7 @@
     "@babel/core": "7.10.4",
     "@babel/preset-env": "7.10.4",
     "@tbranyen/jsdom": "13.0.0",
+    "astro": "^3.6.4",
     "cssnano": "4.1.10",
     "cssnano-preset-advanced": "4.0.7",
     "eleventy-plugin-pwa": "1.0.8",

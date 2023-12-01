@@ -5,16 +5,18 @@ import { navigation } from '@config';
 <header>
   <nav>
     {
-      navigation.items.map((item) => (
-        // TODO Handle right-aligned nav items with CSS / change layout
-        <a
-          href={item.url}
-          aria-current={Astro.url.pathname === item.url ? 'page' : undefined}
-          style={{ float: item.url === '/' ? undefined : 'right' }}
-        >
-          {item.text}
-        </a>
-      ))
+      navigation.items.map(({ text, url }) => {
+        return (
+          // TODO Handle right-aligned nav items with CSS / change layout
+          <a
+            href={url}
+            aria-current={Astro.url.pathname === url ? 'page' : undefined}
+            style={{ float: url === '/' ? undefined : 'right' }}
+          >
+            {text}
+          </a>
+        );
+      })
     }
   </nav>
 </header>

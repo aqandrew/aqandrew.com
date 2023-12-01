@@ -3,10 +3,13 @@ import BaseLayout from './Base.astro';
 import Header from '@components/Header.astro';
 import Footer from '@components/Footer.astro';
 
-const { title } = Astro.props.frontmatter || Astro.props;
+// RHS of destructuring assignment makes this layout suitable for both .astro and .md files
+// https://docs.astro.build/en/core-concepts/layouts/#using-one-layout-for-md-mdx-and-astro
+// these props are forwarded to BaseLayout -> Meta
+const { title, metaDesc, socialImage } = Astro.props.frontmatter || Astro.props;
 ---
 
-<BaseLayout>
+<BaseLayout {title} {metaDesc} {socialImage}>
   <Header />
 
   <main tabindex="-1">

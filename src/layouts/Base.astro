@@ -1,3 +1,11 @@
+---
+import Meta from '@components/Meta.astro';
+
+const { title, metaDesc, socialImage } = Astro.props;
+
+const devFavicon = `data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y=".9em" font-size="90">🚧</text></svg>`;
+---
+
 <html lang="en-US">
   <head>
     <meta charset="UTF-8" />
@@ -9,11 +17,14 @@
     <!-- TODO RSS -->
     <!-- <link rel="alternate" type="application/rss+xml" title="{{ config.title }}" href="{{ config.url }}/feed.xml"/> -->
 
-    <!-- TODO meta -->
-    <!-- {% include "meta.njk" %} -->
+    <Meta {title} {metaDesc} {socialImage} />
 
-    <link rel="icon" type="image/svg+xml" href="../../static/favicon.svg" />
-    <link rel="alternate icon" href="../../static/favicon.ico" />
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href={import.meta.env.DEV ? devFavicon : '/favicon.svg'}
+    />
+    <link rel="alternate icon" href="/favicon.ico" />
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script

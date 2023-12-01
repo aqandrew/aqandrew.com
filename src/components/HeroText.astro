@@ -30,16 +30,16 @@
     });
   });
 
-  const setGradientColorCustomProperties = (colors) => {
+  function setGradientColorCustomProperties(colors) {
     const textElem = document.getElementById('hero-text');
 
     // Apply these new colors, update the DOM.
     colorNames.forEach((name, index) => {
-      textElem.style.setProperty(name, colors[index]);
+      textElem!.style.setProperty(name, colors[index]);
     });
-  };
+  }
 
-  const activateMagicGradient = () => {
+  function activateMagicGradient() {
     // Shift every color up by one position.
     //
     // `% paletteSize` is a handy trick to ensure
@@ -57,7 +57,7 @@
     // increment the cycle count, so that we advance
     // the colors in the next loop.
     cycleIndex++;
-  };
+  }
 
   gradientIntervalId = window.setInterval(activateMagicGradient, intervalDelay);
 </script>

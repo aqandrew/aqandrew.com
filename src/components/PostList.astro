@@ -5,6 +5,7 @@ import PostItem from './PostItem.astro';
 const { numPosts } = Astro.props;
 
 const posts = await getCollection('blog');
+posts.sort((a, b) => Date.parse(b.data.date) - Date.parse(a.data.date));
 ---
 
 {

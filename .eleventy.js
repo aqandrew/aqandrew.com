@@ -1,10 +1,8 @@
 const syntaxHighlightPlugin = require('@11ty/eleventy-plugin-syntaxhighlight');
 const htmlMinTransform = require('./utils/transforms/htmlmin.js');
 const contentParser = require('./utils/transforms/contentParser.js');
-const htmlDate = require('./utils/filters/htmlDate.js');
 const rssPlugin = require('@11ty/eleventy-plugin-rss');
 const pwaPlugin = require('eleventy-plugin-pwa');
-const date = require('./utils/filters/date.js');
 const sliceFilter = require('./utils/filters/sliceFilter.js');
 const fs = require('fs');
 
@@ -44,10 +42,6 @@ module.exports = function (eleventyConfig) {
    *
    * @link https://www.11ty.io/docs/filters/
    */
-  // human friendly date format
-  eleventyConfig.addFilter('dateFilter', date);
-  // robot friendly date format for crawlers
-  eleventyConfig.addFilter('htmlDate', htmlDate);
   // kind of like JS slice
   eleventyConfig.addFilter('limit', sliceFilter);
 

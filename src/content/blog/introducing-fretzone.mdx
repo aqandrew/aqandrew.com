@@ -8,6 +8,11 @@ metaDesc: FretZone is a passion project I'm working on to teach myself React by 
 # TODO image
 ---
 
+import { Image } from 'astro:assets';
+import { config } from '@config';
+import letterExperiment from '../../assets/img/guitar-pro-letter-experiment-solo.png';
+import scale from '../../assets/img/guitar-pro-red-sky-harbor-solo-scale.png';
+
 [FretZone](https://fret.zone/) is a passion project I'm working on to teach myself React by cloning Guitar Pro. It's a challenge I've undertaken to keep myself hireable.
 
 ## Background
@@ -32,7 +37,25 @@ For a while, I _felt_ like I was learning a lot. [I was in motion, but not takin
 
 #### Aside: On switching to React from Angular
 
-<blockquote class="twitter-tweet"><p lang="en" dir="ltr">Me a week ago: &quot;Grid seems cool but FlexBox has always been good enough for me&quot;<br><br>Me today: &quot;Grind CSS Grid into a fine powder so I can snort it through a $100 bill&quot;</p>&mdash; Adam Rackis (@AdamRackis) <a href="https://twitter.com/AdamRackis/status/1283961272007102464?ref_src=twsrc%5Etfw">July 17, 2020</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<blockquote class="twitter-tweet">
+  <p lang="en" dir="ltr">
+    Me a week ago: &quot;Grid seems cool but FlexBox has always been good enough
+    for me&quot;
+    <br />
+    <br />
+    Me today: &quot;Grind CSS Grid into a fine powder so I can snort it through a
+    $100 bill&quot;
+  </p>
+  &mdash; Adam Rackis (@AdamRackis)
+  <a href="https://twitter.com/AdamRackis/status/1283961272007102464?ref_src=twsrc%5Etfw">
+    July 17, 2020
+  </a>
+</blockquote>
+<script
+  async
+  src="https://platform.twitter.com/widgets.js"
+  charset="utf-8"
+></script>
 
 I deeply relate not only to the CSS subject of this tweet&mdash;but also to how that powerful and exciting feeling feeling is _just_ like the one I've gotten from learning React after relying solely on Angular. Like many other developers, I immediately fell in love with the developer experience, with the most outstanding reason being that [React is simple](https://epicreact.dev/why-i-love-react/). In my experience,
 
@@ -109,9 +132,13 @@ All of these questions are answered by sheet music symbols I've been aware of si
 
 ### Guitar Pro = tabs with superpowers
 
-<!-- TODO Optimize images -->
-
-![Screenshot of Guitar Pro 7. The opened document shows the guitar solo for "Letter Experiment" by Periphery. The left sidebar shows numerous musical articulations, and the lower menu bar shows that several other tracks like vocals and drums have also been transcribed.](/{{ config.paths.images }}/guitar-pro-letter-experiment-solo.png 'A behemoth of a UI, but for good reason')
+<figure>
+  <Image
+    src={letterExperiment}
+    alt="Screenshot of Guitar Pro 7. The opened document shows the guitar solo for 'Letter Experiment' by Periphery. The left sidebar shows numerous musical articulations, and the lower menu bar shows that several other tracks like vocals and drums have also been transcribed."
+  />
+  <figcaption>A behemoth of a UI, but for good reason</figcaption>
+</figure>
 
 Without any question, the most helpful (and generally least inaccurate) tabs I've come across have been Guitar Pro tabs. Those files are made specifically for Guitar Pro, a tab viewer and editor that addresses the above issues _by way of_ and _in addition to_ these features:
 
@@ -163,7 +190,7 @@ I've been taking a lot of notes on FretZone since starting 5 months ago, thinkin
 
 FretZone is minimally working! At the time of writing, there's no audio playback, no musical notation graphics, and no export options&mdash;but you _can_ write text-based tabs for any number of six-string guitars in standard tuning, and the app will keep track of the length of each measure. The only available time signature is 4/4, and notes can be dotted and/or rests.
 
-<blockquote class="twitter-tweet"><p lang="en" dir="ltr">Progress on <a href="https://twitter.com/fret_zone?ref_src=twsrc%5Etfw">@fret_zone</a>! Cloning <a href="https://twitter.com/ArobasMusic?ref_src=twsrc%5Etfw">@ArobasMusic</a> Guitar Pro 7 with HTML/CSS/JavaScript to teach myself React.<br><br>1. I’ll trace the toolbar icons as SVG later so emojis will do for now.<br>2. I&#39;m a happy CSS grid convert after avoiding it for too long!<a href="https://twitter.com/hashtag/webdev?src=hash&amp;ref_src=twsrc%5Etfw">#webdev</a> <a href="https://twitter.com/hashtag/webdevelopment?src=hash&amp;ref_src=twsrc%5Etfw">#webdevelopment</a> <a href="https://twitter.com/hashtag/thall?src=hash&amp;ref_src=twsrc%5Etfw">#thall</a> <a href="https://t.co/JOxo2dmbt5">pic.twitter.com/JOxo2dmbt5</a></p>&mdash; Andrew Aquino (@aqandrew) <a href="https://twitter.com/aqandrew/status/1285231182884438017?ref_src=twsrc%5Etfw">July 20, 2020</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+{/* <blockquote class="twitter-tweet"><p lang="en" dir="ltr">Progress on <a href="https://twitter.com/fret_zone?ref_src=twsrc%5Etfw">@fret_zone</a>! Cloning <a href="https://twitter.com/ArobasMusic?ref_src=twsrc%5Etfw">@ArobasMusic</a> Guitar Pro 7 with HTML/CSS/JavaScript to teach myself React.<br><br>1. I’ll trace the toolbar icons as SVG later so emojis will do for now.<br>2. I&#39;m a happy CSS grid convert after avoiding it for too long!<a href="https://twitter.com/hashtag/webdev?src=hash&amp;ref_src=twsrc%5Etfw">#webdev</a> <a href="https://twitter.com/hashtag/webdevelopment?src=hash&amp;ref_src=twsrc%5Etfw">#webdevelopment</a> <a href="https://twitter.com/hashtag/thall?src=hash&amp;ref_src=twsrc%5Etfw">#thall</a> <a href="https://t.co/JOxo2dmbt5">pic.twitter.com/JOxo2dmbt5</a></p>&mdash; Andrew Aquino (@aqandrew) <a href="https://twitter.com/aqandrew/status/1285231182884438017?ref_src=twsrc%5Etfw">July 20, 2020</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> */}
 
 In the beginning, I'm trying to rely on as few external libraries as possible. This is so I can struggle a bit and understand the problems that these libraries are solving. However, using Redux for state management was a choice I made early on for 4 reasons:
 
@@ -182,10 +209,25 @@ For now I don't plan to monetize FretZone since it's just a fun educational side
 
 I may have bitten off more than I can chew, and I may not ever truly finish cloning Guitar Pro. As I'm digging through Guitar Pro's UI to replicate it, I'm unearthing features that I never even knew it had, like a modal dialog that determines the exact scale/mode of a selected sequence of notes!
 
-![Screenshot of Guitar Pro 7. The opened document shows the guitar solo for "Red Sky Harbor" by Corelia. One of the final measures of the solo has been selected, and Guitar Pro has determined that these notes follow an F altered scale.](/{{ config.paths.images }}/guitar-pro-red-sky-harbor-solo-scale.png 'Absolute game changer')
+<figure>
+  <Image
+    src={scale}
+    alt="Screenshot of Guitar Pro 7. The opened document shows the guitar solo for 'Red Sky Harbor' by Corelia. One of the final measures of the solo has been selected, and Guitar Pro has determined that these notes follow an F altered scale."
+  />
+  <figcaption>Absolute game changer</figcaption>
+</figure>
 
 But this nascent project, massive in scope as it is, has been loads of fun so far. And I've learned so much already! I definitely recommend the clone-your-favorite-app approach for anyone learning a new tool/framework. It's a rough work in progress and needs to be refactored in several places, but I've gotten many more interviews since starting this project, in a few of which I've been asked to explain some of its code.
 
 I'm looking forward to sharing my progress on [FretZone](https://fret.zone) with you, along with helpful bits of JavaScript and React I'm picking up along the way! 🤘🏽
 
-**While you're here:** If you know any guitarists and/or frontend developers who might be interested in following this project, please have them [shoot me an email](mailto:{{ config.author.email }}) or a [message on Twitter](https://twitter.com/{{ config.author.twitter }})! If I gather enough interest, I may publish a semiregular newsletter, or just anounce updates via [FretZone's Twitter account](https://twitter.com/fret_zone).
+{/* prettier-ignore */}
+<p>
+  **While you're here:** If you know any guitarists and/or frontend developers
+  who might be interested in following this project, please have them
+  <a href={`mailto:${config.author.email}`}>shoot me an email</a>
+  or a
+  <a href={`https://twitter.com/${config.author.twitter}`}>message on Twitter</a>!
+  If I gather enough interest, I may publish a semiregular newsletter, or just
+  anounce updates via [FretZone's Twitter account](https://twitter.com/fret_zone).
+</p>

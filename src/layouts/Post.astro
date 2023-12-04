@@ -6,7 +6,7 @@ import DateDisplay from '@components/DateDisplay.astro';
 const { title, date, tags } = Astro.props.frontmatter;
 ---
 
-<Base>
+<Base {title}>
   <Header />
 
   <!-- TODO code syntax highlighting -->

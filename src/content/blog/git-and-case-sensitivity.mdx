@@ -8,8 +8,14 @@ metaDesc: Ever wonder why Git doesn't quite get it when you change the capitaliz
 # TODO image
 ---
 
-{{metaDesc}}
+import { Image } from 'astro:assets';
+import filetree from '../../assets/img/git-casing-filetree.png';
+import commitDetail1 from '../../assets/img/git-casing-commit-detail-1.png';
+import commitDetail2 from '../../assets/img/git-casing-commit-detail-2.png';
+import naiveRename1 from '../../assets/img/git-casing-naive-rename-1.png';
+import naiveRename2 from '../../assets/img/git-casing-naive-rename-2.png';
 
+{frontmatter.metaDesc}
 In case you don't want my life story, [here's the solution](#solution).
 
 ## Background
@@ -26,7 +32,7 @@ Imagine the following scenario:
 >
 > Me: Sure! Just navigate to [https://github.com/dawneraq/fret-zone](https://github.com/dawneraq/fret-zone), clone the repository, run `yarn`, then `yarn develop`, then it'll run on your machine at [http://localhost:3000/](http://localhost:3000/). You're comfortable with the command line, right?
 
-If I want to show a non-developer [my sweet side project](/{{ config.paths.blogdir }}/introducing-fretzone), I'm probably not going to get very far if I tell them to clone, build, and serve it themselves. For everyone's convenience, I knew early on that the app would have to be hosted somewhere.
+If I want to show a non-developer [my sweet side project](/blog/introducing-fretzone), I'm probably not going to get very far if I tell them to clone, build, and serve it themselves. For everyone's convenience, I knew early on that the app would have to be hosted somewhere.
 
 ### Netlify to the rescue
 
@@ -65,7 +71,10 @@ import Zoom from './components/ToolBar/Zoom';
 
 I double-checked the path in my local filesystem. Looked fine.
 
-![Screenshot from Visual Studio Code's file explorer clearly showing that `src/components/ToolBar/Zoom.jsx` is a valid path.](/{{ config.paths.images }}/git-casing-filetree.png)
+<Image
+  src={filetree}
+  alt="Screenshot from Visual Studio Code's file explorer clearly showing that `src/components/ToolBar/Zoom.jsx` is a valid path."
+/>
 
 I double-checked the error message. Looked fine.
 
@@ -85,13 +94,19 @@ So it was a case sensitivity issue? No way!
 
 I flew into a nerd rage. The `ToolBar` folder definitely had the correct name. It's right there in the file explorer screenshot above. Hadn't that change been pushed in the commit I mentioned earlier?
 
-![Screenshot from GitHub showing the summary of a simple renaming commit I'd recently made. The inserted/deleted lines show that any imports referencing the folder `Toolbar` (with a lowercase 'b') now reference `Toolbar` (with a capital 'B'.)](/{{ config.paths.images }}/git-casing-commit-detail-1.png)
+<Image
+  src={commitDetail1}
+  alt="Screenshot from GitHub showing the summary of a simple renaming commit I'd recently made. The inserted/deleted lines show that any imports referencing the folder `Toolbar` (with a lowercase 'b') now reference `Toolbar` (with a capital 'B'.)"
+/>
 
 Apparently not. What do you mean "1 changed file"? The changelog only shows changes to import statements in that one file. I changed the directory name! All of the files within the `ToolBar` folder should have had their names changed too.
 
 If that's not the case...what does the path look like in the GitHub repo?
 
-![Screenshot from GitHub showing the file in question, `Zoom.jsx`. Interestingly, the parent folder name on GitHub is `Toolbar` with a lowercase 'b'.)](/{{ config.paths.images }}/git-casing-commit-detail-2.png)
+<Image
+  src={commitDetail2}
+  alt="Screenshot from GitHub showing the file in question, `Zoom.jsx`. The parent folder name on GitHub is `Toolbar` with a lowercase 'b'."
+/>
 
 Interesting!
 
@@ -110,11 +125,17 @@ I tend to rename my files by right-clicking in Visual Studio Code's file explore
 1. The original file has been deleted.
 2. A new file with the original file's contents has been added under a different name.
 
-![Screenshot from Visual Studio Code's Source Control sidebar. The changes detected are that the file `about.md` has been deleted, and the file `aboot.md` has been added.](/{{ config.paths.images }}/git-casing-naive-rename-1.png)
+<Image
+  src={naiveRename1}
+  alt="Screenshot from Visual Studio Code's Source Control sidebar. The changes detected are that the file `about.md` has been deleted, and the file `aboot.md` has been added."
+/>
 
 Git doesn't recognize that a file has been renamed until both of those changes have been staged.
 
-![Screenshot from Visual Studio Code's Source Control sidebar. The change detected, which has been staged, is that some file was renamed to `aboot.md`.](/{{ config.paths.images }}/git-casing-naive-rename-2.png)
+<Image
+  src={naiveRename2}
+  alt="Screenshot from Visual Studio Code's Source Control sidebar. The change detected, which has been staged, is that some file was renamed to `aboot.md`."
+/>
 
 ## Solution
 

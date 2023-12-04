@@ -7,7 +7,9 @@ metaDesc: "How I finally made sense of Next.js' `getStaticProps` and `getStaticP
 socialImage: https://aqandrew.com/cover-nextjs-routing.jpg
 ---
 
-_{{ metaDesc }}_
+import Shrug from '../../components/Shrug.astro';
+
+_{frontmatter.metaDesc}_
 
 [Click here for a quick summary.](#summary)
 
@@ -110,7 +112,8 @@ For this toy example, let's make the following assumptions:
 
 After following along with Chris' tutorial, I had a homepage plus a page for each post, like this:
 
-<iframe src="https://codesandbox.io/embed/nextjs-dynamic-routing-posts-isfrx?module=/pages/index.js,/pages/post/[slug].js&view=split&fontsize=12&theme=dark"
+<iframe
+  src="https://codesandbox.io/embed/nextjs-dynamic-routing-posts-isfrx?module=/pages/index.js,/pages/post/[slug].js&view=split&fontsize=12&theme=dark"
   style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
   title="nextjs-dynamic-routing-posts-isfrx"
   allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
@@ -348,7 +351,8 @@ The bracketed filename determines what property Next.js looks for when staticall
 
 Next.js' error messages made these errors clear and quick to diagnose. After working around them, I was pleasantly surprised to arrive at this implementation of category pages in what seemed like no time at all:
 
-<iframe src="https://codesandbox.io/embed/nextjs-dynamic-routing-categories-mxt6p?module=/pages/index.js,/pages/[slug].js,/pages/post/[slug].js&view=split&fontsize=12&theme=dark"
+<iframe
+  src="https://codesandbox.io/embed/nextjs-dynamic-routing-categories-mxt6p?module=/pages/index.js,/pages/[slug].js,/pages/post/[slug].js&view=split&fontsize=12&theme=dark"
   style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
   title="nextjs-dynamic-routing-categories-mxt6p"
   allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
@@ -373,7 +377,16 @@ I was delighted to reread Next.js' docs at this point and find that what they sa
 
 <aside id="learn-nextjs">
 
-I found out only later that [Learn Next.js](https://nextjs.org/learn/basics/create-nextjs-app") contains thorough guides on how [`getStaticProps`](https://nextjs.org/learn/basics/data-fetching/with-data) and [`getStaticPaths`](https://nextjs.org/learn/basics/dynamic-routes/page-path-external-data) work. I'd known that this resource existed and was probably very good, but I skipped it because I was impatient to get started on this project. {% shrug %}
+<p>
+  I found out only later that [Learn
+  Next.js](https://nextjs.org/learn/basics/create-nextjs-app") contains thorough
+  guides on how
+  [`getStaticProps`](https://nextjs.org/learn/basics/data-fetching/with-data)
+  and
+  [`getStaticPaths`](https://nextjs.org/learn/basics/dynamic-routes/page-path-external-data)
+  work. I'd known that this resource existed and was probably very good, but I
+  skipped it because I was impatient to get started on this project. <Shrug />
+</p>
 
 Learn Next.js contains a lot of detail and diagrams, and is probably where you should start learning about these functions if stumbling into answers isn't your style.
 
@@ -387,10 +400,35 @@ At first, I didn't quite get how Next.js could fit into [ecommerce sites](https:
 
 So Next.js’ secret sauce is not dynamic routing itself, but great API design. I've heard that one of Next.js' best features is how its conventions allow developers who are unfamiliar with it to quickly become productive with it.
 
-<blockquote class="twitter-tweet"><p lang="en" dir="ltr">Me: &quot;I really hope Next routing works like [this]&quot;<br><br>Next Docs, in clear language: &quot;We work exactly like [this]&quot;<br><br>Such a pleasure using this at work omg 😬</p>&mdash; Adam Rackis (@AdamRackis) <a href="https://twitter.com/AdamRackis/status/1397999208460865536?ref_src=twsrc%5Etfw">May 27, 2021</a></blockquote>
+<blockquote class="twitter-tweet">
+  <p lang="en" dir="ltr">
+    Me: &quot;I really hope Next routing works like [this]&quot;
+    <br />
+    <br />
+    Next Docs, in clear language: &quot;We work exactly like [this]&quot;
+    <br />
+    <br />
+    Such a pleasure using this at work omg 😬
+  </p>
+  &mdash; Adam Rackis (@AdamRackis)
+  <a href="https://twitter.com/AdamRackis/status/1397999208460865536?ref_src=twsrc%5Etfw">
+    May 27, 2021
+  </a>
+</blockquote>
 
 Also, this was a learning moment that made me feel knowledgeable and capable about JavaScript and React. As an early-career developer with plenty of impostor syndrome, that's kind of a big deal. It reminded me of why I enjoy programming in the first place!
 
-<blockquote class="twitter-tweet"><p lang="en" dir="ltr">I love that tipping point where you have finally learned enough of the basic concepts of a new language or framework and you can actually apply to them a project of your own creation.</p>&mdash; Kelly Vaughn🐞 (@kvlly) <a href="https://twitter.com/kvlly/status/1402427142642745358?ref_src=twsrc%5Etfw">June 9, 2021</a></blockquote>
+<blockquote class="twitter-tweet">
+  <p lang="en" dir="ltr">
+    I love that tipping point where you have finally learned enough of the basic
+    concepts of a new language or framework and you can actually apply to them a
+    project of your own creation.
+  </p>
+  &mdash; Kelly Vaughn🐞 (@kvlly) <a href="https://twitter.com/kvlly/status/1402427142642745358?ref_src=twsrc%5Etfw">June 9, 2021</a>
+</blockquote>
 
-<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<script
+  async
+  src="https://platform.twitter.com/widgets.js"
+  charset="utf-8"
+></script>

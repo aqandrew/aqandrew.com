@@ -1,6 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import PostItem from './PostItem.astro';
+import { Debug } from 'astro:components';
 
 const { numPosts } = Astro.props;
 
@@ -8,7 +9,7 @@ const posts = await getCollection('blog');
 posts.sort((a, b) => Date.parse(b.data.date) - Date.parse(a.data.date));
 ---
 
-{
+<!-- <Debug {posts} /> -->{
   posts.length ? (
     <section>
       <ol reversed start={posts.length}>
@@ -16,13 +17,13 @@ posts.sort((a, b) => Date.parse(b.data.date) - Date.parse(a.data.date));
           .reverse()
           .slice(numPosts)
           .reverse()
-          .map(({ data }, i) => {
-            const { url, title, date } = data;
+          .map(({ slug, data }, i) => {
+            const { title, date } = data;
 
             return (
               <>
                 {i === 0 ? null : <hr />}
-                <PostItem {url} {title} {date} />
+                <PostItem {slug} {title} {date} />
               </>
             );
           })}

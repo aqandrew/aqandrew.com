@@ -1,5 +1,5 @@
 ---
-const { url, title, date } = Astro.props;
+const { slug, title, date } = Astro.props;
 
 const dateFormatter = new Intl.DateTimeFormat('en-US', {
   dateStyle: 'long',
@@ -13,7 +13,7 @@ const dateForCrawlers = new Date(date).toISOString();
   <!-- {% if title === '0.30000000000000004' %}class="word-break-all"{% endif %} -->
 
   <h3>
-    <a href={url} rel="bookmark">{title}</a>
+    <a href={`/blog/${slug}`} rel="bookmark">{title}</a>
   </h3>
 
   <time datetime={dateForCrawlers}>{dateForHumans}</time>

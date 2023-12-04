@@ -7,7 +7,7 @@ metaDesc: I learned how to use Web Components for a take-home coding challenge! 
 # TODO image: square peg in a round hole
 ---
 
-{{ metaDesc }}
+{frontmatter.metaDesc}
 
 (I'm assuming you have a solid foundation of HTML/JavaScript knowledge.)
 
@@ -20,9 +20,22 @@ metaDesc: I learned how to use Web Components for a take-home coding challenge! 
 
 The `ColorPicker` web component I made:
 
-<iframe height="640" style="width: 100%;" scrolling="no" title="Color Picker Web Component" src="https://codepen.io/dawneraq/embed/YzqWQYa?height=640&theme-id=dark&default-tab=html,result" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
-  See the Pen <a href='https://codepen.io/dawneraq/pen/YzqWQYa'>Color Picker Web Component</a> by Andrew Aquino
-  (<a href='https://codepen.io/dawneraq'>@dawneraq</a>) on <a href='https://codepen.io'>CodePen</a>.
+{/* prettier-ignore */}
+<iframe
+  height="640"
+  style="width: 100%;"
+  scrolling="no"
+  title="Color Picker Web Component"
+  src="https://codepen.io/dawneraq/embed/YzqWQYa?height=640&theme-id=dark&default-tab=html,result"
+  frameborder="no"
+  loading="lazy"
+  allowtransparency="true"
+  allowfullscreen="true"
+>
+  See the Pen{' '}
+  <a href="https://codepen.io/dawneraq/pen/YzqWQYa">Color Picker Web Component</a>{' '}
+  by Andrew Aquino (<a href="https://codepen.io/dawneraq">@dawneraq</a>) on{' '}
+  <a href="https://codepen.io">CodePen</a>.
 </iframe>
 
 ## Background
@@ -79,13 +92,26 @@ Above all, it's always cool to learn about useful functionality that's provided 
 
 ## Implementation notes
 
+{/* prettier-ignore */}
 - I mostly based my implementation off of these guides:
   - [Custom Elements &mdash; Google Web Fundamentals](https://developers.google.com/web/fundamentals/web-components/customelements)
   - [Attributes and Properties in Custom Elements &mdash; Alligator.io](https://alligator.io/web-components/attributes-properties/)
 - At first I thought, "There's no way this is gonna work..." when I typed this in the Pen:
-  <iframe height="265" style="width: 100%;" scrolling="no" title="Web Components - Hello World example" src="https://codepen.io/dawneraq/embed/wvGJaow?height=265&theme-id=dark&default-tab=html,result" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
-    See the Pen <a href='https://codepen.io/dawneraq/pen/wvGJaow'>Web Components - Hello World example</a> by Andrew Aquino
-    (<a href='https://codepen.io/dawneraq'>@dawneraq</a>) on <a href='https://codepen.io'>CodePen</a>.
+  <iframe
+    height="265"
+    style="width: 100%;"
+    scrolling="no"
+    title="Web Components - Hello World example"
+    src="https://codepen.io/dawneraq/embed/wvGJaow?height=265&theme-id=dark&default-tab=html,result"
+    frameborder="no"
+    loading="lazy"
+    allowtransparency="true"
+    allowfullscreen="true"
+  >
+    See the Pen{' '}
+    <a href="https://codepen.io/dawneraq/pen/wvGJaow">Web Components - Hello World example</a>{' '}
+    by Andrew Aquino (<a href="https://codepen.io/dawneraq">@dawneraq</a>) on{' '}
+    <a href="https://codepen.io">CodePen</a>.
   </iframe>
 - Eventually I moved the component's template HTML above the `<style>` tag, to more closely resemble the structure of a Vue single-file component (template first, style afterward).
 - In the interest of time, I didn't look up any Web Component best practices. So I just followed my React intuition.
@@ -156,8 +182,8 @@ Above all, it's always cool to learn about useful functionality that's provided 
 
   I do wonder if there's a nicer-looking way to embed JSON objects inside data attributes. That is, still being able to use double quotes for the `data-palette` attribute, while being able to call `JSON.parse()`, which expects to see all strings wrapped in double quotes.
 
-<!-- TODO Write about this later? -->
-<!-- - I'm still not quite sure how React and Web Components solve different problems... -->
+{/* TODO Write about this later? */}
+{/* I'm still not quite sure how React and Web Components solve different problems... */}
 
 ## tl;dr
 

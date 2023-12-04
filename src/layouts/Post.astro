@@ -1,8 +1,9 @@
 ---
 import Base from '@layouts/Base.astro';
 import Header from '@components/Header.astro';
+import DateDisplay from '@components/DateDisplay.astro';
 
-const { title, tags } = Astro.props.frontmatter;
+const { title, date, tags } = Astro.props.frontmatter;
 ---
 
 <Base>
@@ -10,7 +11,9 @@ const { title, tags } = Astro.props.frontmatter;
 
   <!-- TODO code syntax highlighting -->
   <main tabindex="-1">
-    <!-- TODO date -->
+    <small>
+      <DateDisplay {date} />
+    </small>
 
     <h1>{title}</h1>
 
@@ -40,12 +43,9 @@ const { title, tags } = Astro.props.frontmatter;
 <style>
   .tag-list {
     all: unset;
-    display: inline-flex;
     list-style: none;
-
-    > li {
-      margin-right: 16px;
-      font-family: monospace;
-    }
+    display: inline-flex;
+    gap: 16px;
+    font-family: monospace;
   }
 </style>

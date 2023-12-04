@@ -1,11 +1,7 @@
 ---
-const { slug, title, date } = Astro.props;
+import DateDisplay from './DateDisplay.astro';
 
-const dateFormatter = new Intl.DateTimeFormat('en-US', {
-  dateStyle: 'long',
-});
-const dateForHumans = dateFormatter.format(new Date(date));
-const dateForCrawlers = new Date(date).toISOString();
+const { slug, title, date } = Astro.props;
 ---
 
 <li>
@@ -16,5 +12,5 @@ const dateForCrawlers = new Date(date).toISOString();
     <a href={`/blog/${slug}`} rel="bookmark">{title}</a>
   </h3>
 
-  <time datetime={dateForCrawlers}>{dateForHumans}</time>
+  <DateDisplay {date} />
 </li>

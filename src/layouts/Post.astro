@@ -1,13 +1,31 @@
 ---
 import Base from '@layouts/Base.astro';
+import Header from '@components/Header.astro';
+
+const { title, tags } = Astro.props.frontmatter;
 ---
 
 <Base>
-  <!-- TODO syntax theme -->
+  <Header />
+
+  <!-- TODO code syntax highlighting -->
   <main tabindex="-1">
     <!-- TODO date -->
-    <!-- TODO title -->
-    <!-- TODO tags -->
+
+    <h1>{title}</h1>
+
+    <!-- TODO tag pages -->
+    {
+      tags.length ? (
+        <ul class="tag-list">
+          {tags.map((tag: string) => (
+            <li>
+              <a href="#">#{tag}</a>
+            </li>
+          ))}
+        </ul>
+      ) : null
+    }
 
     <hr />
 
@@ -18,3 +36,16 @@ import Base from '@layouts/Base.astro';
     <!-- TODO next/previous posts -->
   </main>
 </Base>
+
+<style>
+  .tag-list {
+    all: unset;
+    display: inline-flex;
+    list-style: none;
+
+    > li {
+      margin-right: 16px;
+      font-family: monospace;
+    }
+  }
+</style>

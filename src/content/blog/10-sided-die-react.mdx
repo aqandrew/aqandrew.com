@@ -8,20 +8,35 @@ metaDesc: 'You can create 3D graphics with React! This is how I built a custom t
 socialImage: https://aqandrew.com/cover-d10.jpg
 ---
 
-![An animated GIF of a D10 spinning](/{{ config.paths.images }}/d10-upward.gif)
+import { Image } from 'astro:assets';
+import { config } from '@config';
+import d10Upward from '../../assets/img/d10-upward.gif';
+import pTPlain from '../../assets/img/pentagonal-trapezohedron-plain.png';
+import polyhedra from '../../assets/img/polyhedra.png';
+import octahedron from '../../assets/img/octahedron.png';
+import pBipyramid from '../../assets/img/pentagonal-bipyramid.png';
+import pt from '../../assets/img/pentagonal-trapezohedron.png';
+import pentagons from '../../assets/img/pentagons.png';
+import decagon from '../../assets/img/decagon.png';
+import ptVertices from '../../assets/img/pentagonal-trapezohedron-vertices.png';
+import d10Downward from '../../assets/img/d10-downward.gif';
+
+<Image src={d10Upward} alt="An animated GIF of a D10 spinning" />
 
 This is a 10-sided die. Below is my attempt to recreate one with JavaScript&mdash;just the shape for now. Click it to see it move!
 
-<iframe src="https://codesandbox.io/embed/bold-microservice-6o6j1?fontsize=14&hidenavigation=1&theme=dark"
+<iframe
+  src="https://codesandbox.io/embed/bold-microservice-6o6j1?fontsize=14&hidenavigation=1&theme=dark"
   style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
   title="D10 geometry demo"
   allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
   sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
 ></iframe>
 
-{{ metaDesc }} Hopefully documenting my process can help someone get started<sup>\*</sup> with 3D programming.
+{frontmatter.metaDesc} Hopefully documenting my process can help someone get started<sup>\*</sup> with 3D programming.
 
-<sup>\*</sup>I'm assuming that you have some basic knowledge of three.js and React. I'm no expert; that's all I had when I figured this stuff out.
+<sup>\*</sup>I'm assuming that you have some basic knowledge of three.js and
+React. I'm no expert; that's all I had when I figured this stuff out.
 
 Also, I hope you like math.
 
@@ -35,7 +50,18 @@ Part of the joy of playing D&D is rolling dice that affect the outcomes of chara
 
 Rolling dice is simple enough to manage when everyone is sitting around a table in a room together. Unfortunately, in a virtual environment, some of that tactile magic is lost. Both Roll20 and D&D Beyond attempt to make up for the absence of real dice with **3D dice rollers**. ✨
 
-<blockquote class="twitter-tweet"><p lang="en" dir="ltr">It&#39;s ridiculously cool that this D&amp;D website rolls dice right on top of your character sheet. <a href="https://t.co/Vcev156TL8">pic.twitter.com/Vcev156TL8</a></p>&mdash; Chris Coyier (@chriscoyier) <a href="https://twitter.com/chriscoyier/status/1308888631705325569?ref_src=twsrc%5Etfw">September 23, 2020</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<blockquote class="twitter-tweet">
+  <p lang="en" dir="ltr">
+    It&#39;s ridiculously cool that this D&amp;D website rolls dice right on top
+    of your character sheet.{' '}
+    <a href="https://t.co/Vcev156TL8">pic.twitter.com/Vcev156TL8</a>
+  </p>
+  &mdash; Chris Coyier (@chriscoyier) <a href="https://twitter.com/chriscoyier/status/1308888631705325569?ref_src=twsrc%5Etfw">September 23, 2020</a>
+</blockquote> <script
+  async
+  src="https://platform.twitter.com/widgets.js"
+  charset="utf-8"
+></script>
 
 ### Is it possible to make my own 3D dice roller?
 
@@ -161,7 +187,7 @@ _Except for the D10_, these convex polyhedra are **regular**, which means that a
 
 Thanks to three.js providing geometric definitions for each of these shapes, I could make these dice out of the box. However, **there is no Platonic solid with ten faces**. So the D10 is a shape called a [pentagonal trapezohedron](https://en.wikipedia.org/wiki/Pentagonal_trapezohedron). It has ten vertices where 3 faces meet, and two vertices where 5 faces meet.
 
-![Pentagonal trapezohedron](/{{config.paths.images}}/pentagonal-trapezohedron-plain.png)
+<Image src={pTPlain} alt="Pentagonal trapezohedron" />
 
 I _could_ have just created the model for this thing in Blender (...if I learned Blender first). But three.js is [perfectly capable of](https://github.com/mrdoob/three.js/blob/master/src/geometries/IcosahedronGeometry.js) stitching together a couple of triangles in the browser. It couldn't be _that_ hard.
 
@@ -221,7 +247,7 @@ Even though I'm relatively new to JSX, what's going on here is fairly straightfo
 
 A D8 is an excellent base from which to create a D10. The two shapes are actually pretty similar! Each consists of a top and a bottom vertex, which both connect to a ring of vertices between them.
 
-![Octahedron and pentagonal trapezohedron](/{{config.paths.images}}/polyhedra.png)
+<Image src={polyhedra} alt="Octahedron and pentagonal trapezohedron" />
 
 For the octahedron, the middle layer of vertices is a square. So four of its faces are formed by connecting the middle layer to the top vertex, and the other four faces are formed by connecting the middle layer to the bottom vertex.
 
@@ -275,7 +301,8 @@ A couple of things to note:
 
 Here's the D8 in action:
 
-<iframe src="https://codesandbox.io/embed/d8-octahedron-demo-9mrih?fontsize=14&hidenavigation=1&theme=dark"
+<iframe
+  src="https://codesandbox.io/embed/d8-octahedron-demo-9mrih?fontsize=14&hidenavigation=1&theme=dark"
   style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
   title="D8 octahedron demo"
   allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
@@ -301,7 +328,10 @@ For this part, I relied heavily on Three.js Fundamentals' articles on [custom ge
 
 #### How do I draw an octahedron?
 
-![Octahedron](/{{config.paths.images}}/octahedron.png "Here's an octahedron with vertices numbered 0-5.")
+<figure>
+  <Image src={octahedron} alt="Octahedron" />
+  <figcaption>Here's an octahedron with vertices numbered 0-5.</figcaption>
+</figure>
 
 Note that I numbered the vertices of the D8 above **counterclockwise, starting from the left**, for no reason other than that's how I labeled the shape when I drew it.
 
@@ -365,7 +395,8 @@ I grouped each both the vertex and face arrays in threes and called `Array.proto
 
 As you can see, this D8 acts exactly the same as the previous one.
 
-<iframe src="https://codesandbox.io/embed/d8-polyhedron-demo-iw20o?fontsize=14&hidenavigation=1&theme=dark"
+<iframe
+  src="https://codesandbox.io/embed/d8-polyhedron-demo-iw20o?fontsize=14&hidenavigation=1&theme=dark"
   style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
   title="D8 polyhedron demo"
   allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
@@ -376,11 +407,11 @@ As you can see, this D8 acts exactly the same as the previous one.
 
 Remember how I mentioned that the middle layer of vertices in a pentagonal trapezohedron is _roughly_ a pentagon?
 
-![Pentagonal bipyramid](/{{config.paths.images}}/pentagonal-bipyramid.png)
+<Image src={pBipyramid} alt="Pentagonal bipyramid" />
 
 If those vertices _did_ form a pentagon, then the shape would be a similar but different one called a [pentagonal bipyramid](https://en.wikipedia.org/wiki/Pentagonal_bipyramid), which has triangular faces.
 
-![Pentagonal trapezohedron](/{{config.paths.images}}/pentagonal-trapezohedron.png)
+<Image src={pt} alt="Pentagonal trapezohedron" />
 
 In contrast, each face of a pentagonal trapezohedron is a quadrilateral that kind of looks like a kite. 🪁
 
@@ -394,11 +425,11 @@ You can visualize a pentagonal trapezohedron's middle layer of vertices in one o
 
 1. Two pentagons, one above and one below, rotated 1/10th of a turn apart from each other.
 
-   ![Upper and lower pentagon](/{{config.paths.images}}/pentagons.png)
+   <Image src={pentagons} alt="Upper and lower pentagon" />
 
 2. A zigzaggy decagon whose vertices alternate going up and down.
 
-   ![Zigzaggy decagon](/{{config.paths.images}}/decagon.png)
+   <Image src={decagon} alt="Zigzaggy decagon" />
 
 The latter model shows the way to create this middle vertex layer: Trace out a circle, and place ten equally spaced vertices along this circle, alternating the height of each vertex between high and low.
 
@@ -424,7 +455,7 @@ As far as I can tell, 0.105 is a completely arbitrary number for the z-height/de
 
 One important difference between his implementation and mine is the order in which vertices are created. Anton created vertices **counterclockwise, starting from the right** ((1, 0)). Because I wanted to match [the vertex order of the D8 above](#how-do-i-draw-an-octahedron), I created the D10's middle layer of vertices counterclockwise, **starting from the left** ((-1, 0)).
 
-![Pentagonal trapezohedron vertices](/{{config.paths.images}}/pentagonal-trapezohedron-vertices.png)
+<Image src={ptVertices} alt="Pentagonal trapezohedron vertices" />
 
 To draw a circle counterclockwise around the origin from (-1, 0), you can use the following parametric equation:
 
@@ -435,11 +466,12 @@ For 0 &le; b &le; 2&pi;: x starts at -1, goes to 1, then goes back to -1; y star
 
 <figure class="figure">
   <video width="720" height="438" controls loop>
-    <source src="/img/desmos-circle-720.mp4" type="video/mp4">
+    <source src="/img/desmos-circle-720.mp4" type="video/mp4" />
   </video>
   <figcaption>
     <small>
-      Drawing a circle counterclockwise from the left on <a href="https://www.desmos.com/calculator/rouehdcaqe">Desmos</a>
+      Drawing a circle counterclockwise from the left on{' '}
+      <a href="https://www.desmos.com/calculator/rouehdcaqe">Desmos</a>
     </small>
   </figcaption>
 </figure>
@@ -448,11 +480,14 @@ When we take the z component into account, we have our zigzaggy decagon:
 
 <figure class="figure">
   <video width="720" height="438" controls loop>
-    <source src="/img/mathbox-circle-720.mp4" type="video/mp4">
+    <source src="/img/mathbox-circle-720.mp4" type="video/mp4" />
   </video>
   <figcaption>
     <small>
-      Drawing a circle counterclockwise from the left with varying z-heights on <a href="https://christopherchudzicki.github.io/MathBox-Demos/parametric_curves_3D.html?settings=eyJmdW5jdGlvbnMiOnsiYSI6eyJ4IjoiLWNvcyh0KSIsInkiOiItc2luKHQpIiwieiI6Ii4xMDUqY29zKDUqdCkiLCJ2ZWxvY2l0eVZlY3RvclZpc2libGUiOnRydWUsInNhbXBsZXMiOjEwLCJ0IjoyLjI2OTk5OTk5OTk5OTk5NTZ9fSwiY29udGFpbmVySWQiOiJteS1tYXRoLWJveCIsInNjYWxlIjpbMSwxLDFdLCJjYW1lcmEiOnsicG9zaXRpb24iOlstMC4zNywwLjE0LC0wLjMxXX0sIm5vWm9vbSI6dHJ1ZSwiZm9jdXMiOjEuNjk1NTgyNDk1NzgxMzE3LCJmcm9tVVJMIjp0cnVlfQ==">MathBox</a>
+      Drawing a circle counterclockwise from the left with varying z-heights on{' '}
+      <a href="https://christopherchudzicki.github.io/MathBox-Demos/parametric_curves_3D.html?settings=eyJmdW5jdGlvbnMiOnsiYSI6eyJ4IjoiLWNvcyh0KSIsInkiOiItc2luKHQpIiwieiI6Ii4xMDUqY29zKDUqdCkiLCJ2ZWxvY2l0eVZlY3RvclZpc2libGUiOnRydWUsInNhbXBsZXMiOjEwLCJ0IjoyLjI2OTk5OTk5OTk5OTk5NTZ9fSwiY29udGFpbmVySWQiOiJteS1tYXRoLWJveCIsInNjYWxlIjpbMSwxLDFdLCJjYW1lcmEiOnsicG9zaXRpb24iOlstMC4zNywwLjE0LC0wLjMxXX0sIm5vWm9vbSI6dHJ1ZSwiZm9jdXMiOjEuNjk1NTgyNDk1NzgxMzE3LCJmcm9tVVJMIjp0cnVlfQ==">
+        MathBox
+      </a>
     </small>
   </figcaption>
 </figure>
@@ -540,9 +575,15 @@ In the meantime...
 
 Can this post or the dice roller be made more accessible? Are there any illustrations/demos that would make this material easier to understand? Am I causing [huge performance issues](https://github.com/dawneraq/react-3d-dice/issues/1)? Did I mess up some geometric concepts/terminology?
 
-If you have an answer to any of these questions, please [hit me up on Twitter!](https://twitter.com/{{ config.author.twitter }})
+If you have an answer to any of these questions, please <a href={`https://twitter.com/${config.author.twitter}`}>hit me up on Twitter!</a>
 
-![An animated GIF of a D10 spinning](/{{ config.paths.images }}/d10-downward.gif 'Retro spinning dice GIFs courtesy of <a href="https://gifcities.org/">GifCities</a>.')
+<figure>
+  <Image src={d10Downward} alt="An animated GIF of a D10 spinning" />
+  <figcaption>
+    Retro spinning dice GIFs courtesy of{' '}
+    <a href="https://gifcities.org/">GifCities</a>.
+  </figcaption>
+</figure>
 
 ## Further reading
 

@@ -3,11 +3,12 @@ import Meta from '@components/Meta.astro';
 
 const { title, metaDesc, socialImage } = Astro.props;
 
-const devFavicon = `data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y=".9em" font-size="90">🚧</text></svg>`;
-
 import '../assets/css/variables.css';
 import '../assets/css/global.css';
 import '../assets/css/utils.css';
+
+const isDev = import.meta.env.DEV;
+const devFavicon = `data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y=".9em" font-size="90">🚧</text></svg>`;
 ---
 
 <html lang="en-US">
@@ -26,9 +27,9 @@ import '../assets/css/utils.css';
     <link
       rel="icon"
       type="image/svg+xml"
-      href={import.meta.env.DEV ? devFavicon : '/favicon.svg'}
+      href={isDev ? devFavicon : '/favicon.svg'}
     />
-    <link rel="alternate icon" href="/favicon.ico" />
+    {isDev ? null : <link rel="alternate icon" href="/favicon.ico" />}
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script

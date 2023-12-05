@@ -44,7 +44,7 @@ const { postPrevious, postNext } = Astro.props;
     margin-block-start: var(--space-medium);
   }
 
-  article :global(img) {
+  article :global(:is(img, video)) {
     max-width: 100%;
     height: auto;
   }

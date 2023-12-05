@@ -7,8 +7,6 @@ Hi! 👋🏽 I'm Andrew, a frontend developer based in Southern California. My c
 
 This site is where I [learn in public](https://www.swyx.io/writing/learn-in-public/). When I'm trying something new and run into problems, I'll take notes and put my thoughts/solutions in the [blog](/blog/). They won't be one-size-fits-all. But I hope that through here, my new knowledge can go a little further by helping someone else.
 
----
-
 ## Stuff I like
 
 I love to cook and transcribe/play/write music.

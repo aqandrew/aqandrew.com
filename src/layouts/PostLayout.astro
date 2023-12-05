@@ -33,10 +33,6 @@ const { postPrevious, postNext } = Astro.props;
 </PageLayout>
 
 <style>
-  :global(h1) {
-    margin-block-end: 0;
-  }
-
   .tags {
     font-family: monospace;
   }
@@ -44,9 +40,22 @@ const { postPrevious, postNext } = Astro.props;
   article {
     margin-block-start: var(--space-medium);
   }
+</style>
 
-  article :global(:is(img, video)) {
+<!-- styles for elements within post -->
+<style is:global>
+  h1 {
+    margin-block-end: 0;
+  }
+
+  article :is(img, video) {
     max-width: 100%;
     height: auto;
+  }
+
+  /* break long numbers in floating point post */
+  blockquote,
+  p > code {
+    overflow-wrap: break-word;
   }
 </style>

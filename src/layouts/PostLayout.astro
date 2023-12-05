@@ -57,7 +57,8 @@ const { postPrevious, postNext } = Astro.props;
   /* center (more-or-less) top-level media elements */
   :is(p, li) img,
   :is(article, figure) > img,
-  video {
+  video,
+  .twitter-tweet {
     display: block;
     margin-inline: auto;
   }

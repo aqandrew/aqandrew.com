@@ -1,6 +1,11 @@
+html {
+  display: grid;
+  place-items: center;
+}
+
 body {
   max-width: var(--content-width);
-  margin-inline: auto;
+  margin-inline: 1rem;
   line-height: var(--line-height);
   font-family: var(--font-family-sans-serif);
 }

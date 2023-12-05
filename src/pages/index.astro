@@ -1,7 +1,9 @@
 ---
 import PageLayout from '@layouts/PageLayout.astro';
 import HeroText from '@components/HeroText.astro';
+import HireMe from '@components/HireMe.astro';
 import PostList from '@components/PostList.astro';
+import { config } from '@config';
 ---
 
 <PageLayout>
@@ -17,9 +19,7 @@ import PostList from '@components/PostList.astro';
     </p>
   </section>
 
-  <!-- {% if config.lookingForWork %}
-    {% include 'hire-me.njk' %}
-  {% endif %} -->
+  {config.lookingForWork ? <HireMe /> : null}
 
   <section>
     <h2>Latest posts</h2>
@@ -31,7 +31,7 @@ import PostList from '@components/PostList.astro';
 </PageLayout>
 
 <style>
-  section {
+  :global(section) {
     margin-block-end: var(--gap-section);
   }
 </style>

@@ -3,6 +3,7 @@ export const config = {
   shortDesc:
     "I'm a frontend developer in Southern California. These are my projects and notes about JavaScript, CSS, design, and anything else I'm learning.",
   url: 'https://aqandrew.com',
+  resumePath: '/Andrew-Aquino-Resume.pdf',
   lang: 'en',
   author: {
     name: 'Andrew Aquino',

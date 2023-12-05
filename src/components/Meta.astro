@@ -9,10 +9,6 @@ const currentUrl = Astro.url;
 const pageDesc = metaDesc ?? shortDesc;
 ---
 
-<!-- TODO tag meta title --><!-- {% if metaTitle == 'Tag' %}
-  {% set metaTitle = '' %}
-  {% set title = 'Posts tagged #' + tag %}
-{% endif %} -->
 <title>{pageTitle}</title>
 <link rel="canonical" href={currentUrl} />
 

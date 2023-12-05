@@ -62,7 +62,13 @@ const { postPrevious, postNext } = Astro.props;
 
   /* break long numbers in floating point post */
   blockquote,
-  p > code {
+  p code {
     overflow-wrap: break-word;
+  }
+
+  p code {
+    padding: 4px;
+    border-radius: 2px;
+    background-color: var(--color-inline-code);
   }
 </style>

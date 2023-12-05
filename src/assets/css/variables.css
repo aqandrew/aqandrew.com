@@ -2,6 +2,7 @@
   /* colors */
   --color-purple: oklch(55.99% 0.248 294.34);
   --color-link: var(--color-purple);
+  --color-inline-code: oklch(95% 0 0);
 
   /* typography */
   --line-height: 1.8;

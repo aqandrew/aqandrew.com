@@ -47,11 +47,19 @@ const { postPrevious, postNext } = Astro.props;
     margin-block-end: 0;
   }
 
-  article :is(img, video) {
-    display: block;
-    margin-inline: auto;
+  /* prevent media elements from stretching beyond page width on small screens */
+  img,
+  video {
     max-width: 100%;
     height: auto;
+  }
+
+  /* center (more-or-less) top-level media elements */
+  :is(p, li) img,
+  :is(article, figure) > img,
+  video {
+    display: block;
+    margin-inline: auto;
   }
 
   figcaption {
@@ -69,5 +77,9 @@ const { postPrevious, postNext } = Astro.props;
     padding: 4px;
     border-radius: 2px;
     background-color: var(--color-inline-code);
+  }
+
+  table {
+    width: 100%;
   }
 </style>

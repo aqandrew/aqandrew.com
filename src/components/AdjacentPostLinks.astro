@@ -44,6 +44,7 @@ function getTitleClassList(slug: string) {
   nav {
     display: flex;
     justify-content: space-between;
+    gap: 1rem;
     margin-block: var(--space-medium);
 
     &:not(:has(.previous.post-link)) {
@@ -52,6 +53,7 @@ function getTitleClassList(slug: string) {
   }
 
   .post-link {
+    flex: 1;
     display: flex;
     align-items: center;
     gap: 1rem;

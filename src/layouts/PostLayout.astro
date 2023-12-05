@@ -19,7 +19,7 @@ const { title, date, tags } = Astro.props.frontmatter;
 
     {
       tags.length ? (
-        <ul>
+        <ul class="list-inline">
           {tags.map((tag: string) => (
             <li>
               <a href={`/tags/${tag}`}>#{tag}</a>
@@ -39,10 +39,6 @@ const { title, date, tags } = Astro.props.frontmatter;
 
 <style>
   ul {
-    all: unset;
-    list-style: none;
-    display: inline-flex;
-    gap: 1rem;
     font-family: monospace;
   }
 </style>

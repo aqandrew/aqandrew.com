@@ -21,7 +21,7 @@ const navItems = [
 
 <header>
   <nav>
-    <ul>
+    <ul class="list-inline">
       {
         navItems.map(({ text, url }) => (
           <li>
@@ -44,11 +44,6 @@ const navItems = [
   }
 
   ul {
-    all: unset;
-    list-style-type: none;
-    display: flex;
-    gap: 1rem;
-
     > li:first-child {
       flex: 1;
     }

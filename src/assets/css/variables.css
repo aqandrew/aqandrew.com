@@ -1,0 +1,13 @@
+:root {
+  /* colors */
+  --color-purple: #843ff3;
+
+  /* typography */
+  --font-family-sans-serif: system-ui, -apple-system, BlinkMacSystemFont,
+    'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif,
+    'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+
+  /* sizing/spacing */
+  --content-width: 50rem;
+  --gap-section: 4rem;
+}

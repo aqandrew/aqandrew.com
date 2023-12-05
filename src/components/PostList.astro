@@ -18,12 +18,11 @@ const postList = posts || allPosts;
           .reverse()
           .slice(numPosts)
           .reverse()
-          .map(({ slug, data }, i) => {
+          .map(({ slug, data }) => {
             const { title, date } = data;
 
             return (
               <>
-                {i === 0 ? null : <hr />}
                 <PostItem {slug} {title} {date} />
               </>
             );

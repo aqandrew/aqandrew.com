@@ -17,8 +17,6 @@ import PostList from '@components/PostList.astro';
     </p>
   </section>
 
-  <hr />
-
   <!-- {% if config.lookingForWork %}
     {% include 'hire-me.njk' %}
   {% endif %} -->
@@ -31,3 +29,9 @@ import PostList from '@components/PostList.astro';
     <a href="/blog/">See all</a>
   </section>
 </PageLayout>
+
+<style>
+  section {
+    margin-block-end: var(--gap-section);
+  }
+</style>

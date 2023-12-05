@@ -1,10 +1,10 @@
 ---
-import Page from '@layouts/Page.astro';
+import PageLayout from '@layouts/PageLayout.astro';
 import PostList from '@components/PostList.astro';
 
 const title = 'Blog';
 ---
 
-<Page {title}>
+<PageLayout {title}>
   <PostList />
-</Page>
+</PageLayout>

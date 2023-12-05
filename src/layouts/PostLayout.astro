@@ -47,4 +47,9 @@ const { postPrevious, postNext } = Astro.props;
   article {
     margin-block-start: var(--gap-section);
   }
+
+  article :global(img) {
+    max-width: 100%;
+    height: auto;
+  }
 </style>

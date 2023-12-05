@@ -4,7 +4,6 @@
     "baseUrl": ".",
     "paths": {
       "@config": ["src/config/config.ts"],
-      "@config/*": ["src/config/*"],
       "@layouts/*": ["src/layouts/*"],
       "@components/*": ["src/components/*"]
     }

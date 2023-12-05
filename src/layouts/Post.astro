@@ -20,7 +20,7 @@ const { title, date, tags } = Astro.props.frontmatter;
     <!-- TODO tag pages -->
     {
       tags.length ? (
-        <ul class="tag-list">
+        <ul>
           {tags.map((tag: string) => (
             <li>
               <a href="#">#{tag}</a>
@@ -41,11 +41,11 @@ const { title, date, tags } = Astro.props.frontmatter;
 </Base>
 
 <style>
-  .tag-list {
+  ul {
     all: unset;
     list-style: none;
     display: inline-flex;
-    gap: 16px;
+    gap: 1rem;
     font-family: monospace;
   }
 </style>

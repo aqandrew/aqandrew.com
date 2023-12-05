@@ -1,22 +1,52 @@
 ---
-import { navigation } from '@config/navigation';
+const navItems = [
+  {
+    text: 'Andrew Aquino',
+    url: '/',
+  },
+  {
+    text: 'Blog',
+    url: '/blog/',
+  },
+  {
+    text: 'About',
+    url: '/about/',
+  },
+  {
+    text: 'Resume',
+    url: '/Andrew-Aquino-Resume.pdf',
+  },
+];
 ---
 
 <header>
   <nav>
-    {
-      navigation.items.map(({ text, url }) => {
-        return (
-          // TODO Handle right-aligned nav items with CSS / change layout
-          <a
-            href={url}
-            aria-current={Astro.url.pathname === url ? 'page' : undefined}
-            style={{ float: url === '/' ? undefined : 'right' }}
-          >
-            {text}
-          </a>
-        );
-      })
-    }
+    <ul>
+      {
+        navItems.map(({ text, url }) => (
+          <li>
+            <a
+              href={url}
+              aria-current={Astro.url.pathname === url ? 'page' : undefined}
+            >
+              {text}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
   </nav>
 </header>
+
+<style>
+  ul {
+    all: unset;
+    list-style-type: none;
+    display: flex;
+    gap: 1rem;
+
+    > li:first-child {
+      flex: 1;
+    }
+  }
+</style>

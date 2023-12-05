@@ -1,13 +1,5 @@
 ---
 const { postPrevious, postNext } = Astro.props;
-
-function isNumericString(string: string) {
-  return string.match(/^[\d.]+$/);
-}
-
-function getTitleClassList(slug: string) {
-  return [{ 'break-word': isNumericString(slug) }];
-}
 ---
 
 <nav>
@@ -17,9 +9,7 @@ function getTitleClassList(slug: string) {
         <span class="arrow">←</span>
         <span class="link-text">
           Previous post
-          <small class:list={getTitleClassList(postPrevious.slug)}>
-            {postPrevious.data.title}
-          </small>
+          <small class="break-word">{postPrevious.data.title}</small>
         </span>
       </a>
     ) : null
@@ -30,9 +20,7 @@ function getTitleClassList(slug: string) {
       <a href={`/blog/${postNext.slug}`} class="post-link next">
         <span class="link-text">
           Next post
-          <small class:list={getTitleClassList(postNext.slug)}>
-            {postNext.data.title}
-          </small>
+          <small class="break-word">{postNext.data.title}</small>
         </span>
         <span class="arrow">→</span>
       </a>

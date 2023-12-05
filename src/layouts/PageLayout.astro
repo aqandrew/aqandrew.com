@@ -6,19 +6,14 @@ import Footer from '@components/Footer.astro';
 // RHS of destructuring assignment makes this layout suitable for both .astro and .md files
 // https://docs.astro.build/en/core-concepts/layouts/#using-one-layout-for-md-mdx-and-astro
 // these props are forwarded to BaseLayout -> Meta
-const { title, metaDesc, socialImage, breakTitle } =
-  Astro.props.frontmatter || Astro.props;
+const { title, metaDesc, socialImage } = Astro.props.frontmatter || Astro.props;
 ---
 
 <BaseLayout {title} {metaDesc} {socialImage}>
   <Header />
 
   <main tabindex="-1">
-    {
-      title ? (
-        <h1 class:list={[{ 'break-word': breakTitle }]}>{title}</h1>
-      ) : null
-    }
+    {title ? <h1 class="break-word">{title}</h1> : null}
 
     <slot />
   </main>

@@ -1,6 +1,5 @@
 ---
-import BaseLayout from '@layouts/BaseLayout.astro';
-import Header from '@components/Header.astro';
+import PageLayout from './PageLayout.astro';
 import DateDisplay from '@components/DateDisplay.astro';
 import AdjacentPostLinks from '@components/AdjacentPostLinks.astro';
 
@@ -8,44 +7,41 @@ const { title, date, tags } = Astro.props.frontmatter;
 const { postPrevious, postNext } = Astro.props;
 ---
 
-<BaseLayout {title}>
-  <Header />
+<PageLayout {title}>
+  <small>
+    <DateDisplay {date} />
+  </small>
 
-  <!-- TODO code syntax highlighting -->
-  <main tabindex="-1">
-    <small>
-      <DateDisplay {date} />
-    </small>
+  {
+    tags.length ? (
+      <ul class="tags list-inline">
+        {tags.map((tag: string) => (
+          <li>
+            <a href={`/tags/${tag}`}>#{tag}</a>
+          </li>
+        ))}
+      </ul>
+    ) : null
+  }
 
-    <h1>{title}</h1>
+  <article>
+    <slot />
+  </article>
 
-    {
-      tags.length ? (
-        <ul class="list-inline">
-          {tags.map((tag: string) => (
-            <li>
-              <a href={`/tags/${tag}`}>#{tag}</a>
-            </li>
-          ))}
-        </ul>
-      ) : null
-    }
-
-    <article>
-      <slot />
-    </article>
-
-    <AdjacentPostLinks {postPrevious} {postNext} />
-  </main>
-</BaseLayout>
+  <AdjacentPostLinks {postPrevious} {postNext} />
+</PageLayout>
 
 <style>
-  ul {
+  :global(h1) {
+    margin-block-end: 0;
+  }
+
+  .tags {
     font-family: monospace;
   }
 
   article {
-    margin-block-start: var(--gap-section);
+    margin-block-start: calc(var(--gap-section) / 2);
   }
 
   article :global(img) {

@@ -32,6 +32,7 @@ const { postPrevious, postNext } = Astro.props;
   nav {
     display: flex;
     justify-content: space-between;
+    margin-block: calc(var(--gap-section) / 2);
 
     &:not(:has(.previous.post-link)) {
       justify-content: flex-end;

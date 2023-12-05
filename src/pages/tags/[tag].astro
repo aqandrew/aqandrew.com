@@ -1,0 +1,37 @@
+---
+import { getCollection } from 'astro:content';
+import PageLayout from '@layouts/Page.astro';
+import PostList from '@components/PostList.astro';
+
+export async function getStaticPaths() {
+  const blogEntries = await getCollection('blog');
+  const uniqueTags = [
+    ...new Set(blogEntries.map((post) => post.data.tags).flat()),
+  ];
+
+  return uniqueTags.map((tag) => {
+    const filteredPosts = blogEntries.filter((post) =>
+      post.data.tags.includes(tag)
+    );
+
+    return {
+      params: { tag },
+      props: { posts: filteredPosts },
+    };
+  });
+}
+
+const { tag } = Astro.params;
+const { posts } = Astro.props;
+
+const title = `Posts tagged #${tag}`;
+---
+
+<PageLayout {title}>
+  <small>
+    <!-- TODO pluralize UI string -->
+    {posts.length} post{posts.length === 1 ? '' : 's'}
+  </small>
+
+  <PostList {posts} />
+</PageLayout>

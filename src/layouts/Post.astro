@@ -17,13 +17,12 @@ const { title, date, tags } = Astro.props.frontmatter;
 
     <h1>{title}</h1>
 
-    <!-- TODO tag pages -->
     {
       tags.length ? (
         <ul>
           {tags.map((tag: string) => (
             <li>
-              <a href="#">#{tag}</a>
+              <a href={`/tags/${tag}`}>#{tag}</a>
             </li>
           ))}
         </ul>

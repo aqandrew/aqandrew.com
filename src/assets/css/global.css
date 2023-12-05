@@ -8,5 +8,9 @@ body {
 a,
 a:visited {
   font-weight: bold;
-  color: var(--color-purple);
+  color: var(--color-link);
+
+  &:hover {
+    color: oklch(from var(--color-link) calc(l - 20) c h);
+  }
 }

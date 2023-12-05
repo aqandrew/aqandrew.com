@@ -1,6 +1,7 @@
 :root {
   /* colors */
-  --color-purple: #843ff3;
+  --color-purple: oklch(55.99% 0.248 294.34);
+  --color-link: var(--color-purple);
 
   /* typography */
   --line-height: 1.8;

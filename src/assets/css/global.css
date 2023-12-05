@@ -15,3 +15,7 @@ a:visited {
     color: oklch(from var(--color-link) calc(l - 20) c h);
   }
 }
+
+blockquote {
+  margin-inline: 2rem;
+}

@@ -58,18 +58,14 @@ function getTitleClassList(slug: string) {
     align-items: center;
     gap: 1rem;
 
-    .link-text {
-      display: flex;
-      flex-direction: column;
-    }
-
     &.next {
-      justify-content: flex-end;
-
-      .link-text {
-        align-items: flex-end;
-      }
+      text-align: right;
     }
+  }
+
+  .link-text {
+    display: flex;
+    flex-direction: column;
   }
 
   .arrow {

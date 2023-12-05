@@ -45,7 +45,7 @@ function getTitleClassList(slug: string) {
     display: flex;
     justify-content: space-between;
     gap: 1rem;
-    margin-block: var(--space-medium);
+    margin-block: var(--space-large);
 
     &:not(:has(.previous.post-link)) {
       justify-content: flex-end;
@@ -57,6 +57,7 @@ function getTitleClassList(slug: string) {
     display: flex;
     align-items: center;
     gap: 1rem;
+    text-decoration: none;
 
     &.next {
       justify-content: flex-end;
@@ -67,6 +68,7 @@ function getTitleClassList(slug: string) {
   .link-text {
     display: flex;
     flex-direction: column;
+    text-decoration: underline;
   }
 
   .arrow {

@@ -12,24 +12,30 @@ const postList = posts || allPosts;
 
 <!-- <Debug {postList} /> -->{
   postList.length ? (
-    <section>
-      <ol reversed start={postList.length}>
-        {postList
-          .reverse()
-          .slice(numPosts)
-          .reverse()
-          .map(({ slug, data }) => {
-            const { title, date } = data;
+    <ol>
+      {postList
+        .reverse()
+        .slice(numPosts)
+        .reverse()
+        .map(({ slug, data }) => {
+          const { title, date } = data;
 
-            return (
-              <>
-                <PostItem {slug} {title} {date} />
-              </>
-            );
-          })}
-      </ol>
-    </section>
+          return (
+            <>
+              <PostItem {slug} {title} {date} />
+            </>
+          );
+        })}
+    </ol>
   ) : (
     <h1>NO POSTS</h1>
   )
 }
+
+<style>
+  ol {
+    list-style-type: none;
+    padding-inline-start: 0;
+    margin-block-end: var(--space-medium);
+  }
+</style>

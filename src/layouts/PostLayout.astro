@@ -2,8 +2,10 @@
 import BaseLayout from '@layouts/BaseLayout.astro';
 import Header from '@components/Header.astro';
 import DateDisplay from '@components/DateDisplay.astro';
+import AdjacentPostLinks from '@components/AdjacentPostLinks.astro';
 
 const { title, date, tags } = Astro.props.frontmatter;
+const { postPrevious, postNext } = Astro.props;
 ---
 
 <BaseLayout {title}>
@@ -33,7 +35,7 @@ const { title, date, tags } = Astro.props.frontmatter;
       <slot />
     </article>
 
-    <!-- TODO next/previous posts -->
+    <AdjacentPostLinks {postPrevious} {postNext} />
   </main>
 </BaseLayout>
 

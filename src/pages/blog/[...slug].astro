@@ -4,17 +4,24 @@ import PostLayout from '@layouts/PostLayout.astro';
 
 export async function getStaticPaths() {
   const blogEntries = await getCollection('blog');
+  const numBlogPosts = blogEntries.length;
 
-  return blogEntries.map((entry) => ({
-    params: { slug: entry.slug },
-    props: { entry },
-  }));
+  return blogEntries
+    .sort((a, b) => Date.parse(b.data.date) - Date.parse(a.data.date))
+    .map((entry, i) => ({
+      params: { slug: entry.slug },
+      props: {
+        entry,
+        postPrevious: i + 1 === numBlogPosts ? undefined : blogEntries[i + 1],
+        postNext: i === 0 ? undefined : blogEntries[i - 1],
+      },
+    }));
 }
 
-const { entry } = Astro.props;
+const { entry, postPrevious, postNext } = Astro.props;
 const { Content } = await entry.render();
 ---
 
-<PostLayout frontmatter={entry.data}>
+<PostLayout frontmatter={entry.data} {postPrevious} {postNext}>
   <Content />
 </PostLayout>

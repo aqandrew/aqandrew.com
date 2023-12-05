@@ -1,7 +1,7 @@
 body {
   max-width: var(--content-width);
   margin-inline: auto;
-  line-height: 1.5;
+  line-height: var(--line-height);
   font-family: var(--font-family-sans-serif);
 }
 

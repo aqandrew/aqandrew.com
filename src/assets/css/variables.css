@@ -10,5 +10,7 @@
 
   /* sizing/spacing */
   --content-width: 45rem;
-  --gap-section: 4rem;
+  --space-large: 4rem;
+  --space-medium: calc(var(--space-large) / 2);
+  --gap-section: var(--space-large);
 }

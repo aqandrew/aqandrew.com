@@ -6,11 +6,11 @@ const { postPrevious, postNext } = Astro.props;
   {
     postPrevious ? (
       <a href={`/blog/${postPrevious.slug}`} class="post-link previous">
-        <p>
+        <span class="arrow">←</span>
+        <span class="link-text">
           Previous post
           <small>{postPrevious.data.title}</small>
-        </p>
-        <span class="arrow">←</span>
+        </span>
       </a>
     ) : null
   }
@@ -18,10 +18,10 @@ const { postPrevious, postNext } = Astro.props;
   {
     postNext ? (
       <a href={`/blog/${postNext.slug}`} class="post-link next">
-        <p>
+        <span class="link-text">
           Next post
           <small>{postNext.data.title}</small>
-        </p>
+        </span>
         <span class="arrow">→</span>
       </a>
     ) : null
@@ -32,7 +32,7 @@ const { postPrevious, postNext } = Astro.props;
   nav {
     display: flex;
     justify-content: space-between;
-    margin-block: calc(var(--gap-section) / 2);
+    margin-block: var(--space-medium);
 
     &:not(:has(.previous.post-link)) {
       justify-content: flex-end;
@@ -44,19 +44,15 @@ const { postPrevious, postNext } = Astro.props;
     align-items: center;
     gap: 1rem;
 
-    > p {
+    .link-text {
       display: flex;
       flex-direction: column;
-    }
-
-    &.previous {
-      flex-direction: row-reverse;
     }
 
     &.next {
       justify-content: flex-end;
 
-      > p {
+      .link-text {
         align-items: flex-end;
       }
     }

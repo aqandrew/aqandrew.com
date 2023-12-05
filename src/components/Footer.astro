@@ -7,7 +7,7 @@ const { email, twitter, github, codepen } = config.author;
 <footer>
   <h2>Contact me</h2>
 
-  <ul class="social-links">
+  <ul class="list-inline">
     <li>
       <a href={`mailto:${email}`}>Email</a>
     </li>
@@ -22,3 +22,9 @@ const { email, twitter, github, codepen } = config.author;
     </li>
   </ul>
 </footer>
+
+<style>
+  footer {
+    margin-block: var(--gap-section);
+  }
+</style>

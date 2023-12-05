@@ -3,11 +3,11 @@ import PageLayout from './PageLayout.astro';
 import DateDisplay from '@components/DateDisplay.astro';
 import AdjacentPostLinks from '@components/AdjacentPostLinks.astro';
 
-const { title, date, tags } = Astro.props.frontmatter;
+const { title, date, tags, metaDesc, socialImage } = Astro.props.frontmatter;
 const { postPrevious, postNext } = Astro.props;
 ---
 
-<PageLayout {title}>
+<PageLayout {title} {metaDesc} {socialImage}>
   <small>
     <DateDisplay {date} />
   </small>

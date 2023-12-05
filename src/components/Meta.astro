@@ -6,7 +6,7 @@ const { title, metaDesc, socialImage } = Astro.props;
 const { name, shortDesc, paymentPointer } = config;
 const pageTitle = title ? `${title} - ${name}` : name;
 const currentUrl = Astro.url;
-const pageDesc = shortDesc ?? metaDesc;
+const pageDesc = metaDesc ?? shortDesc;
 ---
 
 <!-- TODO tag meta title --><!-- {% if metaTitle == 'Tag' %}

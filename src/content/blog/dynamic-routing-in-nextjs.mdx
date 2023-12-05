@@ -7,9 +7,10 @@ metaDesc: "How I finally made sense of Next.js' `getStaticProps` and `getStaticP
 socialImage: https://aqandrew.com/cover-nextjs-routing.jpg
 ---
 
-import Shrug from '../../components/Shrug.astro';
+import Markdown from '@components/Markdown.astro';
+import Shrug from '@components/Shrug.astro';
 
-_{frontmatter.metaDesc}_
+_<Markdown string={frontmatter.metaDesc} />_
 
 [Click here for a quick summary.](#summary)
 

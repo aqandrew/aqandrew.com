@@ -11,6 +11,7 @@ breakTitle: true
 ---
 
 import { Image } from 'astro:assets';
+import Markdown from '@components/Markdown.astro';
 import toolbar from '../../assets/img/guitar-pro-toolbar-labeled.png';
 import zoomControl from '../../assets/img/guitar-pro-zoom-control.png';
 import zoomControlOptions from '../../assets/img/guitar-pro-zoom-control-options.png';
@@ -19,7 +20,9 @@ import zoomControlInitial from '../../assets/img/fret-zone-zoom-control-initial.
 import decimalsBase10 from '../../assets/img/decimals-base-10.png';
 import decimalsBase2 from '../../assets/img/decimals-base-2.png';
 
-{frontmatter.metaDesc} But first I'll introduce some context around how I found this bug in my React app. [Click here](#solutions) if you want to skip straight to solutions.
+<Markdown string={frontmatter.metaDesc} /> But first I'll introduce some context
+around how I found this bug in my React app. [Click here](#solutions) if you want
+to skip straight to solutions.
 
 ## How I found this bug
 

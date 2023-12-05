@@ -121,20 +121,6 @@ module.exports = function (eleventyConfig) {
    */
   eleventyConfig.setUseGitIgnore(false);
 
-  eleventyConfig.addNunjucksShortcode('shrug', () => {
-    // TODO Why does 6 backslashes work????
-    // This can be its own blog post lol
-    return '¯\\\\\\_(ツ)_/¯'; // 6
-    // return '¯\\\_(ツ)\_/¯'; // Markdown version, backslash disappears
-    // return '¯\_(ツ)_/¯'; // 1 (original) => backslash disappears
-    // return '¯\\_(ツ)_/¯'; // 2 => backslash disappears
-    // return '¯\\\_(ツ)_/¯'; // 3 => backslash disappears
-    // return '¯\\\\_(ツ)_/¯'; // 4 => parenthetical gets italicized
-    // return '¯\\\\\_(ツ)_/¯'; // 5 => parenthetical gets italicized
-    // return '¯\\\\\\\_(ツ)_/¯'; // 7 => works normally
-    // return '¯\\\\\\\\_(ツ)_/¯'; // 8 => two backslashes, parenthetical gets italicized
-  });
-
   /**
    * Eleventy configuration object
    */

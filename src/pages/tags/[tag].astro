@@ -4,13 +4,13 @@ import PageLayout from '@layouts/PageLayout.astro';
 import PostList from '@components/PostList.astro';
 
 export async function getStaticPaths() {
-  const blogEntries = await getCollection('blog');
+  const blogPosts = await getCollection('blog');
   const uniqueTags = [
-    ...new Set(blogEntries.map((post) => post.data.tags).flat()),
+    ...new Set(blogPosts.map((post) => post.data.tags).flat()),
   ];
 
   return uniqueTags.map((tag) => {
-    const filteredPosts = blogEntries.filter((post) =>
+    const filteredPosts = blogPosts.filter((post) =>
       post.data.tags.includes(tag)
     );
 

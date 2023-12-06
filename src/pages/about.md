@@ -3,7 +3,9 @@ layout: '../layouts/PageLayout.astro'
 title: About
 ---
 
-Thank you for visiting my website. 🌞 This is where I [learn in public](https://www.swyx.io/writing/learn-in-public/). When I'm trying something new and run into problems, I'll take notes and put my thoughts/solutions in the [blog](/blog/) for future reference.
+Thank you for visiting my website. 🌞
+
+This is where I [learn in public](https://www.swyx.io/writing/learn-in-public/). When I'm trying something new and run into problems, I'll take notes and put my thoughts/solutions in the [blog](/blog/) for future reference.
 
 ## Me
 

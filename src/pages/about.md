@@ -3,14 +3,15 @@ layout: '../layouts/PageLayout.astro'
 title: About
 ---
 
-Hi! 👋🏽 I'm Andrew, a frontend developer based in Southern California. My coding interests are in modern JavaScript and interactive visual experiences&mdash;namely React, Jamstack, D3, and three.js. Someday I'd like to be fluent with live coding environments like [hydra](https://hydra.ojack.xyz/) and maybe [TidalCycles](http://pages.tidalcycles.org/).
+Thank you for visiting my website. 🌞 This is where I [learn in public](https://www.swyx.io/writing/learn-in-public/). When I'm trying something new and run into problems, I'll take notes and put my thoughts/solutions in the [blog](/blog/) for future reference.
 
-This site is where I [learn in public](https://www.swyx.io/writing/learn-in-public/). When I'm trying something new and run into problems, I'll take notes and put my thoughts/solutions in the [blog](/blog/). They won't be one-size-fits-all. But I hope that through here, my new knowledge can go a little further by helping someone else.
-
-## Stuff I like
+## Me
 
 I love to cook and transcribe/play/write music.
 
 - 🎸 Guitar is my favorite instrument.
+- 🇵🇭 I'm learning [octavina](https://en.wikipedia.org/wiki/Octavina) in a rondalla, a Filipino string ensemble.
 - 🍗 I dabble with drums.
-- 🎹 I used to play piano a long time ago.
+- 🎹 I started on piano when I was little, and picked it back up during the pandemic.
+
+I also enjoy some creative coding outside of work. Someday I'd like to be fluent with live coding environments like [hydra](https://hydra.ojack.xyz/) and maybe [TidalCycles](http://pages.tidalcycles.org/).

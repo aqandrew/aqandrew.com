@@ -1,7 +1,7 @@
 export const config = {
   name: 'Andrew Aquino',
   shortDesc:
-    "I'm a frontend developer in Southern California. These are my projects and notes about JavaScript, CSS, design, and anything else I'm learning.",
+    "Frontend software engineer. Projects and notes on web development: JavaScript, CSS, design, and anything else I'm learning.",
   url: 'https://aqandrew.com',
   resumePath: '/Andrew-Aquino-Resume.pdf',
   lang: 'en',

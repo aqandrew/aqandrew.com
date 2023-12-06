@@ -18,4 +18,24 @@ a:visited {
 
 blockquote {
   margin-inline: 2rem;
+  margin-block: var(--gap-post-media);
+}
+
+pre {
+  padding: var(--space-small);
+  border-radius: var(--border-radius-small);
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+
+  > thead {
+    border-bottom: 2px solid lightgrey;
+  }
+
+  > thead > tr > th,
+  > tbody > tr > td {
+    padding: 1rem;
+  }
 }

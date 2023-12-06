@@ -9,7 +9,7 @@ const { postPrevious, postNext } = Astro.props;
 
 <PageLayout {title} {metaDesc} {socialImage}>
   <small>
-    <DateDisplay {date} />
+    Published <DateDisplay {date} />
   </small>
 
   {
@@ -80,7 +80,9 @@ const { postPrevious, postNext } = Astro.props;
     background-color: var(--color-inline-code);
   }
 
-  table {
-    width: 100%;
+  article > :is(img, pre, figure),
+  li > img,
+  iframe {
+    margin-block: var(--gap-post-media);
   }
 </style>

@@ -15,5 +15,8 @@
   --content-width: 45rem;
   --space-large: 4rem;
   --space-medium: calc(var(--space-large) / 2);
+  --space-small: calc(var(--space-medium) / 2);
   --gap-section: var(--space-large);
+  --gap-post-media: var(--space-medium);
+  --border-radius-small: 4px;
 }

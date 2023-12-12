@@ -5,9 +5,6 @@ const { slug, title, date } = Astro.props;
 ---
 
 <li>
-  <!-- TODO Remove hacky workaround for .word-break-all -->
-  <!-- {% if title === '0.30000000000000004' %}class="word-break-all"{% endif %} -->
-
   <h3>
     <a href={`/blog/${slug}`} rel="bookmark">{title}</a>
   </h3>

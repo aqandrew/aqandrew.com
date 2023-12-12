@@ -9,21 +9,35 @@ body {
 a,
 a:visited {
   font-weight: bold;
-  color: var(--color-link);
+  color: var(--color-primary);
 
   &:hover {
-    color: oklch(from var(--color-link) calc(l - 20) c h);
+    color: oklch(from var(--color-primary) calc(l - 20) c h);
   }
 }
 
+aside,
+blockquote,
+pre {
+  border-radius: var(--border-radius-small);
+}
+
+aside {
+  padding-inline: var(--space-small);
+  border: var(--space-xxs) dashed
+    oklch(from var(--color-primary) calc(l + 20) calc(c * 3 / 4) h);
+}
+
 blockquote {
-  margin-inline: 2rem;
+  margin-inline: var(--space-xs);
   margin-block: var(--gap-post-media);
+  padding: var(--space-xs) var(--space-small);
+  border-left: var(--space-xxs) solid var(--color-secondary);
+  background-color: oklch(from var(--color-secondary) 95% 0.03 h);
 }
 
 pre {
   padding: var(--space-small);
-  border-radius: var(--border-radius-small);
 }
 
 table {

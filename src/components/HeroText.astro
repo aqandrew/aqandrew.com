@@ -95,7 +95,7 @@ const spin = animationName === 'spin';
     -webkit-text-fill-color: transparent;
 
     /* fallback for unsupported browsers */
-    background-color: var(--color-purple);
+    background-color: var(--color-primary);
 
     &.phase {
       background-image: radial-gradient(
@@ -119,11 +119,11 @@ const spin = animationName === 'spin';
       animation: spin 2.5s infinite linear;
       background-image: conic-gradient(
         from var(--bg-angle) at 78.7% 33.2% in oklch shorter hue,
-        var(--color-purple),
-        cadetblue,
+        var(--color-primary),
+        var(--color-secondary),
         yellow,
-        cadetblue,
-        var(--color-purple)
+        var(--color-secondary),
+        var(--color-primary)
       );
     }
   }

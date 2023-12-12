@@ -1,7 +1,7 @@
 :root {
   /* colors */
-  --color-purple: oklch(55.99% 0.248 294.34);
-  --color-link: var(--color-purple);
+  --color-primary: oklch(55.99% 0.248 294.34);
+  --color-secondary: cadetblue;
   --color-inline-code: oklch(95% 0 0);
 
   /* typography */
@@ -14,8 +14,10 @@
   /* sizing/spacing */
   --content-width: 45rem;
   --space-large: 4rem;
-  --space-medium: calc(var(--space-large) / 2);
-  --space-small: calc(var(--space-medium) / 2);
+  --space-medium: 2rem;
+  --space-small: 1rem;
+  --space-xs: 0.5rem;
+  --space-xxs: 0.25rem;
   --gap-section: var(--space-large);
   --gap-post-media: var(--space-medium);
   --border-radius-small: 4px;

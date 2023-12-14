@@ -1,0 +1,41 @@
+---
+import { getCollection } from 'astro:content';
+import PostItem from './PostItem.astro';
+import { Debug } from 'astro:components';
+
+const { numPosts, posts } = Astro.props;
+
+const allPosts = await getCollection('blog');
+allPosts.sort((a, b) => Date.parse(b.data.date) - Date.parse(a.data.date));
+const postList = posts || allPosts;
+---
+
+<!-- <Debug {postList} /> -->{
+  postList.length ? (
+    <ol>
+      {postList
+        .reverse()
+        .slice(numPosts)
+        .reverse()
+        .map(({ slug, data }) => {
+          const { title, date } = data;
+
+          return (
+            <>
+              <PostItem {slug} {title} {date} />
+            </>
+          );
+        })}
+    </ol>
+  ) : (
+    <h1>NO POSTS</h1>
+  )
+}
+
+<style>
+  ol {
+    list-style-type: none;
+    padding-inline-start: 0;
+    margin-block-end: var(--space-medium);
+  }
+</style>

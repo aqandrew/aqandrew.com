@@ -1,0 +1,53 @@
+---
+import '@fontsource-variable/work-sans';
+import Meta from '@components/Meta.astro';
+
+const { title, metaDesc, socialImage } = Astro.props;
+
+import '../assets/css/variables.css';
+import '../assets/css/global.css';
+import '../assets/css/utils.css';
+
+const isDev = import.meta.env.DEV;
+const devFavicon = `data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y=".9em" font-size="90">🚧</text></svg>`;
+---
+
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
+
+    <!-- TODO RSS -->
+    <!-- <link rel="alternate" type="application/rss+xml" title="{{ config.title }}" href="{{ config.url }}/feed.xml"/> -->
+
+    <Meta {title} {metaDesc} {socialImage} />
+
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href={isDev ? devFavicon : '/favicon.svg'}
+    />
+    {isDev ? null : <link rel="alternate icon" href="/favicon.ico" />}
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=UA-92780960-3"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+
+      gtag('config', 'UA-92780960-3');
+    </script>
+  </head>
+
+  <body>
+    <slot />
+  </body>
+</html>

@@ -1,0 +1,19 @@
+---
+import DateDisplay from './DateDisplay.astro';
+
+const { slug, title, date } = Astro.props;
+---
+
+<li>
+  <h3>
+    <a href={`/blog/${slug}`} rel="bookmark">{title}</a>
+  </h3>
+
+  <DateDisplay {date} />
+</li>
+
+<style>
+  h3 {
+    margin-block-end: var(--space-xxs);
+  }
+</style>

@@ -18,7 +18,6 @@
   },
   "dependencies": {
     "@astrojs/mdx": "2.0.1",
-    "@fontsource-variable/work-sans": "^5.0.16",
     "astro": "4.0.4",
     "micromark": "^4.0.0"
   },

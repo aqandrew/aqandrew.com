@@ -1,6 +1,6 @@
 ---
-import '@fontsource-variable/work-sans';
 import Meta from '@components/Meta.astro';
+import GoogleFonts from '@components/GoogleFonts.astro';
 
 const { title, metaDesc, socialImage } = Astro.props;
 
@@ -31,6 +31,8 @@ const devFavicon = `data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" v
       href={isDev ? devFavicon : '/favicon.svg'}
     />
     {isDev ? null : <link rel="alternate icon" href="/favicon.ico" />}
+
+    <GoogleFonts />
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script

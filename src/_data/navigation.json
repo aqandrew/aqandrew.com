@@ -1,0 +1,24 @@
+{
+  "items": [
+    {
+      "text": "Andrew Aquino",
+      "url": "/",
+      "external": false
+    },
+    {
+      "text": "Resume",
+      "url": "/Andrew-Aquino-Resume.pdf",
+      "external": false
+    },
+    {
+      "text": "About",
+      "url": "/about/",
+      "external": false
+    },
+    {
+      "text": "Blog",
+      "url": "/blog/",
+      "external": false
+    }
+  ]
+}

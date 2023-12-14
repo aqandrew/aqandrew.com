@@ -1,0 +1,9 @@
+{% macro postItem(url, title, date) %}
+  <li>
+    {# TODO Remove hacky workaround for .word-break-all #}
+    <h3 style="--ne-vertical-leading: 1rem" {% if title === '0.30000000000000004' %}class="word-break-all"{% endif %}>
+      <a href="{{ url }}" rel="bookmark">{{ title }}</a>
+    </h3>
+    <time datetime="{{ date | htmlDate }}">{{ date | dateFilter }}</time>
+  </li>
+{% endmacro %}

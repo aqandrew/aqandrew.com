@@ -1,0 +1,10 @@
+.list-inline {
+  all: unset;
+  list-style-type: none;
+  display: flex;
+  gap: 1rem;
+}
+
+.break-word {
+  overflow-wrap: break-word;
+}

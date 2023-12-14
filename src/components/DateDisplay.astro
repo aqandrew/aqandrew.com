@@ -1,0 +1,11 @@
+---
+const { date } = Astro.props;
+
+const dateFormatter = new Intl.DateTimeFormat('en-US', {
+  dateStyle: 'long',
+});
+const dateForHumans = dateFormatter.format(new Date(date));
+const dateForCrawlers = new Date(date).toISOString();
+---
+
+<time datetime={dateForCrawlers}>{dateForHumans}</time>

@@ -3,8 +3,8 @@
 
 # TEAM
 
-    Mattia Astorino -- Designer & Developer -- @equinusocio
+    Andrew Aquino -- Frontend Engineer -- @aqandrew
 
 # TECHNOLOGY COLOPHON
 
-    CSS3, HTML5, POSTCSS, Javascript, 11ty
+    CSS3, HTML5, JavaScript, Astro, MDX

@@ -1,0 +1,53 @@
+---
+import { config } from '@config';
+
+const navItems = [
+  {
+    text: 'Andrew Aquino',
+    url: '/',
+  },
+  {
+    text: 'Blog',
+    url: '/blog/',
+  },
+  {
+    text: 'About',
+    url: '/about/',
+  },
+  {
+    text: 'Resume',
+    url: config.resumePath,
+  },
+];
+---
+
+<header>
+  <nav>
+    <ul class="list-inline">
+      {
+        navItems.map(({ text, url }) => (
+          <li>
+            <a
+              href={url}
+              aria-current={Astro.url.pathname === url ? 'page' : undefined}
+            >
+              {text}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </nav>
+</header>
+
+<style>
+  header {
+    margin-block: var(--space-medium) var(--space-large);
+  }
+
+  ul {
+    > li:first-child {
+      flex: 1;
+    }
+  }
+</style>

@@ -1,0 +1,26 @@
+---
+layout: page
+metaTitle: Tag
+description: Categories page description
+pagination:
+  data: collections
+  size: 1
+  alias: tag
+permalink: /blog/tag/{{ tag | slug }}/
+---
+{% from "postItem.njk" import postItem %}
+{% set numPosts = collections[tag].length %}
+
+<h1 style="margin-bottom: 8px; font-family: var(--ne-code-font-family)">#{{ tag }}</h1>
+<small>{{ numPosts }} post{% if numPosts != 1 %}s{% endif %} published</small>
+
+<section style="margin-top: 80px">
+  <ol reversed>
+    {% for post in collections[tag] | reverse %}
+      {% if not loop.first %}
+        <hr/>
+      {% endif %}
+      {{ postItem(post.url, post.data.title, post.date) }}
+    {% endfor %}
+  </ol>
+</section>

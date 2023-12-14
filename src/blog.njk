@@ -1,0 +1,7 @@
+---
+layout: page
+title: Blog
+---
+{% from "post-list.njk" import postList %}
+
+{{ postList(collections.posts) }}

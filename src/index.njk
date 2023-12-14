@@ -1,0 +1,33 @@
+---
+layout: 'home'
+---
+
+<section>
+  <p>
+    Hi! My name's
+  </p>
+
+  <h1 id="hero-text">
+    Andrew Aquino.
+  </h1>
+
+  <p>
+    I'm a frontend developer in Southern California. These are my projects and notes about <strong>JavaScript</strong>, <strong>CSS</strong>, <strong>design</strong>, and <strong>anything else I'm learning</strong>.
+  </p>
+</section>
+
+<hr>
+
+{% if config.lookingForWork %}
+  {% include 'hire-me.njk' %}
+{% endif %}
+
+<section>
+  <h2>Latest posts</h2>
+
+  {% from "post-list.njk" import postList %}
+
+  {{ postList(collections.posts, 3) }}
+
+  <a href="/blog/">See all</a>
+</section>

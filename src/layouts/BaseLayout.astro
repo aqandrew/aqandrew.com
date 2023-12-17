@@ -1,12 +1,12 @@
 ---
+import { ViewTransitions } from 'astro:transitions';
 import Meta from '@components/Meta.astro';
 import GoogleFonts from '@components/GoogleFonts.astro';
-
-const { title, metaDesc, socialImage } = Astro.props;
-
 import '../assets/css/variables.css';
 import '../assets/css/global.css';
 import '../assets/css/utils.css';
+
+const { title, metaDesc, socialImage } = Astro.props;
 
 const isDev = import.meta.env.DEV;
 const devFavicon = `data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y=".9em" font-size="90">🚧</text></svg>`;
@@ -33,6 +33,7 @@ const devFavicon = `data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" v
     {isDev ? null : <link rel="alternate icon" href="/favicon.ico" />}
 
     <GoogleFonts />
+    <ViewTransitions />
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script

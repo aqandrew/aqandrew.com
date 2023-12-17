@@ -21,4 +21,7 @@
   --gap-section: var(--space-large);
   --gap-post-media: var(--space-medium);
   --border-radius-small: 4px;
+
+  /* expressive-code overrides */
+  --ec-frm-frameBoxShdCssVal: none !important;
 }

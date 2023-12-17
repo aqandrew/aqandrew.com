@@ -250,6 +250,7 @@ Note that in this example, the shape and size of `paths` correspond to the list 
 
 ```jsx
 // post/[slug].js
+// ...
 ```
 
 Last but not least, it's crucial that:
@@ -300,9 +301,7 @@ With our three blog posts, let's say one category contains two posts, and the ot
 
 Now, when we fetch blog posts, the data we receive looks like this:
 
-{/* TODO highlight 6-9,16-19,26-29 */}
-
-```json
+```json {7-10, 17-20, 27-30}
 [
   {
     Id: 0,

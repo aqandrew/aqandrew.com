@@ -3,6 +3,10 @@ import { config } from '@config';
 
 const navItems = [
   {
+    text: 'Andrew Aquino',
+    url: '/',
+  },
+  {
     text: 'Blog',
     url: '/blog/',
   },
@@ -15,31 +19,18 @@ const navItems = [
     url: config.resumePath,
   },
 ];
-
-function isAtUrl(path: string) {
-  return Astro.url.pathname === path;
-}
-
-const isOnHomepage = isAtUrl('/');
 ---
 
 <header>
   <nav>
     <ul class="list-inline">
-      <li>
-        <a
-          href="/"
-          aria-current={isOnHomepage ? 'page' : undefined}
-          hidden={isOnHomepage}
-          transition:name="my-name"
-        >
-          Andrew Aquino
-        </a>
-      </li>
       {
         navItems.map(({ text, url }) => (
           <li>
-            <a href={url} aria-current={isAtUrl(url) ? 'page' : undefined}>
+            <a
+              href={url}
+              aria-current={Astro.url.pathname === url ? 'page' : undefined}
+            >
               {text}
             </a>
           </li>
@@ -57,10 +48,6 @@ const isOnHomepage = isAtUrl('/');
   ul {
     > li:first-child {
       flex: 1;
-
-      > [aria-current='page'] {
-        color: red;
-      }
     }
   }
 </style>

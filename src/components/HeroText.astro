@@ -80,18 +80,12 @@ const spin = animationName === 'spin';
   }
 </script>
 
-<h1
-  id="hero-text"
-  class:list={[{ phase, spin }]}
-  on:hover
-  transition:name="my-name"
->
+<h1 id="hero-text" class:list={[{ phase, spin }]} on:hover>
   <slot />
 </h1>
 
 <style>
   #hero-text {
-    display: inline-block;
     font-size: 3rem;
     font-weight: 900;
     margin-block: 0;

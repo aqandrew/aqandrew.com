@@ -1,8 +1,14 @@
 :root {
   /* colors */
+  --color-text: #444;
+  --color-text-deemphasized: oklch(from var(--color-text) calc(l + 10) c h);
+  --color-background-hover: #fafafa;
+  --color-shadow: lightgrey;
   --color-primary: oklch(55.99% 0.248 294.34);
   --color-secondary: cadetblue;
   --color-inline-code: oklch(95% 0 0);
+  --color-tile: oklch(from var(--color-primary) calc(l + 40) calc(c - 0.2) h);
+  --color-tile-hover: oklch(from var(--color-tile) calc(l - 3) c h);
 
   /* typography */
   --line-height: 1.8;
@@ -21,6 +27,9 @@
   --gap-section: var(--space-large);
   --gap-post-media: var(--space-medium);
   --border-radius-small: 4px;
+
+  /* animation */
+  --transition-duration-quick: 250ms;
 
   /* expressive-code overrides */
   --ec-frm-frameBoxShdCssVal: none !important;

@@ -3,8 +3,11 @@ import PageLayout from './PageLayout.astro';
 import DateDisplay from '@components/DateDisplay.astro';
 import PostNavigation from '@components/PostNavigation.astro';
 
-const { title, date, tags, metaDesc, socialImage } = Astro.props.frontmatter;
-const { postPrevious, postNext } = Astro.props;
+const {
+  frontmatter: { title, date, tags, metaDesc, socialImage },
+  postPrevious,
+  postNext,
+} = Astro.props;
 ---
 
 <PageLayout {title} {metaDesc} {socialImage}>
@@ -13,7 +16,7 @@ const { postPrevious, postNext } = Astro.props;
   </small>
 
   {
-    tags.length ? (
+    tags?.length ? (
       <ul class="tags list-inline">
         {tags.map((tag: string) => (
           <li>
@@ -54,15 +57,6 @@ const { postPrevious, postNext } = Astro.props;
     height: auto;
   }
 
-  /* center (more-or-less) top-level media elements */
-  :is(p, li) img,
-  :is(article, figure) > img,
-  video,
-  .twitter-tweet {
-    display: block;
-    margin-inline: auto;
-  }
-
   figcaption {
     text-align: center;
     font-size: small;
@@ -78,11 +72,5 @@ const { postPrevious, postNext } = Astro.props;
     padding: 4px;
     border-radius: 2px;
     background-color: var(--color-inline-code);
-  }
-
-  article > :is(img, pre, figure),
-  li > img,
-  iframe {
-    margin-block: var(--gap-post-media);
   }
 </style>

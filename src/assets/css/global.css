@@ -4,6 +4,7 @@ body {
   padding-inline: 1rem;
   line-height: var(--line-height);
   font-family: var(--font-family-sans-serif);
+  color: var(--color-text);
 }
 
 a,
@@ -51,4 +52,24 @@ table {
 
 .expressive-code .frame {
   margin-block: var(--space-small) !important;
+}
+
+article {
+  margin-block-end: var(--space-large);
+}
+
+/* center (more-or-less) top-level media elements */
+:is(p, li) img,
+:is(article, figure) > img,
+video,
+.twitter-tweet,
+.instagram-media {
+  display: block;
+  margin-inline: auto !important;
+}
+
+article > :is(img, pre, figure),
+li > img,
+iframe {
+  margin-block: var(--gap-post-media) !important;
 }

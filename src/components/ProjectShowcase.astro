@@ -1,0 +1,86 @@
+---
+import { getCollection } from 'astro:content';
+
+const { selectedProjectSlug } = Astro.props;
+
+const projects = await getCollection('projects');
+projects.sort((a, b) => a.data.order - b.data.order);
+---
+
+<section>
+  <h2>{selectedProjectSlug ? 'More' : 'Sample'} projects</h2>
+
+  {
+    selectedProjectSlug ? null : (
+      <p>
+        I'm actively seeking my next developer role. Here's a showcase of some
+        of my work that doesn't quite fit in my resume.
+      </p>
+    )
+  }
+
+  <ul class="showcase">
+    {
+      projects.map(({ slug, data: { title, desc } }) =>
+        selectedProjectSlug === slug ? null : (
+          // TODO thumbnail
+          <li class="project-card">
+            <a href={`/projects/${slug}/`}>
+              <h3>{title}</h3>
+              <p>{desc}</p>
+            </a>
+          </li>
+        )
+      )
+    }
+
+    <!-- a CodePen or two? -->
+    <!-- ginger beer cat and React music visualizer were picked for front page -->
+    <!-- my contributions to Excalidraw (once I've published my blog post about it) -->
+  </ul>
+</section>
+
+<style>
+  .showcase {
+    --gap-heading: var(--space-xxs);
+
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: var(--space-small) 0;
+    list-style-type: none;
+    gap: var(--space-small);
+
+    .project-card {
+      flex-basis: 350px;
+      background-color: var(--color-tile);
+      border-radius: var(--border-radius-small);
+      box-shadow: 2px 2px 8px var(--color-shadow);
+      transition:
+        background-color var(--transition-duration-quick),
+        box-shadow var(--transition-duration-quick);
+
+      &:hover {
+        background-color: var(--color-tile-hover);
+        box-shadow: 2px 2px 4px var(--color-shadow);
+      }
+
+      a {
+        display: block;
+        height: 100%;
+        padding: var(--space-small);
+        text-decoration: none;
+        font-weight: normal;
+      }
+
+      h3 {
+        margin-block: 0 var(--gap-heading);
+      }
+
+      p {
+        margin-block: var(--gap-heading) 0;
+        color: var(--color-text);
+      }
+    }
+  }
+</style>

@@ -8,3 +8,8 @@
 .break-word {
   overflow-wrap: break-word;
 }
+
+.text-deemphasized {
+  font-style: italic;
+  color: var(--color-text-deemphasized);
+}

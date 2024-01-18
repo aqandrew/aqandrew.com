@@ -58,6 +58,12 @@ article {
   margin-block-end: var(--space-large);
 }
 
+p code {
+  padding: 4px;
+  border-radius: 2px;
+  background-color: var(--color-inline-code);
+}
+
 /* center (more-or-less) top-level media elements */
 :is(p, li) img,
 :is(article, figure) > img,
@@ -72,4 +78,11 @@ article > :is(img, pre, figure),
 li > img,
 iframe {
   margin-block: var(--gap-post-media) !important;
+}
+
+hr {
+  border: none;
+  height: 2px;
+  margin-block: var(--space-medium);
+  background-color: var(--color-shadow);
 }

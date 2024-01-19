@@ -33,21 +33,28 @@ const spin = animationName === 'spin';
 
   // Register properties
   colorNames.forEach((name, index) => {
-    CSS.registerProperty({
-      name,
-      syntax: '<color>',
-      inherits: false,
-      initialValue: rainbowColors[index],
-    });
+    // throws an error if we attempt to register a name that's already been registered
+    // preventing the call to registerProperty requires checking all custom properties, which is a pain
+    //   so instead, just keep the error from being logged to the console
+    try {
+      CSS.registerProperty({
+        name,
+        syntax: '<color>',
+        inherits: false,
+        initialValue: rainbowColors[index],
+      });
+    } catch {}
   });
 
   function setGradientColorCustomProperties(colors) {
     const textElem = document.getElementById('hero-text');
 
-    // Apply these new colors, update the DOM.
-    colorNames.forEach((name, index) => {
-      textElem.style.setProperty(name, colors[index]);
-    });
+    if (textElem) {
+      // Apply these new colors, update the DOM.
+      colorNames.forEach((name, index) => {
+        textElem.style.setProperty(name, colors[index]);
+      });
+    }
   }
 
   function activateMagicGradient() {

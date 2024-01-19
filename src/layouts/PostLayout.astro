@@ -13,7 +13,7 @@ const { postPrevious, postNext } = Astro.props;
   </small>
 
   {
-    tags.length ? (
+    tags?.length ? (
       <ul class="tags list-inline">
         {tags.map((tag: string) => (
           <li>
@@ -70,11 +70,11 @@ const { postPrevious, postNext } = Astro.props;
 
   /* break long numbers in floating point post */
   blockquote,
-  p code {
+  :is(p, li) code {
     overflow-wrap: break-word;
   }
 
-  p code {
+  :is(p, li) code {
     padding: 4px;
     border-radius: 2px;
     background-color: var(--color-inline-code);

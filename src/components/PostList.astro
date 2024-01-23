@@ -12,15 +12,11 @@ const postList = posts || allPosts;
 {
   postList.length ? (
     <ol>
-      {postList
-        .reverse()
-        .slice(numPosts)
-        .reverse()
-        .map(({ slug, data: { title, date } }) => (
-          <>
-            <PostItem {slug} {title} {date} />
-          </>
-        ))}
+      {postList.slice(0, numPosts).map(({ slug, data: { title, date } }) => (
+        <>
+          <PostItem {slug} {title} {date} />
+        </>
+      ))}
     </ol>
   ) : (
     <h1>NO POSTS</h1>

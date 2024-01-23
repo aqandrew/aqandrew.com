@@ -64,7 +64,19 @@ const {
 
   /* break long numbers in floating point post */
   blockquote,
-  p code {
+  :is(p, li) code {
     overflow-wrap: break-word;
+  }
+
+  :is(p, li) code {
+    padding: 4px;
+    border-radius: 2px;
+    background-color: var(--color-inline-code);
+  }
+
+  article > :is(img, pre, figure),
+  li > img,
+  iframe {
+    margin-block: var(--gap-post-media);
   }
 </style>

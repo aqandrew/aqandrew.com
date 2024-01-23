@@ -1,0 +1,85 @@
+---
+title: This Site Is Now Built with Astro
+date: '1-19-2024'
+tags:
+  - astro
+metaDesc: Documenting my decision to migrate from Eleventy to Astro for my dev blog
+---
+
+## Why I switched from Eleventy
+
+The first version of this blog was [Jekyll](https://jekyllrb.com/), since I first built it as a GitHub Pages site in 2016. I'd switched from Jekyll to [Eleventy](https://www.11ty.dev/) in 2020 because I couldn't wrap my head around Ruby errors.
+
+After taking a break from blogging, I wanted to make some updates to this site. **First of all,** one of the build commands gave me this error:
+
+```bash frame="none"
+$ parcel build ./src/assets/css/app.pcss ./src/assets/js/app.js --dist-dir ./bundle --no-source-maps
+node:internal/modules/cjs/loader:1338
+  return process.dlopen(module, path.toNamespacedPath(filename));
+                 ^
+
+Error: dlopen(/Users/andrewaquino/Developer/aqandrew.com/node_modules/@parcel/source-map/build/Release/sourcemap.node, 0x0001): symbol not found in flat namespace '__ZN4Napi7details31needs_objectwrap_destructor_fixE'
+    at Module._extensions..node (node:internal/modules/cjs/loader:1338:18)
+    at Module.load (node:internal/modules/cjs/loader:1117:32)
+    at Module._load (node:internal/modules/cjs/loader:958:12)
+    at Module.require (node:internal/modules/cjs/loader:1141:19)
+    at require (node:internal/modules/cjs/helpers:110:18)
+    at load (/Users/andrewaquino/Developer/aqandrew.com/node_modules/node-gyp-build/index.js:21:10)
+    at Object.<anonymous> (/Users/andrewaquino/Developer/aqandrew.com/node_modules/@parcel/source-map/dist/node.js:14:43)
+    at Module._compile (node:internal/modules/cjs/loader:1254:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1308:10)
+    at Module.load (node:internal/modules/cjs/loader:1117:32) {
+  code: 'ERR_DLOPEN_FAILED'
+}
+```
+
+Some Google searching revealed [it had something to do with C++ and Python](https://stackoverflow.com/a/39519008). Yeah no thanks! That's kind of preposterous, considering that all I'm really trying to do here is build some Markdown and HTML templates.
+
+**Second of all,** to my dismay I found that my Eleventy starter _and_ its CSS framework got deprecated. As in, trying to navigate to their repos on GitHub gave me 404s. You think it could never happen to you until it does. 🥲
+
+I could have just switched to a different starter, but I was ready to move on from Eleventy anyway.
+
+### Eleventy pros (over Jekyll)
+
+- it’s Just JavaScript&#8482; / an npm package (no Ruby necessary)
+
+### Eleventy cons
+
+- I don’t use Nunjucks templating language anywhere else
+  - it's _just similar enough_ to Liquid (Jekyll's templating language) that I always confuse the syntax for the two
+  - I had difficulty trying to set up an alternative templating language (Vue, React, etc)
+- skill transfer: I’ve never seen Eleventy mentioned in a job description
+  - but in November 2023 I read one that said “bonus points if you’ve worked with Astro”
+
+I have nothing against Eleventy's authors or community; a tool is a tool and this one's just not my preference.
+
+## Why Astro?
+
+I like React, but Next/Remix are too heavy for this job. And I didn't like the idea of writing my blog as an entirely client-side JS app, for SEO reasons.
+
+Even though I've mostly fallen off of dev Twitter (and Twitter itself has fallen off considerably) in the past year or so, during that time I've read great things there about [Astro](https://astro.build/) as a static site generator. After using it to rebuild this site again I've come to the conclusion that Astro is what I wanted Eleventy to be, and then some. Its philosophy of shipping as little JS as possible is perfect for my use case of "mostly static (Markdown), with a bit of interactivity".
+
+I _did_ reinvent the wheel a bit by not using a starter/theme. But at the very least, everything that’s going on outside of Astro’s magic black box is under my control.
+
+### Astro pros
+
+- docs are very comprehensive and dev-friendly
+- config file / plugins are easier to set up
+- frontend framework agnostic: I can sprinkle in interactive components written with vanilla JS, React, Svelte, or any other framework I want to try out
+- default templating language (`.astro`) has a very low learning curve for me since I’ve used Svelte at work
+  - Astro syntax is actually more JS-like than Svelte, since you can write conditional/mapped elements in `{curlies}` as opposed to `#if`/`#each`
+- it was a breeze to add [view transitions](https://developer.chrome.com/docs/web-platform/view-transitions)
+
+### Astro cons
+
+I don't really have any except for these two bugs:
+
+1. I had some trouble loading a variable font with Fontsource (Astro's recommended provider for Google Fonts) because I kept seeing a flicker before the font loaded, and Fontsource's docs were 404ing
+2. when writing the hero text component on the homepage, I was getting an error saying `Astro2 is not defined`
+   - this ended up being my fault because I'd tried referencing `Astro.props` in a `script` tag (the Svelte way) instead of in code fences `---` (the Astro way)
+
+---
+
+Overall, I hope this new architecture reduces friction and makes it easier for me to write here consistently.
+
+I'm sure this post is gonna look real funny when I rebuild my blog again in a few years.

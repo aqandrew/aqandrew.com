@@ -2,18 +2,26 @@
 import BaseLayout from '@layouts/BaseLayout.astro';
 import Header from '@components/Header.astro';
 import Footer from '@components/Footer.astro';
+import { getTransitionName } from 'src/utils';
 
 // RHS of destructuring assignment makes this layout suitable for both .astro and .md files
 // https://docs.astro.build/en/core-concepts/layouts/#using-one-layout-for-md-mdx-and-astro
 // these props are forwarded to BaseLayout -> Meta
 const { title, metaDesc, socialImage } = Astro.props.frontmatter || Astro.props;
+const { slug } = Astro.params;
 ---
 
 <BaseLayout {title} {metaDesc} {socialImage}>
   <Header />
 
   <main tabindex="-1">
-    {title ? <h1 class="break-word">{title}</h1> : null}
+    {
+      title ? (
+        <h1 class="break-word">
+          <span transition:name={getTransitionName(slug!)}>{title}</span>
+        </h1>
+      ) : null
+    }
 
     <slot />
   </main>

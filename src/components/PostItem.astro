@@ -1,12 +1,15 @@
 ---
 import DateDisplay from './DateDisplay.astro';
+import { getTransitionName } from 'src/utils';
 
 const { slug, title, date } = Astro.props;
 ---
 
 <li>
   <h3>
-    <a href={`/blog/${slug}`} rel="bookmark">{title}</a>
+    <a href={`/blog/${slug}`} transition:name={getTransitionName(slug)}>
+      {title}
+    </a>
   </h3>
 
   <DateDisplay {date} />

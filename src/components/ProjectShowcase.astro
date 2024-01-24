@@ -1,5 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
+import { getTransitionName } from 'src/utils';
 
 const { selectedProjectSlug } = Astro.props;
 
@@ -26,7 +27,15 @@ projects.sort((a, b) => a.data.order - b.data.order);
           // TODO thumbnail
           <li class="project-card">
             <a href={`/projects/${slug}/`}>
-              <h3>{title}</h3>
+              <h3>
+                <span
+                  transition:name={
+                    selectedProjectSlug ? undefined : getTransitionName(slug)
+                  }
+                >
+                  {title}
+                </span>
+              </h3>
               <p>{desc}</p>
             </a>
           </li>

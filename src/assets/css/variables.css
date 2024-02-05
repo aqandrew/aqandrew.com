@@ -9,6 +9,11 @@
   --color-tile: oklch(from var(--color-primary) calc(l + 40) calc(c - 0.2) h);
   --color-tile-hover: oklch(from var(--color-tile) calc(l - 3) c h);
 
+  /* relative lch colors aren't supported on iOS Safari yet */
+  @supports not (color: oklch(from color l c h)) {
+    --color-tile-hover: #e4daff;
+  }
+
   /* typography */
   --line-height: 1.8;
   --font-family-sans-serif: 'Work Sans', system-ui, -apple-system,

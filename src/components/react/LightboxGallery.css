@@ -12,8 +12,12 @@
     padding: var(--space-small);
     background-color: var(--color-tile);
 
-    a {
+    a,
+    img {
       max-height: var(--gallery-height);
+    }
+
+    a {
       box-shadow: var(--shadow-tile);
       transition:
         box-shadow var(--transition-duration-quick),

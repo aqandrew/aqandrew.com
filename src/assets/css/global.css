@@ -13,7 +13,7 @@ a:visited {
   color: var(--color-primary);
 
   &:hover {
-    color: oklch(from var(--color-primary) calc(l - 20) c h);
+    color: var(--color-primary-hover);
   }
 }
 
@@ -24,8 +24,7 @@ blockquote {
 
 aside {
   padding-inline: var(--space-small);
-  border: var(--space-xxs) dashed
-    oklch(from var(--color-primary) calc(l + 20) calc(c * 3 / 4) h);
+  border: var(--space-xxs) dashed var(--color-primary-light);
 }
 
 blockquote {
@@ -73,6 +72,10 @@ video,
   display: block;
   max-width: 100%;
   margin-inline: auto !important;
+}
+
+video {
+  background-color: var(--color-tile);
 }
 
 article > :is(img, pre, figure),

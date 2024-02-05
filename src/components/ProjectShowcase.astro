@@ -64,14 +64,14 @@ projects.sort((a, b) => a.data.order - b.data.order);
       flex-basis: 350px;
       background-color: var(--color-tile);
       border-radius: var(--border-radius-small);
-      box-shadow: 2px 2px 8px var(--color-shadow);
+      box-shadow: var(--shadow-tile);
       transition:
         background-color var(--transition-duration-quick),
         box-shadow var(--transition-duration-quick);
 
       &:hover {
         background-color: var(--color-tile-hover);
-        box-shadow: 2px 2px 4px var(--color-shadow);
+        box-shadow: var(--shadow-hover);
       }
 
       a {

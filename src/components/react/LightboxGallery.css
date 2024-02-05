@@ -9,9 +9,20 @@
     overflow-y: auto;
     display: flex;
     gap: var(--space-small);
+    padding: var(--space-small);
+    background-color: var(--color-tile);
 
-    img {
+    a {
       max-height: var(--gallery-height);
+      box-shadow: var(--shadow-tile);
+      transition:
+        box-shadow var(--transition-duration-quick),
+        filter var(--transition-duration-quick);
+
+      &:hover {
+        box-shadow: var(--shadow-hover);
+        filter: brightness(95%);
+      }
     }
   }
 }

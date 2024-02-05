@@ -28,6 +28,10 @@
   --gap-post-media: var(--space-medium);
   --border-radius-small: 4px;
 
+  /* shadows */
+  --shadow-tile: 2px 2px 8px var(--color-shadow);
+  --shadow-hover: 2px 2px 4px var(--color-shadow);
+
   /* animation */
   --transition-duration-quick: 250ms;
 

@@ -4,6 +4,17 @@ desc: Responsive frontend development + animations for product marketing pages
 order: 0
 ---
 
+import LightboxGallery from '@components/react/LightboxGallery';
+
+export const IMG_PATH = '/src/assets/img/projects/square/';
+export const BREAKPOINTS = [
+  { label: 'xs', desc: 'mobile, small' },
+  { label: 'sm', desc: 'mobile, large' },
+  { label: 'md', desc: 'tablet' },
+  { label: 'lg', desc: 'desktop, small' },
+  { label: 'xl', desc: 'desktop, large' },
+];
+
 As a design technologist at Square, I was a frontend developer who sat among designers, responsible for writing custom styles on [squareup.com](https://squareup.com/) that deviate from Square's design system for public webpages. These custom styles included responsive flex/grid layouts, animations, and interactive Svelte components.
 
 ## Virtual Terminal
@@ -12,9 +23,25 @@ This page had the most custom styles out of any Square webpage I worked on. Seve
 
 ### side-scrolling modals
 
-These were particularly challenging because \_\_\_.
+These were particularly challenging because TODO
 
-TODO
+<video controls>
+  <source
+    src={`${IMG_PATH}squareup.com_us_en_payments_virtual-terminal_ssm.mov`}
+  />
+</video>
+
+<LightboxGallery
+  client:load
+  images={BREAKPOINTS.map(({ label, desc }) => ({
+    src:
+      IMG_PATH +
+      'squareup.com_us_en_payments_virtual-terminal_ssm_' +
+      label +
+      '.png',
+    alt: `Virtual Terminal side-scrolling modal grid - ${desc}`,
+  }))}
+/>
 
 ### modal tiles
 

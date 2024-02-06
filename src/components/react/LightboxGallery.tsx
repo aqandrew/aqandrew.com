@@ -37,6 +37,7 @@ export default function LightboxGallery({ images }: LightboxGalleryProps) {
     <div className="LightboxGallery">
       <div className="thumbnails">
         {images.map(({ src, alt }, i) => (
+          // TODO set role="button" or use a button here
           <a href="#lightbox-gallery" key={src} onClick={() => openLightbox(i)}>
             <img src={src} alt={alt} />
           </a>

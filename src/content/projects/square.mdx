@@ -4,7 +4,10 @@ desc: Responsive frontend development + animations for product marketing pages
 order: 0
 ---
 
+import { Image } from 'astro:assets';
 import LightboxGallery from '@components/react/LightboxGallery';
+
+import vtComparisonTable from '../../assets/img/projects/square/squareup.com_us_en_payments_virtual-terminal_why-square_xl.png';
 
 export const IMG_PATH = '/src/assets/img/projects/square/';
 export const BREAKPOINTS = [
@@ -15,57 +18,98 @@ export const BREAKPOINTS = [
   { label: 'xl', desc: 'desktop, large' },
 ];
 
-As a design technologist at Square, I was a frontend developer who sat among designers, responsible for writing custom styles on [squareup.com](https://squareup.com/) that deviate from Square's design system for public webpages. These custom styles included responsive flex/grid layouts, animations, and interactive Svelte components.
+As a design technologist at Square, I was a frontend developer who sat among designers, responsible for writing custom styles on [squareup.com](https://squareup.com/) that deviate from Market, Square's design system for public webpages. These custom styles included responsive flex/grid layouts, animations, and interactive Svelte components.
+
+---
 
 ## Virtual Terminal
 
-This page had the most custom styles out of any Square webpage I worked on. Several of these sections mainly relied on CSS grid layouts:
+Usually custom styles were limited to 1-2 sections per page, but Virtual Terminal had custom styles in almost every section--the most out of any Square webpage I worked on.
 
-### side-scrolling modals
+Several of the sections mainly relied on CSS grid layouts:
 
-These were particularly challenging because TODO
+1. ### side-scrolling modals
 
-<video controls>
+   <LightboxGallery
+     client:load
+     images={BREAKPOINTS.map(({ label, desc }) => ({
+       src:
+         IMG_PATH +
+         'squareup.com_us_en_payments_virtual-terminal_ssm_' +
+         label +
+         '.png',
+       alt: `Virtual Terminal side-scrolling modal grid - ${desc}`,
+     }))}
+   />
+
+   For the section showcasing how to use Virtual Terminal on different platforms, I used CSS grids for both the tiles that open the modals and the columns of images/copy inside each modal.
+
+   For these particular modals, I extended Market's modal component to redirect vertical scrolling into horizontal scrolling, with a progress indicator.
+
+   <video controls autoPlay loop className="rounded">
+     <source
+       src={`${IMG_PATH}squareup.com_us_en_payments_virtual-terminal_ssm.mov`}
+     />
+   </video>
+
+2. ### feature modals
+
+   <LightboxGallery
+     client:load
+     images={BREAKPOINTS.map(({ label, desc }) => ({
+       src:
+         IMG_PATH +
+         'squareup.com_us_en_payments_virtual-terminal_mt_' +
+         label +
+         '.png',
+       alt: `Virtual Terminal feature modals - ${desc}`,
+     }))}
+   />
+
+3. ### pricing section
+
+   <LightboxGallery
+     client:load
+     images={BREAKPOINTS.map(({ label, desc }) => ({
+       src:
+         IMG_PATH +
+         'squareup.com_us_en_payments_virtual-terminal_pricing_' +
+         label +
+         '.png',
+       alt: `Virtual Terminal pricing section - ${desc}`,
+     }))}
+   />
+
+### comparison table with highlighted column
+
+The design of this table called for highlighting the Virtual Terminal column in blue and giving it rounded corners. While CSS grid provides simple methods for that, the fact the table was rendered from Markdown meant that this was a case best suited for a plain old HTML `table`. I wrote a reusable SCSS mixin to highlight a `table` column, that takes a column number as a parameter. A fun little challenge in writing the mixin was that our default table styles included borders.
+
+<Image
+  src={vtComparisonTable}
+  alt="Table showing Square Virtual Terminal's offerings highlighted, compared to other payment processors and banks. $0 monthly fee, no monthly contracts, free sales reports and insights, and free customer engagement tools."
+/>
+
+To keep the translation/localization process simple, we generally wanted to author webpages' copy in Markdown as much as possible. We were able to keep this experience for the table shown on mobile devices by nesting separate Markdown tables in a Market tabbed content section.
+
+<video controls autoPlay loop className="rounded mobile">
   <source
-    src={`${IMG_PATH}squareup.com_us_en_payments_virtual-terminal_ssm.mov`}
+    src={`${IMG_PATH}squareup.com_us_en_payments_virtual-terminal_why-square_sm.mov`}
   />
 </video>
 
-<LightboxGallery
-  client:load
-  images={BREAKPOINTS.map(({ label, desc }) => ({
-    src:
-      IMG_PATH +
-      'squareup.com_us_en_payments_virtual-terminal_ssm_' +
-      label +
-      '.png',
-    alt: `Virtual Terminal side-scrolling modal grid - ${desc}`,
-  }))}
-/>
-
-### modal tiles
-
-TODO
-
-### testimonial carousel
-
-TODO
-
-### table with highlighted column, accomplished with box-shadow
-
-TODO
-
-### pricing grid
-
-TODO
+### fading in content
 
 I also set up an `IntersectionObserver` to fade in content as the user scrolls down the page.
+
+---
 
 ## Seller stories
 
 I wrote reusable CSS utilities for Square seller testimonials and case studies. My favorite piece was this component that places a caption over the corner of an image. It uses radial gradients, clipping masks, and CSS variables to create a silhouette with smooth rounded corners that change size with the user's viewport.
 
 TODO
+
+---
 
 ## Marketing
 
@@ -75,6 +119,8 @@ To help make the animation more accessible, its behavior changes to a simple fad
 
 TODO
 
+---
+
 ## Bakery
 
 Responsive CSS grid layout for pricing cards.
@@ -83,4 +129,4 @@ TODO
 
 ---
 
-These are just a few examples \_\_\_.
+These are just a few examples TODO.

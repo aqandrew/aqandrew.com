@@ -9,6 +9,7 @@
     overflow-y: auto;
     display: flex;
     gap: var(--space-small);
+    margin-block: var(--gap-post-media);
     padding: var(--space-small);
     border-radius: var(--border-radius-small);
     background-color: var(--color-tile);

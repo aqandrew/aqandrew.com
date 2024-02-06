@@ -71,6 +71,7 @@ video,
 .instagram-media {
   display: block;
   max-width: 100%;
+  height: auto;
   margin-inline: auto !important;
 }
 
@@ -78,8 +79,8 @@ video {
   background-color: var(--color-tile);
 }
 
-article > :is(img, pre, figure),
-li > img,
+article > :is(img, video, pre, figure),
+li > :is(img, video),
 iframe {
   margin-block: var(--gap-post-media) !important;
 }

@@ -38,7 +38,7 @@
   --space-xxs: 0.25rem;
   --gap-section: var(--space-large);
   --gap-post-media: var(--space-medium);
-  --border-radius-small: 4px;
+  --border-radius-small: 5px;
 
   /* shadows */
   --shadow-tile: 2px 2px 8px var(--color-shadow);

@@ -28,19 +28,19 @@ export default function LightboxGallery({ images }: LightboxGalleryProps) {
 
   function closeLightbox() {
     setOpen(false);
-
-    // remove the URL hash while preserving history
-    history.replaceState(null, '', ' ');
   }
 
   return (
     <div className="LightboxGallery">
       <div className="thumbnails">
         {images.map(({ src, alt }, i) => (
-          // TODO set role="button" or use a button here
-          <a href="#lightbox-gallery" key={src} onClick={() => openLightbox(i)}>
+          <button
+            key={src}
+            onClick={() => openLightbox(i)}
+            aria-label={`Open lightbox gallery: ${alt}`}
+          >
             <img src={src} alt={alt} />
-          </a>
+          </button>
         ))}
       </div>
 

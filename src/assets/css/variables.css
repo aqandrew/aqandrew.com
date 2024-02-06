@@ -43,6 +43,7 @@
   /* shadows */
   --shadow-tile: 2px 2px 8px var(--color-shadow);
   --shadow-hover: 2px 2px 4px var(--color-shadow);
+  --shadow-inset: inset var(--shadow-tile);
 
   /* animation */
   --transition-duration-quick: 250ms;

@@ -10,7 +10,9 @@
     display: flex;
     gap: var(--space-small);
     padding: var(--space-small);
+    border-radius: var(--border-radius-small);
     background-color: var(--color-tile);
+    box-shadow: var(--shadow-inset);
 
     a,
     img {

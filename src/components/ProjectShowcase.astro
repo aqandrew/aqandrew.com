@@ -9,13 +9,13 @@ projects.sort((a, b) => a.data.order - b.data.order);
 ---
 
 <section>
-  <h2>{selectedProjectSlug ? 'More' : 'Sample'} projects</h2>
+  <h2>{selectedProjectSlug ? 'More' : 'Selected'} projects</h2>
 
   {
     selectedProjectSlug ? null : (
       <p>
         I'm actively seeking my next developer role. Here's a showcase of some
-        of my work that doesn't quite fit in my resume.
+        of my recent/in-progress work that doesn't quite fit in my resume.
       </p>
     )
   }

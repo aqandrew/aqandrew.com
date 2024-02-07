@@ -52,6 +52,9 @@ Several of the sections mainly relied on CSS grid layouts:
      <source
        src={`${IMG_PATH}squareup.com_us_en_payments_virtual-terminal_ssm.mov`}
      />
+     <p>
+       screen recording of Square Virtual Terminal's sidescrolling modal section
+     </p>
    </video>
 
 2. ### feature modals
@@ -97,6 +100,11 @@ To keep the translation/localization process simple, we generally wanted to auth
   <source
     src={`${IMG_PATH}squareup.com_us_en_payments_virtual-terminal_why-square_sm.mov`}
   />
+  <p>
+    Screen recording of Square Virtual Terminal's comparison table section on
+    mobile. Clicking navigation tabs at the top transitions different tables
+    into the main content area, sliding in from the sides of the screen.
+  </p>
 </video>
 
 ### fading in content
@@ -157,6 +165,11 @@ I created a custom Svelte component to animate in the presence of example UI ele
 
 <video controls autoPlay loop className="rounded">
   <source src={IMG_PATH + 'squareup.com_us_en_marketing_hero-animation.mov'} />
+  <p>
+    Screen recording of Square's Marketing page. When the hero image scrolls
+    into view, UI elements showing example marketing messages that sellers can
+    send to customers fade in and slide upward.
+  </p>
 </video>
 
 The original animations both fade in and slide upward, which might cause discomfort for people with vestibular disorders. To help make the animation more accessible, its behavior changes to a simple fade-in if the user's settings prefer reduced motion.
@@ -168,6 +181,10 @@ The original animations both fade in and slide upward, which might cause discomf
       'squareup.com_us_en_marketing_hero-animation_prefers-reduced-motion.mov'
     }
   />
+  <p>
+    Screen recording of Square's Marketing page. Here, the example UI elements
+    only fade in when they enter, instead of also sliding.
+  </p>
 </video>
 
 ---

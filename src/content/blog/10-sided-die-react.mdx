@@ -257,7 +257,7 @@ To create a D10, first my goal was to create an octahedron (D8) component using 
 
 For this part, I relied heavily on Three.js Fundamentals' articles on [custom geometry](https://threejsfundamentals.org/threejs/lessons/threejs-custom-geometry.html) and [custom buffer geometry](https://threejsfundamentals.org/threejs/lessons/threejs-custom-buffergeometry.html). Those article raised some important considerations:
 
-- Because `PolyhedronGeometry` is a `BufferGeometry`, the array of vertices is a one-dimensional array of x, y, and z coordinates. So for a list of points [p<sub>0</sub>, p<sub>1</sub>, ..., p<sub>n</sub>], the vertex array will look like [x<sub>0</sub>, y<sub>0</sub>, z<sub>0</sub>, x<sub>1</sub>, y<sub>1</sub>, z<sub>1</sub>, ..., x<sub>n</sub>, y<sub>n</sub>, z<sub>n</sub>].
+- Because `PolyhedronGeometry` is a `BufferGeometry`, the array of vertices is a one-dimensional array of x, y, and z coordinates. So for a list of points \[p<sub>0</sub>, p<sub>1</sub>, ..., p<sub>n</sub>\], the vertex array will look like \[x<sub>0</sub>, y<sub>0</sub>, z<sub>0</sub>, x<sub>1</sub>, y<sub>1</sub>, z<sub>1</sub>, ..., x<sub>n</sub>, y<sub>n</sub>, z<sub>n</sub>\].
 
 - Each face is defined as a group of three vertices.
 
@@ -386,7 +386,11 @@ for (let i = 0, b = 0; i < 10; ++i, b += (Math.PI * 2) / 10) {
 
 <aside>
 
-As far as I can tell, 0.105 is a completely arbitrary number for the z-height/depth of each vertex in the middle layer. It produces a nice-looking die though.
+As far as I can tell, 0.105 is a completely arbitrary number for the
+z-height/depth of each vertex in the middle layer. It produces a nice-looking
+die though.
+
+**Update:** 0.105 &asymp; tan 6&deg;. It's close enough that I suspect that's where the number came from. This means that each vertex has an altitude of &plusmn;6&deg; from the D10's equator.
 
 </aside>
 
@@ -403,7 +407,7 @@ For 0 &le; b &le; 2&pi;: x starts at -1, goes to 1, then goes back to -1; y star
 
 <figure class="figure">
   <video width="720" height="438" controls loop>
-    <source src="/src/assets/img/desmos-circle-720.mp4" type="video/mp4" />
+    <source src="/desmos-circle-720.mp4" type="video/mp4" />
   </video>
   <figcaption>
     Drawing a circle counterclockwise from the left on{' '}
@@ -416,7 +420,7 @@ When we take the z component into account, we have our zigzaggy decagon:
 {/* prettier-ignore */}
 <figure class="figure">
   <video width="720" height="438" controls loop>
-    <source src="/src/assets/img/mathbox-circle-720.mp4" type="video/mp4" />
+    <source src="/mathbox-circle-720.mp4" type="video/mp4" />
   </video>
   <figcaption>
     Drawing a circle counterclockwise from the left with varying z-heights on <a href="https://christopherchudzicki.github.io/MathBox-Demos/parametric_curves_3D.html?settings=eyJmdW5jdGlvbnMiOnsiYSI6eyJ4IjoiLWNvcyh0KSIsInkiOiItc2luKHQpIiwieiI6Ii4xMDUqY29zKDUqdCkiLCJ2ZWxvY2l0eVZlY3RvclZpc2libGUiOnRydWUsInNhbXBsZXMiOjEwLCJ0IjoyLjI2OTk5OTk5OTk5OTk5NTZ9fSwiY29udGFpbmVySWQiOiJteS1tYXRoLWJveCIsInNjYWxlIjpbMSwxLDFdLCJjYW1lcmEiOnsicG9zaXRpb24iOlstMC4zNywwLjE0LC0wLjMxXX0sIm5vWm9vbSI6dHJ1ZSwiZm9jdXMiOjEuNjk1NTgyNDk1NzgxMzE3LCJmcm9tVVJMIjp0cnVlfQ==">MathBox</a>

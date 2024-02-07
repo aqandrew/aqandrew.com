@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import type { ImageMetadata } from 'astro';
 
 import Lightbox from 'yet-another-react-lightbox';
 import 'yet-another-react-lightbox/styles.css';
@@ -57,4 +58,28 @@ export default function LightboxGallery({ images }: LightboxGalleryProps) {
       />
     </div>
   );
+}
+
+const SQUARE_BREAKPOINTS = [
+  { label: 'xs', desc: 'mobile, small' },
+  { label: 'sm', desc: 'mobile, large' },
+  { label: 'md', desc: 'tablet' },
+  { label: 'lg', desc: 'desktop, small' },
+  { label: 'xl', desc: 'desktop, large' },
+];
+
+// convert locally imported images into LightboxGallery `images` prop,
+//   corresponding to Square's 5 breakpoints
+export function getSquareLightboxImages(
+  importedImages: ImageMetadata[],
+  label: string
+): LightboxGalleryImage[] {
+  return importedImages.map(({ src }, i) => {
+    const { desc } = SQUARE_BREAKPOINTS[i];
+
+    return {
+      src,
+      alt: `${label} - ${desc}`,
+    };
+  });
 }

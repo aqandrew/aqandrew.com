@@ -6,7 +6,9 @@ order: 0
 
 import { config } from '@config';
 import { Image } from 'astro:assets';
-import LightboxGallery from '@components/react/LightboxGallery';
+import LightboxGallery, {
+  getSquareLightboxImages,
+} from '@components/react/LightboxGallery';
 
 {/* TODO host images in a CDN like CloudFlare */}
 import vtSsmXs from '../../assets/img/projects/square/squareup.com_us_en_payments_virtual-terminal_ssm_xs.png';
@@ -14,26 +16,59 @@ import vtSsmSm from '../../assets/img/projects/square/squareup.com_us_en_payment
 import vtSsmMd from '../../assets/img/projects/square/squareup.com_us_en_payments_virtual-terminal_ssm_md.png';
 import vtSsmLg from '../../assets/img/projects/square/squareup.com_us_en_payments_virtual-terminal_ssm_lg.png';
 import vtSsmXl from '../../assets/img/projects/square/squareup.com_us_en_payments_virtual-terminal_ssm_xl.png';
+import vtMtXs from '../../assets/img/projects/square/squareup.com_us_en_payments_virtual-terminal_mt_xs.png';
+import vtMtSm from '../../assets/img/projects/square/squareup.com_us_en_payments_virtual-terminal_mt_sm.png';
+import vtMtMd from '../../assets/img/projects/square/squareup.com_us_en_payments_virtual-terminal_mt_md.png';
+import vtMtLg from '../../assets/img/projects/square/squareup.com_us_en_payments_virtual-terminal_mt_lg.png';
+import vtMtXl from '../../assets/img/projects/square/squareup.com_us_en_payments_virtual-terminal_mt_xl.png';
+import vtPricingXs from '../../assets/img/projects/square/squareup.com_us_en_payments_virtual-terminal_pricing_xs.png';
+import vtPricingSm from '../../assets/img/projects/square/squareup.com_us_en_payments_virtual-terminal_pricing_sm.png';
+import vtPricingMd from '../../assets/img/projects/square/squareup.com_us_en_payments_virtual-terminal_pricing_md.png';
+import vtPricingLg from '../../assets/img/projects/square/squareup.com_us_en_payments_virtual-terminal_pricing_lg.png';
+import vtPricingXl from '../../assets/img/projects/square/squareup.com_us_en_payments_virtual-terminal_pricing_xl.png';
 import vtComparisonTable from '../../assets/img/projects/square/squareup.com_us_en_payments_virtual-terminal_why-square_xl.png';
+import sellerStoriesAroom from '../../assets/img/projects/square/squareup.com_us_en_point-of-sale_learn_aroom.png';
+import sellerStoriesLaBarba from '../../assets/img/projects/square/squareup.com_us_es_point-of-sale_learn_la-barba.png';
+import sellerStoriesSohoLive from '../../assets/img/projects/square/squareup.com_gb_en_point-of-sale_learn_soho-live-music-club.png';
+import sellerStoriesArtybaker from '../../assets/img/projects/square/squareup.com_ie_en_point-of-sale_learn_artybaker.png';
+import sellerStoriesMito from '../../assets/img/projects/square/squareup.com_es_es_point-of-sale_learn_mito.png';
 import quoteArtybakerMd from '../../assets/img/projects/square/squareup.com_ie_en_point-of-sale_learn_artybaker_quote_md.png';
 import quoteMitoLg from '../../assets/img/projects/square/squareup.com_es_es_point-of-sale_learn_mito_quote_lg.png';
 
-export const IMG_PATH = '/src/assets/img/projects/square/';
-export const BREAKPOINTS = [
-  { label: 'xs', desc: 'mobile, small' },
-  { label: 'sm', desc: 'mobile, large' },
-  { label: 'md', desc: 'tablet' },
-  { label: 'lg', desc: 'desktop, small' },
-  { label: 'xl', desc: 'desktop, large' },
+export const vtSsmImages = getSquareLightboxImages(
+  [vtSsmXs, vtSsmSm, vtSsmMd, vtSsmLg, vtSsmXl],
+  'Virtual Terminal side-scrolling modal grid'
+);
+export const vtFeatureModalsImages = getSquareLightboxImages(
+  [vtMtXs, vtMtSm, vtMtMd, vtMtLg, vtMtXl],
+  'Virtual Terminal feature modals'
+);
+export const vtPricingImages = getSquareLightboxImages(
+  [vtPricingXs, vtPricingSm, vtPricingMd, vtPricingLg, vtPricingXl],
+  'Virtual Terminal pricing section'
+);
+export const sellerStoriesImages = [
+  {
+    src: sellerStoriesAroom.src,
+    alt: 'Aroom seller story (en-US)',
+  },
+  {
+    src: sellerStoriesLaBarba.src,
+    alt: 'La Barba seller story (es-US)',
+  },
+  {
+    src: sellerStoriesSohoLive.src,
+    alt: 'Soho Live seller story (en-GB)',
+  },
+  {
+    src: sellerStoriesArtybaker.src,
+    alt: 'Artybaker seller story (en-IE)',
+  },
+  {
+    src: sellerStoriesMito.src,
+    alt: 'Mito (es-ES)',
+  },
 ];
-export const vtImages = [vtSsmXs, vtSsmSm, vtSsmMd, vtSsmLg, vtSsmXl].map(({ src }, i) => {
-  const { desc } = BREAKPOINTS[i];
-
-return {
-src,
-alt: `Virtual Terminal side-scrolling modal grid - ${desc}`,
-}
-});
 
 As a design technologist at Square, I was a frontend developer who sat among designers, responsible for writing custom styles on [squareup.com](https://squareup.com/) that deviate from Market, Square's design system for public webpages. These custom styles included responsive flex/grid layouts, animations, and interactive Svelte components.
 
@@ -47,7 +82,7 @@ Usually custom styles were limited to 1-2 sections per page, but Virtual Termina
 
 1. #### side-scrolling modals
 
-   <LightboxGallery client:load images={vtImages} />
+   <LightboxGallery client:load images={vtSsmImages} />
 
    In the section showcasing how to use Virtual Terminal on different platforms, I laid out both the tiles that open the modals, and the columns of images/copy inside each modal, with CSS grids.
 
@@ -65,31 +100,11 @@ Usually custom styles were limited to 1-2 sections per page, but Virtual Termina
 
 2. #### feature modals
 
-   <LightboxGallery
-     client:load
-     images={BREAKPOINTS.map(({ label, desc }) => ({
-       src:
-         IMG_PATH +
-         'squareup.com_us_en_payments_virtual-terminal_mt_' +
-         label +
-         '.png',
-       alt: `Virtual Terminal feature modals - ${desc}`,
-     }))}
-   />
+   <LightboxGallery client:load images={vtFeatureModalsImages} />
 
 3. #### pricing section
 
-   <LightboxGallery
-     client:load
-     images={BREAKPOINTS.map(({ label, desc }) => ({
-       src:
-         IMG_PATH +
-         'squareup.com_us_en_payments_virtual-terminal_pricing_' +
-         label +
-         '.png',
-       alt: `Virtual Terminal pricing section - ${desc}`,
-     }))}
-   />
+   <LightboxGallery client:load images={vtPricingImages} />
 
 ### comparison table with highlighted column
 
@@ -124,31 +139,7 @@ I also set up an `IntersectionObserver` to fade in content as the user scrolls d
 
 I wrote reusable CSS utilities for testimonials / case studies from Square sellers, and applied them to pages for multiple locales including en-US, es-US, en-GB, en-IE, es-ES, and ca-ES.
 
-<LightboxGallery
-  client:load
-  images={[
-    {
-      name: 'squareup.com_us_en_point-of-sale_learn_aroom.png',
-      alt: 'Aroom seller story (en-US)',
-    },
-    {
-      name: 'squareup.com_us_es_point-of-sale_learn_la-barba.png',
-      alt: 'La Barba seller story (es-US)',
-    },
-    {
-      name: 'squareup.com_gb_en_point-of-sale_learn_soho-live-music-club.png',
-      alt: 'Soho Live seller story (en-GB)',
-    },
-    {
-      name: 'squareup.com_ie_en_point-of-sale_learn_artybaker.png',
-      alt: 'Artybaker seller story (en-IE)',
-    },
-    {
-      name: 'squareup.com_es_es_point-of-sale_learn_mito.png',
-      alt: 'Mito (es-ES)',
-    },
-  ].map(({ name, alt }) => ({ src: IMG_PATH + name, alt }))}
-/>
+<LightboxGallery client:load images={sellerStoriesImages} />
 
 My favorite piece was the component below, which places quoted text with a solid white background in the corner of an image. I used CSS trickery including radial gradients, clipping masks, and custom properties to create a silhouette with smooth rounded corners that change size with the user's viewport.
 

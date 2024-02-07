@@ -4,6 +4,7 @@ desc: Responsive frontend development + animations for product marketing pages
 order: 0
 ---
 
+import { config } from '@config';
 import { Image } from 'astro:assets';
 import LightboxGallery from '@components/react/LightboxGallery';
 
@@ -28,9 +29,9 @@ As a design technologist at Square, I was a frontend developer who sat among des
 
 Usually custom styles were limited to 1-2 sections per page, but Virtual Terminal had custom styles in almost every section--the most out of any Square webpage I worked on.
 
-Several of the sections mainly relied on CSS grid layouts:
+### Several of the sections mainly relied on CSS grid layouts:
 
-1. ### side-scrolling modals
+1. #### side-scrolling modals
 
    <LightboxGallery
      client:load
@@ -44,7 +45,7 @@ Several of the sections mainly relied on CSS grid layouts:
      }))}
    />
 
-   For the section showcasing how to use Virtual Terminal on different platforms, I used CSS grids to lay out both the tiles that open the modals, as well as the columns of images/copy inside each modal.
+   In the section showcasing how to use Virtual Terminal on different platforms, I laid out both the tiles that open the modals, and the columns of images/copy inside each modal, with CSS grids.
 
    For these particular modals, I extended Market's modal component to redirect vertical scrolling into horizontal scrolling, with a progress indicator.
 
@@ -57,7 +58,7 @@ Several of the sections mainly relied on CSS grid layouts:
      </p>
    </video>
 
-2. ### feature modals
+2. #### feature modals
 
    <LightboxGallery
      client:load
@@ -71,7 +72,7 @@ Several of the sections mainly relied on CSS grid layouts:
      }))}
    />
 
-3. ### pricing section
+3. #### pricing section
 
    <LightboxGallery
      client:load
@@ -143,7 +144,7 @@ I wrote reusable CSS utilities for testimonials / case studies from Square selle
   ].map(({ name, alt }) => ({ src: IMG_PATH + name, alt }))}
 />
 
-My favorite piece was the component below, which places quoted text with a solid white background in the corner of an image. It uses radial gradients, clipping masks, and CSS variables to create a silhouette with smooth rounded corners that change size with the user's viewport.
+My favorite piece was the component below, which places quoted text with a solid white background in the corner of an image. I used CSS trickery including radial gradients, clipping masks, and custom properties to create a silhouette with smooth rounded corners that change size with the user's viewport.
 
 Displaying the quote text as HTML elements (instead of embedding it in each image) kept the text accessible and responsive, and saved production designers from having to do extra work.
 
@@ -189,4 +190,12 @@ The original animations both fade in and slide upward, which might cause discomf
 
 ---
 
-These are just a few examples TODO.
+These are just a few examples of frontend development I did at Square.
+
+In addition, some work outside of my job description that I led:
+
+- rewriting an HTML email build system to be 70x faster and more extensible
+- automating file uploads to be 60x faster than the manual process that had been in place for years
+- documenting a third-party WYSIWYG editor to empower production designers and product marketing managers to build simple HTML pages themselves, offloading that high volume work from engineers
+
+I enjoy making improvements to developer experience just as much as building frontends. If you have a need for any of the above on your engineering team, <a href={`mailto:${config.author.email}`}>let's chat!</a>

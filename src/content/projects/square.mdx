@@ -8,6 +8,8 @@ import { Image } from 'astro:assets';
 import LightboxGallery from '@components/react/LightboxGallery';
 
 import vtComparisonTable from '../../assets/img/projects/square/squareup.com_us_en_payments_virtual-terminal_why-square_xl.png';
+import quoteArtybakerMd from '../../assets/img/projects/square/squareup.com_ie_en_point-of-sale_learn_artybaker_quote_md.png';
+import quoteMitoLg from '../../assets/img/projects/square/squareup.com_es_es_point-of-sale_learn_mito_quote_lg.png';
 
 export const IMG_PATH = '/src/assets/img/projects/square/';
 export const BREAKPOINTS = [
@@ -42,7 +44,7 @@ Several of the sections mainly relied on CSS grid layouts:
      }))}
    />
 
-   For the section showcasing how to use Virtual Terminal on different platforms, I used CSS grids for both the tiles that open the modals and the columns of images/copy inside each modal.
+   For the section showcasing how to use Virtual Terminal on different platforms, I used CSS grids to lay out both the tiles that open the modals, as well as the columns of images/copy inside each modal.
 
    For these particular modals, I extended Market's modal component to redirect vertical scrolling into horizontal scrolling, with a progress indicator.
 
@@ -105,9 +107,47 @@ I also set up an `IntersectionObserver` to fade in content as the user scrolls d
 
 ## Seller stories
 
-I wrote reusable CSS utilities for Square seller testimonials and case studies. My favorite piece was this component that places a caption over the corner of an image. It uses radial gradients, clipping masks, and CSS variables to create a silhouette with smooth rounded corners that change size with the user's viewport.
+I wrote reusable CSS utilities for Square seller testimonials and case studies.
 
-TODO
+<LightboxGallery
+  client:load
+  images={[
+    {
+      name: 'squareup.com_us_en_point-of-sale_learn_aroom.png',
+      alt: 'Aroom seller story (en-US)',
+    },
+    {
+      name: 'squareup.com_us_es_point-of-sale_learn_la-barba.png',
+      alt: 'La Barba seller story (es-US)',
+    },
+    {
+      name: 'squareup.com_gb_en_point-of-sale_learn_soho-live-music-club.png',
+      alt: 'Soho Live seller story (en-GB)',
+    },
+    {
+      name: 'squareup.com_ie_en_point-of-sale_learn_artybaker.png',
+      alt: 'Artybaker seller story (en-IE)',
+    },
+    {
+      name: 'squareup.com_es_es_point-of-sale_learn_mito.png',
+      alt: 'Mito (es-ES)',
+    },
+  ].map(({ name, alt }) => ({ src: IMG_PATH + name, alt }))}
+/>
+
+My favorite piece was the component below, which places quoted text with a solid white background in the corner of an image. It uses radial gradients, clipping masks, and CSS variables to create a silhouette with smooth rounded corners that change size with the user's viewport.
+
+Displaying the quote text as HTML elements (instead of embedding it in each image) kept the text accessible and responsive, and saved our production designers from having to do extra work.
+
+<Image
+  src={quoteArtybakerMd}
+  alt="Artybaker's quote component (tablet screen size), with text in the upper right corner and a large border radius"
+/>
+
+<Image
+  src={quoteMitoLg}
+  alt="Mito's quote component (small desktop screen size), with text in the lower right corner and a small border radius"
+/>
 
 ---
 

@@ -71,8 +71,11 @@ video,
 .instagram-media {
   display: block;
   max-width: 100%;
-  height: auto;
   margin-inline: auto !important;
+}
+
+img {
+  height: auto;
 }
 
 video {

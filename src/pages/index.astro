@@ -4,6 +4,7 @@ import HeroText from '@components/HeroText.astro';
 import HireMe from '@components/HireMe.astro';
 import PostList from '@components/PostList.astro';
 import { config } from '@config';
+import ProjectShowcase from '@components/ProjectShowcase.astro';
 ---
 
 <PageLayout>
@@ -15,15 +16,17 @@ import { config } from '@config';
     <p>
       I'm a frontend software engineer in Southern California. My specialties
       are <strong>CSS/animation</strong>, <strong>modern JavaScript</strong>
-      (React, Svelte), and <strong> interactive visual experiences</strong>
-      (data visualization with D3, three.js).
+       (React, Svelte), and <strong> interactive visual experiences</strong>
+       (data visualization with D3, three.js).
     </p>
   </section>
 
   {config.lookingForWork ? <HireMe /> : null}
 
+  <ProjectShowcase />
+
   <section>
-    <h2>Latest posts</h2>
+    <h2>Latest blog posts</h2>
 
     <PostList numPosts="3" />
 

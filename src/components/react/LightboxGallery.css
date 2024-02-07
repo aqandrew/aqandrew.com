@@ -1,0 +1,40 @@
+.LightboxGallery {
+  --gallery-height: 200px;
+
+  max-width: 100%;
+  margin-block: var(--space-small);
+
+  .thumbnails {
+    max-width: 100%;
+    overflow-y: auto;
+    display: flex;
+    gap: var(--space-small);
+    margin-block: var(--gap-post-media);
+    padding: var(--space-small);
+    border-radius: var(--border-radius-small);
+    background-color: var(--color-tile);
+    box-shadow: var(--shadow-inset);
+
+    button {
+      flex-shrink: 0;
+
+      border: none;
+      padding: 0;
+
+      cursor: pointer;
+      box-shadow: var(--shadow-tile);
+      transition:
+        box-shadow var(--transition-duration-quick),
+        filter var(--transition-duration-quick);
+
+      &:hover {
+        box-shadow: var(--shadow-hover);
+        filter: brightness(95%);
+      }
+
+      img {
+        max-height: var(--gallery-height);
+      }
+    }
+  }
+}

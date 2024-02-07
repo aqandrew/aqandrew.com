@@ -1,0 +1,19 @@
+---
+import PageLayout from './PageLayout.astro';
+import ProjectShowcase from '@components/ProjectShowcase.astro';
+
+const {
+  frontmatter: { title, desc },
+  slug,
+} = Astro.props;
+---
+
+<PageLayout {title}>
+  <article>
+    <p class="text-deemphasized">{desc}</p>
+
+    <slot />
+  </article>
+
+  <ProjectShowcase selectedProjectSlug={slug} />
+</PageLayout>

@@ -1,8 +1,26 @@
 :root {
   /* colors */
+  --color-text: #444;
+  --color-text-deemphasized: oklch(from var(--color-text) calc(l + 10) c h);
+  --color-shadow: lightgrey;
   --color-primary: oklch(55.99% 0.248 294.34);
+  --color-primary-light: oklch(
+    from var(--color-primary) calc(l + 20) calc(c * 3 / 4) h
+  );
+  --color-primary-hover: oklch(from var(--color-primary) calc(l - 20) c h);
   --color-secondary: cadetblue;
   --color-inline-code: oklch(95% 0 0);
+  --color-tile: oklch(from var(--color-primary) calc(l + 40) calc(c - 0.2) h);
+  --color-tile-hover: oklch(from var(--color-tile) calc(l - 3) c h);
+
+  /* relative lch colors aren't supported on iOS Safari yet */
+  @supports not (color: oklch(from color l c h)) {
+    --color-primary-hover: #3d009d;
+    --color-text-deemphasized: #5a5a5a;
+    --color-primary-light: #aa7cff;
+    --color-tile: #f0e6ff;
+    --color-tile-hover: #e4daff;
+  }
 
   /* typography */
   --line-height: 1.8;
@@ -20,7 +38,15 @@
   --space-xxs: 0.25rem;
   --gap-section: var(--space-large);
   --gap-post-media: var(--space-medium);
-  --border-radius-small: 4px;
+  --border-radius-small: 5px;
+
+  /* shadows */
+  --shadow-tile: 2px 2px 8px var(--color-shadow);
+  --shadow-hover: 2px 2px 4px var(--color-shadow);
+  --shadow-inset: inset var(--shadow-tile);
+
+  /* animation */
+  --transition-duration-quick: 250ms;
 
   /* expressive-code overrides */
   --ec-frm-frameBoxShdCssVal: none !important;

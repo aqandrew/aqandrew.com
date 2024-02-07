@@ -8,3 +8,18 @@
 .break-word {
   overflow-wrap: break-word;
 }
+
+.text-deemphasized {
+  font-style: italic;
+  color: var(--color-text-deemphasized);
+}
+
+video {
+  &.rounded {
+    border-radius: var(--border-radius-small);
+  }
+
+  &.mobile {
+    height: 500px;
+  }
+}

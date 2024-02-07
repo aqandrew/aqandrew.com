@@ -3,8 +3,11 @@ import PageLayout from './PageLayout.astro';
 import DateDisplay from '@components/DateDisplay.astro';
 import PostNavigation from '@components/PostNavigation.astro';
 
-const { title, date, tags, metaDesc, socialImage } = Astro.props.frontmatter;
-const { postPrevious, postNext } = Astro.props;
+const {
+  frontmatter: { title, date, tags, metaDesc, socialImage },
+  postPrevious,
+  postNext,
+} = Astro.props;
 ---
 
 <PageLayout {title} {metaDesc} {socialImage}>
@@ -52,15 +55,6 @@ const { postPrevious, postNext } = Astro.props;
   video {
     max-width: 100%;
     height: auto;
-  }
-
-  /* center (more-or-less) top-level media elements */
-  :is(p, li) img,
-  :is(article, figure) > img,
-  video,
-  .twitter-tweet {
-    display: block;
-    margin-inline: auto;
   }
 
   figcaption {

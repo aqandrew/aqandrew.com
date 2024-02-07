@@ -1,0 +1,199 @@
+---
+title: Square
+desc: Responsive frontend development + animations for product marketing pages
+order: 0
+---
+
+import { config } from '@config';
+import { Image } from 'astro:assets';
+import LightboxGallery, {
+  getSquareLightboxImages,
+} from '@components/react/LightboxGallery';
+
+{/* TODO host images in a CDN like CloudFlare */}
+import vtSsmXs from '../../assets/img/projects/square/squareup.com_us_en_payments_virtual-terminal_ssm_xs.png';
+import vtSsmSm from '../../assets/img/projects/square/squareup.com_us_en_payments_virtual-terminal_ssm_sm.png';
+import vtSsmMd from '../../assets/img/projects/square/squareup.com_us_en_payments_virtual-terminal_ssm_md.png';
+import vtSsmLg from '../../assets/img/projects/square/squareup.com_us_en_payments_virtual-terminal_ssm_lg.png';
+import vtSsmXl from '../../assets/img/projects/square/squareup.com_us_en_payments_virtual-terminal_ssm_xl.png';
+import vtMtXs from '../../assets/img/projects/square/squareup.com_us_en_payments_virtual-terminal_mt_xs.png';
+import vtMtSm from '../../assets/img/projects/square/squareup.com_us_en_payments_virtual-terminal_mt_sm.png';
+import vtMtMd from '../../assets/img/projects/square/squareup.com_us_en_payments_virtual-terminal_mt_md.png';
+import vtMtLg from '../../assets/img/projects/square/squareup.com_us_en_payments_virtual-terminal_mt_lg.png';
+import vtMtXl from '../../assets/img/projects/square/squareup.com_us_en_payments_virtual-terminal_mt_xl.png';
+import vtPricingXs from '../../assets/img/projects/square/squareup.com_us_en_payments_virtual-terminal_pricing_xs.png';
+import vtPricingSm from '../../assets/img/projects/square/squareup.com_us_en_payments_virtual-terminal_pricing_sm.png';
+import vtPricingMd from '../../assets/img/projects/square/squareup.com_us_en_payments_virtual-terminal_pricing_md.png';
+import vtPricingLg from '../../assets/img/projects/square/squareup.com_us_en_payments_virtual-terminal_pricing_lg.png';
+import vtPricingXl from '../../assets/img/projects/square/squareup.com_us_en_payments_virtual-terminal_pricing_xl.png';
+import vtComparisonTable from '../../assets/img/projects/square/squareup.com_us_en_payments_virtual-terminal_why-square_xl.png';
+import sellerStoriesAroom from '../../assets/img/projects/square/squareup.com_us_en_point-of-sale_learn_aroom.png';
+import sellerStoriesLaBarba from '../../assets/img/projects/square/squareup.com_us_es_point-of-sale_learn_la-barba.png';
+import sellerStoriesSohoLive from '../../assets/img/projects/square/squareup.com_gb_en_point-of-sale_learn_soho-live-music-club.png';
+import sellerStoriesArtybaker from '../../assets/img/projects/square/squareup.com_ie_en_point-of-sale_learn_artybaker.png';
+import sellerStoriesMito from '../../assets/img/projects/square/squareup.com_es_es_point-of-sale_learn_mito.png';
+import quoteArtybakerMd from '../../assets/img/projects/square/squareup.com_ie_en_point-of-sale_learn_artybaker_quote_md.png';
+import quoteMitoLg from '../../assets/img/projects/square/squareup.com_es_es_point-of-sale_learn_mito_quote_lg.png';
+
+export const vtSsmImages = getSquareLightboxImages(
+  [vtSsmXs, vtSsmSm, vtSsmMd, vtSsmLg, vtSsmXl],
+  'Virtual Terminal side-scrolling modal grid'
+);
+export const vtFeatureModalsImages = getSquareLightboxImages(
+  [vtMtXs, vtMtSm, vtMtMd, vtMtLg, vtMtXl],
+  'Virtual Terminal feature modals'
+);
+export const vtPricingImages = getSquareLightboxImages(
+  [vtPricingXs, vtPricingSm, vtPricingMd, vtPricingLg, vtPricingXl],
+  'Virtual Terminal pricing section'
+);
+export const sellerStoriesImages = [
+  {
+    src: sellerStoriesAroom.src,
+    alt: 'Aroom seller story (en-US)',
+  },
+  {
+    src: sellerStoriesLaBarba.src,
+    alt: 'La Barba seller story (es-US)',
+  },
+  {
+    src: sellerStoriesSohoLive.src,
+    alt: 'Soho Live seller story (en-GB)',
+  },
+  {
+    src: sellerStoriesArtybaker.src,
+    alt: 'Artybaker seller story (en-IE)',
+  },
+  {
+    src: sellerStoriesMito.src,
+    alt: 'Mito (es-ES)',
+  },
+];
+
+As a design technologist at Square, I was a frontend developer who sat among designers, responsible for writing custom styles on [squareup.com](https://squareup.com/) that deviate from Market, Square's design system for public webpages. These custom styles included responsive flex/grid layouts, animations, and interactive Svelte components.
+
+---
+
+## Virtual Terminal
+
+Usually custom styles were limited to 1-2 sections per page, but Virtual Terminal had custom styles in almost every section--the most out of any Square webpage I worked on.
+
+### Several of the sections mainly relied on CSS grid layouts:
+
+1. #### side-scrolling modals
+
+   <LightboxGallery client:load images={vtSsmImages} />
+
+   In the section showcasing how to use Virtual Terminal on different platforms, I laid out both the tiles that open the modals, and the columns of images/copy inside each modal, with CSS grids.
+
+   For these particular modals, I extended Market's modal component to redirect vertical scrolling into horizontal scrolling, with a progress indicator.
+
+   <video controls autoPlay loop className="rounded">
+     <source
+       src="/squareup.com_us_en_payments_virtual-terminal_ssm.mov"
+       type="video/mp4"
+     />
+     <p>
+       screen recording of Square Virtual Terminal's sidescrolling modal section
+     </p>
+   </video>
+
+2. #### feature modals
+
+   <LightboxGallery client:load images={vtFeatureModalsImages} />
+
+3. #### pricing section
+
+   <LightboxGallery client:load images={vtPricingImages} />
+
+### comparison table with highlighted column
+
+The design of this table called for highlighting the Virtual Terminal column in blue and giving it rounded corners. While CSS grid provides simple methods for that, the fact the table was rendered from Markdown meant that this was a case best suited for a plain old HTML `table`. I wrote a reusable SCSS mixin to highlight a `table` column, that takes a column number as a parameter. A fun little challenge in writing the mixin was that our default table styles included borders.
+
+<Image
+  src={vtComparisonTable}
+  alt="Table showing Square Virtual Terminal's offerings highlighted, compared to other payment processors and banks. $0 monthly fee, no monthly contracts, free sales reports and insights, and free customer engagement tools."
+/>
+
+To keep the translation/localization process simple, we generally wanted to author webpages' copy in Markdown as much as possible. We were able to keep this experience for the table shown on mobile devices by nesting separate Markdown tables in a Market tabbed content section.
+
+<video controls autoPlay loop className="rounded mobile">
+  <source
+    src="/squareup.com_us_en_payments_virtual-terminal_why-square_sm.mov"
+    type="video/mp4"
+  />
+  <p>
+    Screen recording of Square Virtual Terminal's comparison table section on
+    mobile. Clicking navigation tabs at the top transitions different tables
+    into the main content area, sliding in from the sides of the screen.
+  </p>
+</video>
+
+### fading in content
+
+I also set up an `IntersectionObserver` to fade in content as the user scrolls down the page.
+
+---
+
+## Seller stories
+
+I wrote reusable CSS utilities for testimonials / case studies from Square sellers, and applied them to pages for multiple locales including en-US, es-US, en-GB, en-IE, es-ES, and ca-ES.
+
+<LightboxGallery client:load images={sellerStoriesImages} />
+
+My favorite piece was the component below, which places quoted text with a solid white background in the corner of an image. I used CSS trickery including radial gradients, clipping masks, and custom properties to create a silhouette with smooth rounded corners that change size with the user's viewport.
+
+Displaying the quote text as HTML elements (instead of embedding it in each image) kept the text accessible and responsive, and saved production designers from having to do extra work.
+
+<Image
+  src={quoteArtybakerMd}
+  alt="Quote component from Artybaker seller story page (tablet screen size), with text in the upper right corner and a large border radius"
+/>
+
+<Image
+  src={quoteMitoLg}
+  alt="Quote component from Mito seller story page (small desktop screen size), with text in the lower right corner and a small border radius"
+/>
+
+---
+
+## Marketing
+
+I created a custom Svelte component to animate in the presence of example UI elements on top of this page's hero image.
+
+<video controls autoPlay loop className="rounded">
+  <source
+    src="/squareup.com_us_en_marketing_hero-animation.mov"
+    type="video/mp4"
+  />
+  <p>
+    Screen recording of Square's Marketing page. When the hero image scrolls
+    into view, UI elements showing example marketing messages that sellers can
+    send to customers fade in and slide upward.
+  </p>
+</video>
+
+The original animations both fade in and slide upward, which might cause discomfort for people with vestibular disorders. To help make the animation more accessible, its behavior changes to a simple fade-in if the user's settings prefer reduced motion.
+
+<video controls autoPlay loop className="rounded">
+  <source
+    src="/squareup.com_us_en_marketing_hero-animation_prefers-reduced-motion.mov"
+    type="video/mp4"
+  />
+  <p>
+    Screen recording of Square's Marketing page. Here, the example UI elements
+    only fade in when they enter, instead of also sliding.
+  </p>
+</video>
+
+---
+
+These are just a few examples of frontend development I did at Square.
+
+In addition, some work outside of my job description that I led:
+
+- rewriting an HTML email build system to be 70x faster and more extensible
+- automating file uploads to be 60x faster than the manual process that had been in place for years
+- documenting a third-party WYSIWYG editor to empower production designers and product marketing managers to build simple HTML pages themselves, offloading that high volume work from engineers
+
+I enjoy making improvements to developer experience just as much as building frontends. If you have a need for any of the above on your engineering team, <a href={`mailto:${config.author.email}`}>let's chat!</a>

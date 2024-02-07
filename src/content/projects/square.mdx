@@ -8,6 +8,12 @@ import { config } from '@config';
 import { Image } from 'astro:assets';
 import LightboxGallery from '@components/react/LightboxGallery';
 
+{/* TODO host images in a CDN like CloudFlare */}
+import vtSsmXs from '../../assets/img/projects/square/squareup.com_us_en_payments_virtual-terminal_ssm_xs.png';
+import vtSsmSm from '../../assets/img/projects/square/squareup.com_us_en_payments_virtual-terminal_ssm_sm.png';
+import vtSsmMd from '../../assets/img/projects/square/squareup.com_us_en_payments_virtual-terminal_ssm_md.png';
+import vtSsmLg from '../../assets/img/projects/square/squareup.com_us_en_payments_virtual-terminal_ssm_lg.png';
+import vtSsmXl from '../../assets/img/projects/square/squareup.com_us_en_payments_virtual-terminal_ssm_xl.png';
 import vtComparisonTable from '../../assets/img/projects/square/squareup.com_us_en_payments_virtual-terminal_why-square_xl.png';
 import quoteArtybakerMd from '../../assets/img/projects/square/squareup.com_ie_en_point-of-sale_learn_artybaker_quote_md.png';
 import quoteMitoLg from '../../assets/img/projects/square/squareup.com_es_es_point-of-sale_learn_mito_quote_lg.png';
@@ -20,6 +26,14 @@ export const BREAKPOINTS = [
   { label: 'lg', desc: 'desktop, small' },
   { label: 'xl', desc: 'desktop, large' },
 ];
+export const vtImages = [vtSsmXs, vtSsmSm, vtSsmMd, vtSsmLg, vtSsmXl].map(({ src }, i) => {
+  const { desc } = BREAKPOINTS[i];
+
+return {
+src,
+alt: `Virtual Terminal side-scrolling modal grid - ${desc}`,
+}
+});
 
 As a design technologist at Square, I was a frontend developer who sat among designers, responsible for writing custom styles on [squareup.com](https://squareup.com/) that deviate from Market, Square's design system for public webpages. These custom styles included responsive flex/grid layouts, animations, and interactive Svelte components.
 
@@ -33,17 +47,7 @@ Usually custom styles were limited to 1-2 sections per page, but Virtual Termina
 
 1. #### side-scrolling modals
 
-   <LightboxGallery
-     client:load
-     images={BREAKPOINTS.map(({ label, desc }) => ({
-       src:
-         IMG_PATH +
-         'squareup.com_us_en_payments_virtual-terminal_ssm_' +
-         label +
-         '.png',
-       alt: `Virtual Terminal side-scrolling modal grid - ${desc}`,
-     }))}
-   />
+   <LightboxGallery client:load images={vtImages} />
 
    In the section showcasing how to use Virtual Terminal on different platforms, I laid out both the tiles that open the modals, and the columns of images/copy inside each modal, with CSS grids.
 

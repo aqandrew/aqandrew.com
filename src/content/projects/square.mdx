@@ -155,9 +155,20 @@ Displaying the quote text as HTML elements (instead of embedding it in each imag
 
 I created a custom Svelte component to animate in the presence of example UI elements on top of this page's hero image.
 
-To help make the animation more accessible, its behavior changes to a simple fade-in if the user's settings prefer reduced motion.
+<video controls autoPlay loop className="rounded">
+  <source src={IMG_PATH + 'squareup.com_us_en_marketing_hero-animation.mov'} />
+</video>
 
-TODO
+The original animations both fade in and slide upward, which might cause discomfort for people with vestibular disorders. To help make the animation more accessible, its behavior changes to a simple fade-in if the user's settings prefer reduced motion.
+
+<video controls autoPlay loop className="rounded">
+  <source
+    src={
+      IMG_PATH +
+      'squareup.com_us_en_marketing_hero-animation_prefers-reduced-motion.mov'
+    }
+  />
+</video>
 
 ---
 

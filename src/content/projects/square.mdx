@@ -55,7 +55,8 @@ Usually custom styles were limited to 1-2 sections per page, but Virtual Termina
 
    <video controls autoPlay loop className="rounded">
      <source
-       src={`${IMG_PATH}squareup.com_us_en_payments_virtual-terminal_ssm.mov`}
+       src="/squareup.com_us_en_payments_virtual-terminal_ssm.mov"
+       type="video/quicktime"
      />
      <p>
        screen recording of Square Virtual Terminal's sidescrolling modal section
@@ -103,7 +104,8 @@ To keep the translation/localization process simple, we generally wanted to auth
 
 <video controls autoPlay loop className="rounded mobile">
   <source
-    src={`${IMG_PATH}squareup.com_us_en_payments_virtual-terminal_why-square_sm.mov`}
+    src="/squareup.com_us_en_payments_virtual-terminal_why-square_sm.mov"
+    type="video/quicktime"
   />
   <p>
     Screen recording of Square Virtual Terminal's comparison table section on
@@ -169,7 +171,10 @@ Displaying the quote text as HTML elements (instead of embedding it in each imag
 I created a custom Svelte component to animate in the presence of example UI elements on top of this page's hero image.
 
 <video controls autoPlay loop className="rounded">
-  <source src={IMG_PATH + 'squareup.com_us_en_marketing_hero-animation.mov'} />
+  <source
+    src="/squareup.com_us_en_marketing_hero-animation.mov"
+    type="video/quicktime"
+  />
   <p>
     Screen recording of Square's Marketing page. When the hero image scrolls
     into view, UI elements showing example marketing messages that sellers can
@@ -181,10 +186,8 @@ The original animations both fade in and slide upward, which might cause discomf
 
 <video controls autoPlay loop className="rounded">
   <source
-    src={
-      IMG_PATH +
-      'squareup.com_us_en_marketing_hero-animation_prefers-reduced-motion.mov'
-    }
+    src="/squareup.com_us_en_marketing_hero-animation_prefers-reduced-motion.mov"
+    type="video/quicktime"
   />
   <p>
     Screen recording of Square's Marketing page. Here, the example UI elements

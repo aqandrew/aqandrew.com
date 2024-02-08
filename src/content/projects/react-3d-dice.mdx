@@ -1,5 +1,5 @@
 ---
-title: React 3D dice
+title: react-3d-dice
 desc: React/three.js dice roller with physics in an HTML canvas
 order: 1
 ---
@@ -10,4 +10,6 @@ export const reactD10Slug = '10-sided-die-react';
 
 Graphics programming is a kind of visual problem-solving that really feels like play to me. <a href={`/blog/${reactD10Slug}`} style={{viewTransitionName: getTransitionName(reactD10Slug)}}>Creating a 10-Sided Die with React, Part 1</a> has been my favorite blog post to write here so far. If you haven't read it yet, please check it out! It's a tutorial about the math that goes into making a custom geometry in react-three-fiber, a 3D web renderer for React.
 
-I've been stuck on how to add textures to the dice since making that post, but I believe the way forward involves [decoding UV arrays in the source code I'm adapting](https://github.com/byWulf/threejs-dice/blob/fbefa73e0c7ec8d82a713a661839d229ff69c755/lib/dice.js#L319-L322).
+The latest source code is [here](https://github.com/aqandrew/react-3d-dice). I encourage you to read the blog post for full context and detail.
+
+I've been stuck on how to add textures to the dice since publishing that post, but I believe the way forward involves [decoding UV arrays in the source code I'm adapting](https://github.com/byWulf/threejs-dice/blob/fbefa73e0c7ec8d82a713a661839d229ff69c755/lib/dice.js#L319-L322).

@@ -33,6 +33,8 @@ This is a 10-sided die. Below is my attempt to recreate one with JavaScript&mdas
   sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
 ></iframe>
 
+Check out the latest code [on GitHub](https://github.com/aqandrew/react-3d-dice) or [in CodeSandbox](https://codesandbox.io/s/github/dawneraq/react-3d-dice).
+
 {frontmatter.metaDesc} Hopefully documenting my process can help someone get started<sup>\*</sup> with 3D programming.
 
 <sup>\*</sup>I'm assuming that you have some basic knowledge of three.js and
@@ -167,7 +169,7 @@ ReactDOM.render(
 
 </aside>
 
-Even though I'm relatively new to JSX, what's going on here is fairly straightforward:
+Describing the scene in a declarative way with JSX makes a lot of sense:
 
 1. Create a canvas.
 2. Inside that canvas, create a physics world with gravity pulling in the negative z direction.
@@ -523,4 +525,3 @@ If you have an answer to any of these questions, please <a href={`https://twitte
 ## Further reading
 
 - [Three.js Fundamentals](https://threejsfundamentals.org/)
-- [react-three-fiber on GitHub](https://github.com/pmndrs/react-three-fiber)

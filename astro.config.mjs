@@ -13,6 +13,7 @@ export default defineConfig({
   },
   integrations: [
     expressiveCode({
+      frames: { showCopyToClipboardButton: false },
       themes: [nightOwl],
       styleOverrides: {
         borderRadius: 'var(--border-radius-small)',

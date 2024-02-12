@@ -19,6 +19,8 @@ export async function getStaticPaths() {
 }
 
 const { entry, postPrevious, postNext } = Astro.props;
+// TODO entry.render() also returns `headings` -> useful for generating a table of contents
+// https://www.learnwithjason.dev/port-a-blog-to-astro/ (41:21)
 const { Content } = await entry.render();
 ---
 

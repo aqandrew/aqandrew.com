@@ -115,7 +115,7 @@ The design of this table called for highlighting the Virtual Terminal column in 
   alt="Table showing Square Virtual Terminal's offerings highlighted, compared to other payment processors and banks. $0 monthly fee, no monthly contracts, free sales reports and insights, and free customer engagement tools."
 />
 
-To keep the translation/localization process simple, we generally wanted to author webpages' copy in Markdown as much as possible. We were able to keep this experience for the table shown on mobile devices by nesting separate Markdown tables in a Market tabbed content section.
+To keep the translation/localization process simple, we generally wanted to author webpages' copy in Markdown as much as possible. I came up with a way to structure the CMS content so that we could maintain that authoring experience for the table shown on mobile devices, by nesting separate Markdown tables in a Market tabbed content section. At the same time, we could also continue to leverage Market's existing components instead of creating a custom component.
 
 <video controls autoPlay loop className="rounded mobile">
   <source
@@ -131,7 +131,7 @@ To keep the translation/localization process simple, we generally wanted to auth
 
 ### fading in content
 
-I also set up an `IntersectionObserver` to fade in content as the user scrolls down the page.
+I set up an `IntersectionObserver` to fade in pieces of copy as the user scrolls down the page.
 
 ---
 

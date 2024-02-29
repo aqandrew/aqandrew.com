@@ -6,6 +6,7 @@ import nightOwl from './src/assets/night-owl.json';
 
 // https://astro.build/config
 export default defineConfig({
+  site: 'https://aqandrew.com',
   image: {
     service: {
       entrypoint: 'astro/assets/services/noop',

@@ -1,0 +1,173 @@
+---
+title: Formatting Code with Old and New CSS
+date: '3-21-2024'
+tags:
+  - css
+metaDesc: I won a coding challenge last month! 🥳 Here are my notes about some useful CSS I learned along the way.
+---
+
+{frontmatter.metaDesc}
+
+{/* prettier-ignore */}
+<blockquote class="twitter-tweet" data-conversation="none"><p lang="en" dir="ltr">The winner of $100 is &quot;Who Needs Prettier When You Have CSS?&quot; by <a href="https://twitter.com/aqandrew?ref_src=twsrc%5Etfw">@aqandrew</a>. The solution for the problem is just 🤯. I would have never thought about using CSS shape masks to be able to reformat your code. 👏👏👏 <a href="https://t.co/mqquyKHFfO">https://t.co/mqquyKHFfO</a> <a href="https://t.co/a7vBGkLzuU">pic.twitter.com/a7vBGkLzuU</a></p>&mdash; vjeux ✪ (@Vjeux) <a href="https://twitter.com/Vjeux/status/1762878543229542886?ref_src=twsrc%5Etfw">February 28, 2024</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+In January 2024, Vjeux began holding a series of weeklong coding challenges called [Algorithm Arena](https://github.com/Algorithm-Arena). I was drawn to this challenge to format code into a cool shape for these reasons:
+
+- [x] solve an interesting problem by writing a small greenfield project
+- [x] potential to win a cash prize
+- [x] don't have to pull an all-nighter or drink Soylent
+
+An idea behind this challenge was to play around with layout algorithms, and one of the things Vjeux is known for is driving the widespread adoption of Prettier for formatting code. So my initial plan was to write a Prettier plugin to implement layout algorithms. Then I realized it would be a lot less work to hand off the layout algorithms to CSS instead. Plus, this was a good opportunity to practice some CSS features I hadn't tried before.
+
+You can check out my coding challenge submission [on CodeSandbox](https://codesandbox.io/p/sandbox/pretty-shape-fq6m9z).
+
+## My approach
+
+### Overview
+
+1. write/paste JS code in a textarea
+1. lay out syntax-highlighted code inline
+1. create the desired shape by setting `shape-outside` on invisible floated elements next to the code
+
+### Old CSS
+
+The majority of the weight here is being pulled by `shape-outside`. I think this property was [introduced in 2014](https://web.dev/articles/shapes-getting-started). The way it works is that if you set set `float` and `shape-outside` on an element and place it next to content with `display: inline` like paragraphs, the inline content will flow around the shape.
+
+Lots of good articles have been written on how to use this property to wrap paragraphs around arbitrary shapes:
+
+- [shape-outside on MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/shape-outside)
+- [shape-outside on CSS-Tricks](https://css-tricks.com/almanac/properties/s/shape-outside/)
+- [Take A New Look At CSS Shapes, from Smashing Magazine](https://www.smashingmagazine.com/2018/09/css-shapes/)
+
+#### A simplified example
+
+Let's say we want a paragraph to lay out in the shape of a triangle with a horizontal top side (&#9660;). The negative space in our text block will take the shape of right triangles with a horizontal bottom side. These can be defined with <code>shape-outside: <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/basic-shape/polygon">polygon(...)</a></code>. So we float two of these triangles to the left and right of the text:
+
+{/* prettier-ignore */}
+<p class="codepen" data-height="300" data-default-tab="html,result" data-slug-hash="OJGWjZW" data-user="aqandrew" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
+  <span>See the Pen <a href="https://codepen.io/aqandrew/pen/OJGWjZW">
+  CSS shape-outside-demo (static)</a> by Andrew Aquino (<a href="https://codepen.io/aqandrew">@aqandrew</a>)
+  on <a href="https://codepen.io">CodePen</a>.</span>
+</p>
+<script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+
+Then we can set the `transition` property on the triangles to get smooth animations:
+
+{/* prettier-ignore */}
+<p class="codepen" data-height="300" data-default-tab="html,result" data-slug-hash="YzMNxgq" data-user="aqandrew" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
+  <span>See the Pen <a href="https://codepen.io/aqandrew/pen/YzMNxgq">
+  CSS shape-outside-demo (dynamic)</a> by Andrew Aquino (<a href="https://codepen.io/aqandrew">@aqandrew</a>)
+  on <a href="https://codepen.io">CodePen</a>.</span>
+</p>
+<script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+
+#### Notes
+
+- Like [SVG/canvas](https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Positions#the_grid), the coordinate system for `polygon()` has (0, 0) at the top left, x is positive toward the right, and y is positive toward the bottom.
+
+- From the CSS-Tricks article above:
+
+  > if [the `shape-outside` property] is going to be animated it requires the same number of vertices when you declare the animated state
+
+  In my submission, each of the lightbulb stencils I used was defined by 14 coordinates, so I had to define each of the the inactive stencils with 14 coordinates too. The same goes for the triangles demo (3 coordinates per stencil).
+
+### New CSS
+
+`shape-outside` is a neat little property, but I believe the more interesting CSS magic is happening elsewhere in the demos. If you dig into the CodeSandbox/CodePen links above, you might notice some unfamiliar CSS.
+
+I'd recently watched [a video where Kelvin Omereshone interviewed Adam Argyle](https://www.youtube.com/watch?v=nCVm-8YaD_g), a CSS developer advocate for Google Chrome. During the interview, Adam demonstrated some modern additions to CSS that can eliminate the need for a preprocessor like Sass. He had this to say about learning CSS in his closing remarks:
+
+> ... if you focus on a couple of the cool features that you see in some interfaces ... go and rebuild it, and find that inspiration, and work yourself through all the different steps that it takes to get that to reach that level of quality that you're looking for, and then move on to the next thing. And as you continue building high quality interfaces where you're spending a lot of time on the little details, all the little details will stick to you, and they'll travel with you through all your future projects, and you'll just kind of snowball and gain skills and get better and better.
+
+Inspired by all of the quality-of-life CSS features shown in the rest of the video, I decided to see if I could leverage them to help solve this challenge:
+
+- [ch and lh units](#ch-and-lh-units)
+- [nesting](#nesting)
+- [cascade layers](#cascade-layers)
+- [:has() selector](#has-selector)
+
+#### ch and lh units
+
+[Introduced in 2018](https://www.w3.org/TR/2018/WD-css-values-4-20180814/)
+
+These can make your styles more expressive if you're defining dimensions in terms of characters. `ch` turned out to be ideal for a code formatting UI, since the text being formatted was in a monospaced font.
+
+```css
+.PrettyShapeArea {
+  width: 61ch;
+  height: 40lh;
+}
+```
+
+This says "make the `.PrettyShapeArea` 61 characters wide and 40 lines tall".
+
+#### nesting
+
+[Introduced in 2023](https://blog.jetbrains.com/webstorm/2023/08/css-nesting/)
+
+Native CSS nesting alone is enough for me to drop Sass and CSS-in-JS for most personal projects. It's the main reason I've historically used the former to keep styles DRY. (I'll quit using Sass entirely if/when we gain the ability to put CSS variables in media queries.)
+
+#### cascade layers
+
+[Introduced in 2022](https://developer.chrome.com/blog/cascade-layers)
+
+```css
+@layer base, lib, app;
+```
+
+The layers in this rule are listed from least precedence (left) to greatest precedence (right). So the `app` styles will always override `lib` styles, which will always override `base` styles.
+
+{/* prettier-ignore */}
+<p class="codepen" data-height="300" data-default-tab="css,result" data-slug-hash="XWQpzXN" data-user="aqandrew" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
+  <span>See the Pen <a href="https://codepen.io/aqandrew/pen/XWQpzXN">
+  @layer overrides</a> by Andrew Aquino (<a href="https://codepen.io/aqandrew">@aqandrew</a>)
+  on <a href="https://codepen.io">CodePen</a>.</span>
+</p>
+<script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+
+Cascade layers enable you to more clearly define the precedence of styles without resorting to `!important`, which is a big win for maintainability.
+
+For small demos that use a single stylesheet like my submission, I can place the most salient styles at the top of the CSS file (`@layer app`, which contains `shape-outside` declarations), and tuck away minor presentational styles at the bottom (`@layer base`, which contains rules like `input { cursor: pointer; }`). This pattern is helpful for both me as an author and anyone who inspects the CSS to see how it works.
+
+#### :has() selector
+
+[Introduced in 2023](https://developer.chrome.com/blog/css-wrapped-2023#has)
+
+I admit I didn't understand what the big deal was when the `:has()` selector was released last year. Then I saw in that interview that you can use it to change styles based on form state without writing any JS.
+
+```css
+/* initialize the left stencil's shape to a zero-width rectangle */
+.stencil.left {
+  shape-outside: var(--shape-left-inactive);
+}
+
+/* when the formatting checkbox is checked, give the stencil a new shape */
+.App:has(#format:checked) .stencil.left {
+  shape-outside: var(--shape-left);
+}
+```
+
+## Additional notes
+
+- Flexbox was already widely supported by the time I started learning web development, so I've never really had a reason to use floats until now.
+- My submission is a React app, but only because that's the UI framework I'm most comfortable with. The only state variable is the code string, which gets passed to Prism.js for syntax highlighting.
+- I usually develop in Chrome. Most of the time I spent on my submission was fiddling with coordinates in `polygon()` to get a nice-looking light bulb shape. 10 days after I submitted my solution, I saw that Firefox DevTools has a convenient GUI for editing shapes:
+
+  {/* prettier-ignore */}
+  <blockquote class="twitter-tweet" data-conversation="none"><p lang="en" dir="ltr">I use it for clip path I think they call it the shape editor. This is what it looks like. It’s super handy! <a href="https://t.co/TjJKAyyI2i">pic.twitter.com/TjJKAyyI2i</a></p>&mdash; Mandy Michael (@Mandy_Kerr) <a href="https://twitter.com/Mandy_Kerr/status/1763339703452045511?ref_src=twsrc%5Etfw">February 29, 2024</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+## Conclusion
+
+Use the platform! CSS is really good at layout algorithms.
+
+`ch`/`lh` units, nesting, cascade layers, and the `:has()` selector are all wonderful additions to CSS--not simply because they're new and shiny. The power of these modern features is that they make it easier to build cool stuff.
+
+At the time of writing, there are a bunch of others that I still want to try out, including:
+
+- subgrid
+- container queries
+- scroll-driven animations
+
+Many more are listed in [Chrome for Developers' CSS Wrapped 2023](https://developer.chrome.com/blog/css-wrapped-2023).
+
+Just like with this coding challenge, I'll be taking opportunities to work these new CSS features into my projects so I can continue to grow my skills. ✌🏽

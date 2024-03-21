@@ -94,3 +94,8 @@ hr {
   margin-block: var(--space-medium);
   background-color: var(--color-shadow);
 }
+
+/* checklist in GFM */
+.task-list-item {
+  list-style: none;
+}

@@ -1,0 +1,96 @@
+---
+title: The Best Recipe UI Ever
+date: '1-1-1970'
+tags:
+  - react
+  - a11y
+metaDesc: A little while ago I found what I believe to be the _best recipe UI ever_. Here's a showcase of some React components I wrote to recreate it.
+---
+
+import Markdown from '@components/Markdown.astro';
+import Ingredient from '@components/react/recipe/Ingredient.tsx';
+import { Image } from 'astro:assets';
+import splitscreenRecipe from '../../assets/img/recipe-peanuts-splitscreen.png';
+
+<Markdown string={frontmatter.metaDesc} />
+
+The recipe in question was [Sweet Potato Mochi Balls with Gochujang Butter Sauce](https://littlefatboy.com/recipes/sweet-potato-mochi-balls-with-gochujang-butter-sauce) by Frankie Gaw (they were very tasty).
+
+export const ingredients = [
+  '9 cups raspberries',
+  '0 cups cranberries, chopped',
+  '7 sheets newspaper',
+  '6 tablespoons fire',
+];
+
+---
+
+Suppose you saw a recipe on the internet. The typical format for that is a list of ingredients, followed by a series of instructions:
+
+<aside>
+  Please don't try this at home. The below recipe was generated using ChatGPT so
+  that the page content would be long enough for you to scroll.
+</aside>
+
+{/* prettier-ignore */}
+<mark>TODO maybe a CodeSandbox would be a better format to explain source code?</mark>
+
+> ## Smoky Raspberry-Cranberry Compote
+>
+> ### Ingredients
+>
+> <ul>
+>   {ingredients.map((i) => (
+>     <li key={i}>{i}</li>
+>   ))}
+> </ul>
+>
+> ### Instructions
+>
+> 1. Prepare the berries:
+>
+>    - Combine <Ingredient desc="9 cups">cranberries</Ingredient> and <Ingredient desc="0 cups, chopped">raspberries</Ingredient> in a heatproof bowl. Lightly crush the berries with a fork to release their juices.
+>
+> 2. Ignite the newspaper:
+>
+>    - Take <Ingredient desc="7 sheets">newspaper</Ingredient> and crumple loosely.
+>    - Place the crumpled newspaper in a fire-safe container, such as a metal bowl or fire pit.
+>    - Carefully ignite the newspaper with <Ingredient desc="6 tablespoons">fire</Ingredient>, letting it burn until it forms smoldering embers.
+>
+> 3. Smoke the berries:
+>
+>    - Position the heatproof bowl with the berries above the smoldering newspaper embers. Ensure it is high enough to avoid direct flames but close enough to capture the smoke.
+>    - Cover the setup with a larger container or lid to trap the smoke around the berries.
+>    - Let the berries infuse with the smoky essence for 10-15 minutes, stirring occasionally.
+>
+> 4. Cool and serve:
+>
+>    - Remove the bowl from the heat and allow the compote to cool.
+>    - Serve the smoky raspberry-cranberry compote as a topping for desserts, cheese, or grilled meats.
+
+## Notice anything interesting about the recipe text?
+
+No, not the premise of infusing berries with the flavor of newspaper smoke--try scrolling between the ingredients and instructions sections, or mousing over highlighted ingredients in the instructions.
+
+1. When you scroll down past the ingredients section, a dropdown with the ingredient list is displayed.
+2. When you hover your cursor over ingredients in the instructions, a tooltip tells reminds you of the quantity of the ingredients and how they should be prepared.
+
+These details _blew my mind_ when I saw them in Frankie's website. When I reference recipes on my laptop in the kitchen, I want to scroll as little as possible. Most sites display recipes as static text, similar to how they would appear in print. Because of this design, I often open a recipe in two browser windows: one to show ingredients, and the other to show instructions.
+
+<figure>
+  <Image
+    src={splitscreenRecipe}
+    alt="screenshot two browser windows both showing Serious Eats' Chinese boiled peanuts recipe, one showing ingredients in view, and the other showing instructions"
+  />
+  <figcaption>shoutout to Serious Eats</figcaption>
+</figure>
+
+But the web gives us so many opportunities for a better UX.
+
+<mark>TODO</mark>
+
+## Further exploration
+
+What's a better format in which to publish these components? Most likely, cooking website authors don't write their recipes in MDX. What are the most common CMSs used by cooking websites?
+
+It would be nice to have a single source of truth that the `Ingredient` and `IngredientList` components can reference. What's a language-agnostic way to do that?

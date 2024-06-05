@@ -1,0 +1,5 @@
+.Ingredient {
+  padding-inline: 0.2em 0.4em;
+  font-style: italic;
+  cursor: help;
+}

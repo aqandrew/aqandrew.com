@@ -7,7 +7,7 @@ export const config = {
   author: {
     name: 'Andrew Aquino',
     email: 'hi@aqandrew.com',
-    twitter: 'aqandrew',
+    bluesky: 'aqandrew.com',
     github: 'aqandrew',
     codepen: 'aqandrew',
   },

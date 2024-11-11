@@ -1,7 +1,7 @@
 ---
 import { config } from '@config';
 
-const { email, twitter, github, codepen } = config.author;
+const { email, bluesky, github, codepen } = config.author;
 ---
 
 <footer>
@@ -12,7 +12,7 @@ const { email, twitter, github, codepen } = config.author;
       <a href={`mailto:${email}`}>Email</a>
     </li>
     <li>
-      <a href={`https://twitter.com/${twitter}`}>Twitter</a>
+      <a href={`https://bsky.app/profile/${bluesky}`}>Bluesky</a>
     </li>
     <li>
       <a href={`https://github.com/${github}`}>GitHub</a>

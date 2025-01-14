@@ -1,4 +1,5 @@
 ---
+import { config } from '@config';
 import { getCollection } from 'astro:content';
 import { getTransitionName } from 'src/utils';
 
@@ -12,12 +13,12 @@ projects.sort((a, b) => a.data.order - b.data.order);
   <h2>{selectedProjectSlug ? 'More' : 'Selected'} projects</h2>
 
   {
-    selectedProjectSlug ? null : (
+    !selectedProjectSlug && config.lookingForWork ? (
       <p>
         I'm actively seeking my next developer role. Here's a showcase of some
         of my recent/in-progress work that doesn't quite fit in my resume.
       </p>
-    )
+    ) : null
   }
 
   <ul class="showcase">

@@ -65,7 +65,7 @@ p code {
 
 /* center (more-or-less) top-level media elements */
 :is(p, li) img,
-:is(article, figure) > img,
+:is(article, figure, aside) > img,
 video,
 .twitter-tweet,
 .instagram-media {
@@ -84,6 +84,7 @@ video {
 
 article > :is(img, video, pre, figure),
 li > :is(img, video),
+aside,
 iframe {
   margin-block: var(--gap-post-media) !important;
 }

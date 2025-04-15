@@ -1,0 +1,215 @@
+---
+title: 'CSS Art: Flag of Seychelles'
+date: '04-15-2025'
+tags:
+  - css
+metaDesc: Combining conic gradients and trigonometry to make a div do things it's not supposed to
+---
+
+import { Image } from 'astro:assets';
+import gradientStops from '../../assets/img/seychelles-flag-gradient-stops.png';
+import tangentTriangles from '../../assets/img/seychelles-flag-tangent-triangles.png';
+
+{/* prettier-ignore */}
+<p class="codepen" data-height="300" data-default-tab="css,result" data-slug-hash="dPbbWPw" data-pen-title="flag of Seychelles w/conic-gradient" data-user="aqandrew" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
+  <span>See the Pen <a href="https://codepen.io/aqandrew/pen/dPbbWPw">
+  flag of Seychelles w/conic-gradient</a> by Andrew Aquino (<a href="https://codepen.io/aqandrew">@aqandrew</a>)
+  on <a href="https://codepen.io">CodePen</a>.</span>
+</p>
+<script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+
+The other day I saw the flag of Seychelles for what felt like the first time. I suspected that it could be drawn as a CSS background with a conic gradient, and my suspicions turned out to be true.
+
+What do we need to do to make it happen?
+
+## Writing accessible HTML
+
+The most practical and accessible way to display a flag on a website is with a static image asset like an SVG/PNG in an `<img />` tag, with alt text. That being said, this is a blog post about exploring what's possible with CSS. That [often](https://a.singlediv.com/) means creating a `div` and adding a bunch of styles to it.
+
+Single-`div` CSS art like this is presentational/decorative. The element functions as an image, so we can [make it screen reader-friendly](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/img_role#using_roleimg_to_confer_meaning_that_is_obscured_or_implied) by giving it the `role="img"` attribute. In lieu of alt text, we'll also add `aria-label="flag of Seychelles"`.
+
+## Construction of the flag
+
+<figure>
+  <Image
+    src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Flag_of_Seychelles_%28construction_sheet%29.svg/2560px-Flag_of_Seychelles_%28construction_sheet%29.svg.png"
+    alt="Seychelles flag construction sheet"
+    width="640"
+    height="342"
+  />
+  <figcaption>
+    proportions and colors from{' '}
+    <a href="https://en.wikipedia.org/wiki/Flag_of_Seychelles">Wikipedia</a>
+  </figcaption>
+</figure>
+
+Seychelles' flag has a 2:1 aspect ratio. It has 5 colored bands of blue, yellow, red, white, and green that meet at the bottom left corner. These bands are angled so that the color stops (boundaries between colors) divide the top and right sides of the flag into thirds.
+
+## Drawing the gradient
+
+The most basic CSS gradient, [`linear-gradient()`](https://developer.mozilla.org/en-US/docs/Web/CSS/gradient/linear-gradient), declares a color sequence along a line. By default, this line goes from top to bottom.
+
+{/* prettier-ignore */}
+<p class="codepen" data-height="300" data-default-tab="css,result" data-slug-hash="pvzzYeO" data-pen-title="flag of Seychelles w/conic-gradient (soft stops)" data-user="aqandrew" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
+  <span>See the Pen <a href="https://codepen.io/aqandrew/pen/pvzzYeO">
+  flag of Seychelles w/conic-gradient (soft stops)</a> by Andrew Aquino (<a href="https://codepen.io/aqandrew">@aqandrew</a>)
+  on <a href="https://codepen.io">CodePen</a>.</span>
+</p>
+<script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+
+### conic-gradient()
+
+[`conic-gradient()`](https://developer.mozilla.org/en-US/docs/Web/CSS/gradient/conic-gradient) is better suited to this task, since the colors rotate around one point.
+
+{/* prettier-ignore */}
+<p class="codepen" data-height="300" data-default-tab="css,result" data-slug-hash="MYggxOL" data-pen-title="flag of Seychelles w/conic-gradient (centered)" data-user="aqandrew" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
+  <span>See the Pen <a href="https://codepen.io/aqandrew/pen/MYggxOL">
+  flag of Seychelles w/conic-gradient (centered)</a> by Andrew Aquino (<a href="https://codepen.io/aqandrew">@aqandrew</a>)
+  on <a href="https://codepen.io">CodePen</a>.</span>
+</p>
+<script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+
+Instead of a line, the colors are now arranged clockwise starting from the 12 o'clock position. It looks like we're looking down at a multicolored cone from above.
+
+<aside>
+If you're having trouble visualizing this gradient as a cone, check out this 3D visualizer. You can drag within the canvas to rotate the "cone" and see it from different angles.
+
+{/* prettier-ignore */}
+<p class="codepen" data-height="300" data-default-tab="js,result" data-slug-hash="yyLmjvB" data-pen-title="Zdog - Seychelles cone" data-user="aqandrew" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
+<span>See the Pen <a href="https://codepen.io/aqandrew/pen/yyLmjvB">
+Zdog - Seychelles cone</a> by Andrew Aquino (<a href="https://codepen.io/aqandrew">@aqandrew</a>)
+on <a href="https://codepen.io">CodePen</a>.</span>
+</p>
+<script async src="https://public.codepenassets.com/embed/index.js"></script>
+</aside>
+
+This is a step in the right direction, but we want to finish cycling through these colors at the 3 o'clock position, or 90&deg; from where we started. To do this, we can declare angles for color stops after each color that increase until reaching 90&deg;.
+
+{/* prettier-ignore */}
+<p class="codepen" data-height="300" data-default-tab="css,result" data-slug-hash="GgKKepN" data-pen-title="flag of Seychelles w/conic-gradient (centered)" data-user="aqandrew" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
+  <span>See the Pen <a href="https://codepen.io/aqandrew/pen/GgKKepN">
+  flag of Seychelles w/conic-gradient (centered)</a> by Andrew Aquino (<a href="https://codepen.io/aqandrew">@aqandrew</a>)
+  on <a href="https://codepen.io">CodePen</a>.</span>
+</p>
+<script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+
+Even though our last color stop is at 90&deg;, the conic gradient continues clockwise with the last color all the way back to 12 o'clock (360&deg;). Since we're only interested the upper right quadrant of the gradient, we can hide this extra green region by setting the gradient position (tip of the cone) to `at bottom left` before declaring our colors.
+
+{/* prettier-ignore */}
+<p class="codepen" data-height="300" data-default-tab="css,result" data-slug-hash="pvzzYrx" data-pen-title="flag of Seychelles w/conic-gradient (wrong angles)" data-user="aqandrew" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
+  <span>See the Pen <a href="https://codepen.io/aqandrew/pen/pvzzYrx">
+  flag of Seychelles w/conic-gradient (wrong angles)</a> by Andrew Aquino (<a href="https://codepen.io/aqandrew">@aqandrew</a>)
+  on <a href="https://codepen.io">CodePen</a>.</span>
+</p>
+<script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+
+### Hard stops
+
+A neat trick for CSS art is drawing gradients with hard stops. They don't look like conventional gradients, which interpolate between the colors you specify. You can use hard stop gradients to make all sorts of patterns including [checkers](https://codepen.io/SitePoint/pen/QMJGQM), [plaid](https://css-tricks.com/books/greatest-css-tricks/hard-stop-gradients/), and [halftone dots](https://css-irl.info/css-halftone-patterns/).
+
+{/* prettier-ignore */}
+<p class="codepen" data-height="300" data-default-tab="css,result" data-slug-hash="QwLLogx" data-pen-title="flag of Seychelles w/conic-gradient (wrong angles)" data-user="aqandrew" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
+  <span>See the Pen <a href="https://codepen.io/aqandrew/pen/QwLLogx">
+  flag of Seychelles w/conic-gradient (wrong angles)</a> by Andrew Aquino (<a href="https://codepen.io/aqandrew">@aqandrew</a>)
+  on <a href="https://codepen.io">CodePen</a>.</span>
+</p>
+<script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+
+We define hard color stops by providing _two_ angles for every intermediate color instead of one angle. (The first and last colors can still just have one angle each.)
+
+{/* prettier-ignore */}
+```css
+.seychelles {
+  /* ... */
+
+  background: conic-gradient(
+    /* ... */
+    var(--blue) var(--stop-1),
+    var(--yellow) var(--stop-1) var(--stop-2),
+    var(--red) var(--stop-2) var(--stop-3),
+    var(--white) var(--stop-3) var(--stop-4),
+    var(--green) var(--stop-4)
+  );
+}
+```
+
+It's implied that the first color starts at 0&deg;, so its angle means &ldquo;_stop_ this color at this angle". In this case, "stop the blue color at 1/5th of 90&deg;&rdquo;.
+
+For all of the following colors, the two angles mean "start this color at the first angle", then "stop this color at the second angle". The green color stop just says "_start_ the green color at 4/5ths of 90&deg;&rdquo;. Since it lacks a second angle, it's implied that green continues clockwise for the rest of the gradient.
+
+### Getting the color stop angles right
+
+Aren't we finished?
+
+Nope. In our latest iteration, the top of the flag contains four colors, and the right side contains two colors.
+
+Recall that the four color stops divide the top and right sides of Seychelles' flag into thirds. In other words, the top of the flag should contain three colors, and the right side of the flag should also contain three colors. We can obtain the angles needed for this by calculating these proportions and feeding them into the arctangent (or inverse tangent) function.
+
+<figure>
+  <Image
+    src={gradientStops}
+    alt="Seychelles flag gradient stops. The angles swept out by the blue, yellow, red and white regions of the flag are labeled b, y, r, and w, respectively. tan b = (2 * 1/3) / 1. tan y = (2 * 2/3) / 1. tan r = 2 / (1 * 2/3). tan w = 2 / (1 * 1/3)"
+  />
+
+  <figcaption>In this diagram, every labeled angle is measured clockwise from the left side of the flag&mdash;not the color stop before it.</figcaption>
+</figure>
+
+In plain English:
+
+- The blue color stop intersects the top of the flag at **1/3rd of its width** from the left.
+- The yellow color stop intersects the top of the flag at **2/3rds of its width** from the left.
+- The red color stop intersects the right side of the flag at **2/3rds of its height** from the bottom.
+- The white color stop intersects the right side of the flag at **1/3rd of its height** from the bottom.
+
+#### Which arctangent function to use?
+
+[`atan()`](https://developer.mozilla.org/en-US/docs/Web/CSS/atan) has been supported in CSS baseline since March 2023. At first I thought I could define the blue color stop angle like so:
+
+```css
+.seychelles {
+  /* ... */
+  --stop-1: atan((var(--width) * (1 / 3)) / var(--height));
+  /* ... */
+}
+```
+
+This makes the flag disappear!
+
+It took some digging to uncover (see [StackOverflow](https://stackoverflow.com/a/29505313/6432160), [CSS spec](https://www.w3.org/TR/css-values-3/#calc-type-checking)) that division in CSS is only valid if the **divisor** (right side of division expression) is a `<number>`, i.e., **unitless**. What this means is that you can't divide by a variable whose value is 100px, for example, since CSS' type system recognizes 100px as a `<dimension>`. Just as important, `atan()`'s argument must also be a `<number>`.
+
+Luckily for us, the [`atan2()`](https://developer.mozilla.org/en-US/docs/Web/CSS/atan2) function has been supported in CSS for just as long as `atan()`. Instead of one argument representing a ratio, this function takes two arguments representing the y- and x-coordinates of a point. Unlike `atan()`, each argument can be a `<number>`, `<dimension>`, or `<percentage>`.
+
+<aside>
+
+**Why atan2(y, x) instead of atan2(x, y)?**
+
+I'm not entirely sure. The explanation that makes the most sense to me is that the trigonometric definition of tan &theta; as [length of opposite side] / [length of adjacent side], so the opposite dimension comes first.
+
+<Image
+  src={tangentTriangles}
+  alt="Diagram showing two congruent right triangles labeled for calculating the tangent of an angle theta. In the first triangle, the right angle is at the top left, the hypotenuse is at the bottom right, and theta is at the bottom. So the top side of the triangle is opposite from theta, and the left side of the triangle is adjacent to theta. In the second triangle, the right angle is at the bottom right, the hypotenuse is at the top left, and theta is at the left. So the right side of the triangle is opposite from theta, and the bottom side of the triangle is adjacent to theta."
+/>
+
+[The definition of atan2](https://en.wikipedia.org/wiki/Atan2) says that the angle &theta; is measured **counterclockwise from the positive x-axis**, like the second triangle in the diagram above.
+
+In this CSS drawing, it just so happens that we're measuring our angles **clockwise from the positive y-axis**, like the first triangle in the diagram above. This effectively flips the coordinate system, which is why the `atan2()` arguments in the final code look more like `atan2(x, y)`.
+
+</aside>
+
+Here's the same CodePen from the top of the article, containing the finished flag of Seychelles, so you can see how it all comes together.
+
+{/* prettier-ignore */}
+<p class="codepen" data-height="300" data-default-tab="css,result" data-slug-hash="dPbbWPw" data-pen-title="flag of Seychelles w/conic-gradient" data-user="aqandrew" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
+  <span>See the Pen <a href="https://codepen.io/aqandrew/pen/dPbbWPw">
+  flag of Seychelles w/conic-gradient</a> by Andrew Aquino (<a href="https://codepen.io/aqandrew">@aqandrew</a>)
+  on <a href="https://codepen.io">CodePen</a>.</span>
+</p>
+<script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+
+You may notice that the edges between colors are jaggedy, or lack anti-aliasing. This is just a quirk in the implementation of gradients with hard stops. You can [fudge the spacing between stops](https://medium.com/pixel-and-ink/avoiding-jagged-edges-on-gradients-f485cc7401f5) to make these edges look a little smoother, but I chose not to.
+
+## Further reading
+
+- [StackOverflow - Why are the arguments to atan2 Y,X rather than X,Y?](https://stackoverflow.com/questions/1045630/why-are-the-arguments-to-atan2-y-x-rather-than-x-y)
+- [StackOverflow - background image, linear gradient jagged edged result needs to be smooth edged](https://stackoverflow.com/questions/33091401/background-image-linear-gradient-jagged-edged-result-needs-to-be-smooth-edged)
+- [CSS-Tricks - Making Static Noise From a Weird CSS Gradient Bug](https://css-tricks.com/making-static-noise-from-a-weird-css-gradient-bug/)

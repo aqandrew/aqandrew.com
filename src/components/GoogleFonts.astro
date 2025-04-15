@@ -1,11 +1,18 @@
-<!--
-  tried using @fontsource like Astro doc ssuggested, but that caused flicker
+---
+import { AstroFont } from 'astro-font';
+---
 
-  based on https://github.com/chantastic/sites/blob/ffb76dc0def54ed9b8a8103f0f4cea9ea71543ce/chan.dev/src/components/header-google-fonts.astro#L4
--->
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link
-  href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;700;900&display=swap"
-  rel="stylesheet"
+<AstroFont
+  config={[
+    {
+      src: [],
+      preload: false,
+      display: 'swap',
+      name: 'Work Sans',
+      fallback: 'sans-serif',
+      cssVariable: 'font-family-sans-serif',
+      googleFontsURL:
+        'https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;700;900',
+    },
+  ]}
 />

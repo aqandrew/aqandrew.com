@@ -1,10 +1,14 @@
 ---
-title: svelte-onion
+title: Dicing an Onion, the Mathematically Optimal Way
 desc: Data visualization + culinary math exploration with SVG/Svelte/D3
-order: 2
+order: 0
 ---
 
 import { config } from '@config';
+
+export const url = 'https://pudding.cool/2025/08/onions';
+
+**Check out the full article at The Pudding:** <a href={url}>{url}</a>
 
 In 2021, food writer Kenji López-Alt shared some diagrams and mathematical analysis about the ideal method for dicing onions:
 
@@ -18,4 +22,14 @@ After seeing Kenji's post, I recreated his onion cross-section diagrams as a min
 
 This simple interactive version is live here: https://svelte-onion.netlify.app/
 
-Originally all I wanted was just to get some deeper practice with Svelte/D3 and writing SVG by hand. However, I'm currently expanding this in a freelance capacity to include the mathematical analysis as well. I should have a big update here before the end of 2024. (I'm happy to share more details <a href={`mailto:${config.author.email}`}>in an interview</a> if you're hiring a frontend engineer!)
+Originally all I wanted was just to get some more practice with Svelte/D3 and writing SVG by hand. Later I decided to dive deep into verifying Kenji's claim using calculus and statistics. I pitched this as a freelance article for dataviz publication The Pudding, and we published it in August 2025. (Here's the link again! <a href={url}>{url}</a>)
+
+Challenges included:
+
+- coming up with a method to calculate the area of any onion piece, when using vertical or radial cuts as defined in the article
+  - lots of dead ends here, including elliptic integrals (???)
+  - writing tests with Vitest gave me confidence that this method is accurate 💚
+- ^modifying that method to also calculate the area of smaller pieces that are created when adding horizontal cuts
+- creating SVG `path` elements for each individual onion piece
+- creating a smooth transition animation to and from an exploded view, where onion pieces are sorted from largest to smallest
+  - ended up having to implement inline-block layout from scratch for SVG `path` elements

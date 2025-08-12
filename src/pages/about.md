@@ -16,4 +16,4 @@ I love to cook and transcribe/play/write music.
 - 🍗 I dabble with drums.
 - 🎹 I started on piano when I was little, and picked it back up during the pandemic.
 
-I also enjoy some creative coding outside of work. Someday I'd like to be fluent with live coding environments like [hydra](https://hydra.ojack.xyz/) and maybe [TidalCycles](http://pages.tidalcycles.org/).
+I also enjoy some creative coding outside of work, and encourage everyone who likes computers and art to play around with live coding environments like [hydra](https://hydra.ojack.xyz/) and [Strudel](https://strudel.cc/).
